@@ -47,7 +47,7 @@
 
   home = {
     username = "felipemarcelino";
-    homeDirectory = "/home/felipemarcelino";
+    homeDirectory = "/home/${config.home.username}";
   };
 
   # Add stuff for your user as you see fit:
@@ -60,6 +60,10 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  home.packages = with pkgs; [
+  	cowsay
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";

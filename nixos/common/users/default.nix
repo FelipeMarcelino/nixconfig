@@ -1,3 +1,3 @@
 {
-    imports = [./felipemarcelinox.nix];
+    imports = [./felipemarcelino.nix];
 }
