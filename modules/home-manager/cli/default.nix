@@ -10,7 +10,7 @@
     #enableAliases = true;
     enableZshIntegration = true;
     git = true;
-    icons = true;
+    icons = "auto";
     extraOptions = [
       "--group-directories-first"
       "--smart-group"
@@ -26,7 +26,6 @@
 
   programs.bat = {
     enable = true;
-    };
     extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batpipe prettybat];
   };
 
@@ -35,12 +34,9 @@
     defaultCommand = "fd";
     defaultOptions = ["--border" "--height 60%" "--layout=reverse" "--info=inline" "--margin 1" "--padding 1"];
     fileWidgetOptions = ["--preview 'bat -n --color=always {}'"];
-
   };
 
   programs.starship.enable = true;
-
-  programs.bat = {enable = true;};
 
   home.packages = with pkgs; [
     coreutils
