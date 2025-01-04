@@ -14,5 +14,6 @@
   };
 
   home-manager.users.felipemarcelino = import ../../../home/felipemarcelino/${config.networking.hostName}.nix; 
+  skldjkflskljfkl
 
 }

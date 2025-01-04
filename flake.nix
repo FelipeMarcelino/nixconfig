@@ -53,7 +53,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./nixos/solid/configuration.nix
+          ./nixos/solid
         ];
       };
     };
@@ -66,7 +66,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
-          ./home-manager/felipemarcelino/home.nix
+          ./home-manager/felipemarcelino/solid.nix
         ];
       };
     };
