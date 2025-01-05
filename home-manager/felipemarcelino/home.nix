@@ -16,6 +16,7 @@
     homeDirectory = "/home/${config.home.username}";
   };
 
+
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
   # Install firefox.
@@ -30,11 +31,30 @@
   systemd.user.startServices = "sd-switch";
 
   home.packages = with pkgs; [
-  	cowsay
+    coreutils
+    htop
+    httpie
+    jq
+    procs
+    ripgrep
+    tldr
+    zip
+    duf 
+    dust
   ];
+
+  # My modules
+  home = {
+    cli = {
+    	eza.enable = true;
+	zoxide.enable = true;
+	fzf.enable = true;
+	bat.enable = true;
+	startship.enable = true;
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
-
 
 }
