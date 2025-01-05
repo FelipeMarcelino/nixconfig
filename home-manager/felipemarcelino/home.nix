@@ -32,7 +32,7 @@
 
   home.packages = with pkgs; [
     coreutils
-    htop
+    htop-vim
     httpie
     jq
     procs
