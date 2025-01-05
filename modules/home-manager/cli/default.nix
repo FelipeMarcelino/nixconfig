@@ -49,6 +49,8 @@
     tldr
     zip
     fasd
+    duf 
+    dust
   ];
 
 

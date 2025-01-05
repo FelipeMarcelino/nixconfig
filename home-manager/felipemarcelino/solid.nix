@@ -1,1 +1,1 @@
-{config,...}: {imports = [./home.nix ../common ../../modules/home-manager/cli];}
+{input, config,...}: {imports = [./home.nix ../common inputs.self.homeManagerModules.cli];}
