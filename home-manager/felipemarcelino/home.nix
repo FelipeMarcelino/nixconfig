@@ -50,9 +50,10 @@
 	zoxide.enable = true;
 	fzf.enable = true;
 	bat.enable = true;
-	startship.enable = true;
+	starship.enable = true;
     };
   };
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";

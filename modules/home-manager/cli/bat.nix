@@ -16,6 +16,11 @@ with lib;
     config = mkIf cfg.enable {
 	  programs.bat = {
 	    enable = true;
+	    config = {
+	      italic-text = "always";
+	      style = "numbers,header,grid,snip";
+	      tabs = "4";
+    	    };
 	    extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batpipe prettybat];
 	  };
     };
