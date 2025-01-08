@@ -1,4 +1,4 @@
 { pkgs, ...}:
 {
-   imports = [ ./sway.nix ];
+   imports = [ ./sway.nix ./i3.nix ];
 }
