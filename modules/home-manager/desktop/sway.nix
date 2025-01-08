@@ -59,7 +59,7 @@ in {
     config = {
       fonts = {
         size = 18.0;
-       # names = ["MonoLisa Nerd Font"];
+        names = ["MonoLisa Nerd Font"];
       };
       bars = [{
 	fonts.size = 15.0;

@@ -6,9 +6,9 @@ stdenv.mkDerivation rec {
 
   # Define the font directories
   fontDirs = [
-    ./fonts/Monolisa
-    ./fonts/PragmataPro
-    ./fonts/PragmataPro-Regular0.830
+    ../../fonts/Monolisa
+    ../../fonts/PragmataPro
+    ../../fonts/PragmataPro-Regular0.830
   ];
 
   # Disable unpacking (since we're not using a traditional source archive)
@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Custom Nerd Fonts for the system";
-    license = licenses.unfree; # Adjust the license as needed
+    license = licenses.free; # Adjust the license as needed
     platforms = platforms.all;
   };
 }
