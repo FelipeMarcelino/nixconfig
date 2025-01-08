@@ -11,7 +11,6 @@
   imports = [
     ./users
     inputs.home-manager.nixosModules.home-manager
-    inputs.self.homeManagerModules.desktop
   ];
 
   home-manager = {

@@ -1,0 +1,10 @@
+nerd-font-patcher -c MonoLisa-BoldItalic.ttf -out MonoLisa-BoldItalic_Nerd.ttf
+nerd-font-patcher -c MonoLisa-Bold.ttf -out MonoLisa-Bold_Nerd.ttf
+nerd-font-patcher -c MonoLisa-LightItalic.ttf -out MonoLisa-LightItalic_Nerd.ttf
+nerd-font-patcher -c MonoLisa-Light.ttf -out MonoLisa-Light_Nerd.ttf
+nerd-font-patcher -c MonoLisa-MediumItalic.ttf -out MonoLisa-MediumItalic_Nerd.ttf
+nerd-font-patcher -c MonoLisa-Medium.ttf -out MonoLisa-Medium_Nerd.ttf
+nerd-font-patcher -c MonoLisa-RegularItalic.ttf -out MonoLisa-RegularItalic_Nerd.ttf
+nerd-font-patcher -c MonoLisa-Regular.ttf -out MonoLisa-Regular_Nerd.ttf
+nerd-font-patcher -c MonoLisa-SemiBoldItalic.ttf -out MonoLisa-SemiBoldItalic_Nerd.ttf
+nerd-font-patcher -c MonoLisa-SemiBold.ttf -out MonoLisa-SemiBold_Nerd.ttf

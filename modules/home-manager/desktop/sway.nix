@@ -32,25 +32,42 @@ in {
  };
 
 
-    config = lib.mkIf cfg.enable {
- 
-    hardware.graphics.enable = true;
-    security.polkit.enable = true;
 
+
+
+    config = lib.mkIf cfg.enable {
+
+    services.gnome-keyring.enable = true;
+
+     
     home.packages = with pkgs; [
-      wdisplays
+      swaylock
+      swayidle
       wl-clipboard
+      grim # screenshot functionality
+      slurp # screenshot functionality
+      mako # notification system developed by swaywm mai
     ];
 
+    programs.wofi.enable = true;
+    programs.waybar.enable = true;
+
     wayland.windowManager.sway =     {
+    wrapperFeatures.gtk = true;
+
     enable = true;
     config = {
       fonts = {
         size = 18.0;
        # names = ["MonoLisa Nerd Font"];
       };
-      bars = [];
+      bars = [{
+	fonts.size = 15.0;
+	command = "waybar";
+	}
+      ];
       modifier = mod;
+      terminal = "kgx";
       workspaceOutputAssign = [
         {
           output = ["DP-0"];
@@ -143,61 +160,6 @@ in {
         "${mod}+minus" = "move scratchpad";
         "${mod}+Shift+minus" = "scratchpad show";
         "${mod}+b" = "exec --no-startup-id rofi-bluetooth";
-      };
-      floating.border = 4;
-      window = {
-        titlebar = false;
-        hideEdgeBorders = "none";
-        border = 4;
-      };
-      colors = {
-        background = base07;
-
-        focused = {
-          background = base0D;
-          border = base05;
-          childBorder = base0C;
-          indicator = base0D;
-          text = base00;
-        };
-
-        focusedInactive = {
-          background = base01;
-          border = base01;
-          childBorder = base01;
-          indicator = base03;
-          text = base05;
-        };
-
-        unfocused = {
-          background = base00;
-          border = base01;
-          childBorder = base01;
-          indicator = base01;
-          text = base05;
-        };
-
-        urgent = {
-          background = base08;
-          border = base08;
-          childBorder = base08;
-          indicator = base08;
-          text = base00;
-        };
-
-        placeholder = {
-          background = base00;
-          border = base00;
-          childBorder = base00;
-          indicator = base00;
-          text = base05;
-        };
-      };
-      gaps = {
-        smartGaps = false;
-        smartBorders = "off";
-        inner = 4;
-        outer = 4;
       };
     };
   };

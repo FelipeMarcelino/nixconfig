@@ -41,6 +41,8 @@
     zip
     duf 
     dust
+    unzip
+    pragmata-monolisa-fonts
   ];
 
   # My modules

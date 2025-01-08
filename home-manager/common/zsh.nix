@@ -98,6 +98,8 @@
   programs.zsh.shellAliases = {
     cat = "bat --paging=never";
     rnd = "task add +rnd +next +@computer +@online";
+    l="ls -lh";
+
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;
