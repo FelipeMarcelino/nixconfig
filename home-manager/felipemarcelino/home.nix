@@ -52,6 +52,10 @@
 	bat.enable = true;
 	starship.enable = true;
     };
+
+    desktop = {
+       swayi3.enable = true;
+    };
   };
 
 

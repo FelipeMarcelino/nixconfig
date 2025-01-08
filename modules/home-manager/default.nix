@@ -4,4 +4,5 @@
   # List your module files here
   # my-module = import ./my-module.nix;
    cli = import ./cli/default.nix;
+   desktop = import ./desktop/default.nix;
 }
