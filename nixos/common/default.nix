@@ -1,5 +1,6 @@
 # Common configuration for all hosts
 {
+
   pkgs,
   lib,
   inputs,
@@ -10,6 +11,7 @@
   imports = [
     ./users
     inputs.home-manager.nixosModules.home-manager
+    inputs.self.homeManagerModules.desktop
   ];
 
   home-manager = {
@@ -62,5 +64,6 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
+
 }
 

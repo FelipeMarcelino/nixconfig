@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   mod = "Mod1";
@@ -20,18 +21,27 @@
   base0D = "#61afef";
   base0E = "#c678dd";
   base0F = "#be5046";
-  let cfg = config.home.desktop.swayi3 or { enable = false;} ; 
+  cfg = config.home.desktop.swayi3 or { enable = false;} ; 
 in {
 
 
- options.home.desktop.swayi3 = mkOption { 
+ options.home.desktop.swayi3 = lib.mkOption { 
   description = "Enable i3 wm with sway  and wayland ";
-  type = types.attrs;
+  type = lib.types.attrs;
   default = {enable = false;};
  };
 
 
-    config = mkIf cfg.enable {
+    config = lib.mkIf cfg.enable {
+ 
+    hardware.graphics.enable = true;
+    security.polkit.enable = true;
+
+    home.packages = with pkgs; [
+      wdisplays
+      wl-clipboard
+    ];
+
     wayland.windowManager.sway =     {
     enable = true;
     config = {
@@ -130,15 +140,6 @@ in {
         "${mod}+Shift+9" = "move container to workspace number 9";
         "${mod}+Shift+0" = "move container to workspace number 10";
         "${mod}+Shift+x" = "exec betterlockscreen -l dim";
-        "${mod}+z" = "[class=zettel] scratchpad show; move position center";
-        "${mod}+n" = "[class=nnn] scratchpad show; move position center";
-        "${mod}+Return" = "[class=termfloating] scratchpad show; move position center";
-        "${mod}+m" = "[class=mixer] scratchpad show; move position center";
-        "${mod}+i" = "[class=WebApp-iris] scratchpad show; move position center";
-        "${mod}+a" = "[class=WebApp-whatsapp] scratchpad show; move position center";
-        "${mod}+u" = "[class=WebApp-chatgpt] scratchpad show; move position center";
-        "${mod}+w" = "[class=taskwarrior] scratchpad show; move position center";
-        "${mod}+r" = "exec --no-startup-id rofi-rbw";
         "${mod}+minus" = "move scratchpad";
         "${mod}+Shift+minus" = "scratchpad show";
         "${mod}+b" = "exec --no-startup-id rofi-bluetooth";

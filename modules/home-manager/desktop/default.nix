@@ -1,4 +1,4 @@
-{ pkgs, ...}
+{ pkgs, ...}:
 {
-   [ ./i3wm.nix ];
+   imports = [ ./sway.nix ];
 }
