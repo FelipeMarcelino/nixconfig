@@ -37,6 +37,14 @@ in {
 
     config = lib.mkIf cfg.enable {
 
+    xsession.enable = true;
+
+    home.packages = with pkgs; [
+    	rofi
+	arandr
+	flameshot
+    ]
+
   home.file.".local/share/xsessions/i3.desktop".text = ''
     [Desktop Entry]
     Name=i3
@@ -47,7 +55,6 @@ in {
      
 xsession.windowManager.i3 = {
     enable = true;
-    xsession.enable = true;
     package = pkgs.i3-gaps;
     config = {
       fonts = {
@@ -145,7 +152,6 @@ xsession.windowManager.i3 = {
         "${mod}+Shift+8" = "move container to workspace number 8";
         "${mod}+Shift+9" = "move container to workspace number 9";
         "${mod}+Shift+0" = "move container to workspace number 10";
-        "${mod}+Shift+x" = "exec betterlockscreen -l dim";
       };
       floating.border = 4;
       window = {
