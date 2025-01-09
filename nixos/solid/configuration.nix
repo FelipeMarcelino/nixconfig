@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../common/default.nix
-      ./greetd.nix
+      #./greetd.nix
     ];
 
   # Bootloader.
@@ -48,13 +48,16 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-	#  services.xserver.displayManager.gdm = {
-	#  	enable = true;
-	# wayland = false;
-	#  };
+	 services.xserver.displayManager.gdm = {
+	 	enable = true;
+	wayland = false;
+	 };
   services.xserver.desktopManager.gnome.enable = true;
-  services.greetd.enable = true;
+  #services.greetd.enable = true;
   #programs.regreet.enable = true;
+
+  # I3 
+  services.xserver.windowManager.i3.enable = true;
 
 
   # Configure keymap in X11
