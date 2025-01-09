@@ -43,7 +43,7 @@ in {
     	rofi
 	arandr
 	flameshot
-    ]
+    ];
 
   home.file.".local/share/xsessions/i3.desktop".text = ''
     [Desktop Entry]
