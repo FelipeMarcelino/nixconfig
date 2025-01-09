@@ -1,11 +1,10 @@
-{ 
-config,
-lib,
-outputs,
-pkgs,
-...
+{
+  config,
+  lib,
+  outputs,
+  pkgs,
+  ...
 }: {
-
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -51,6 +50,4 @@ pkgs,
       warn-dirty = false;
     };
   };
-
-
 }

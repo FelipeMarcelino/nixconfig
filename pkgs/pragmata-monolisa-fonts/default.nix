@@ -1,5 +1,7 @@
-{ stdenv, lib }:
-
+{
+  stdenv,
+  lib,
+}:
 stdenv.mkDerivation rec {
   pname = "pragmata-monolisa-nerd-fonts";
   version = "1.0.0";
@@ -21,12 +23,13 @@ stdenv.mkDerivation rec {
 
     # Use find to copy only Nerd Fonts, including those in subdirectories
     ${lib.concatMapStringsSep "\n" (dir: ''
-      if [ -d "${dir}" ]; then
-        find "${dir}" -type f -name '*Nerd*.ttf' -exec cp --no-preserve=mode {} $out/share/fonts/truetype/ \;
-      else
-        echo "Warning: Directory ${dir} does not exist."
-      fi
-    '') fontDirs}
+        if [ -d "${dir}" ]; then
+          find "${dir}" -type f -name '*Nerd*.ttf' -exec cp --no-preserve=mode {} $out/share/fonts/truetype/ \;
+        else
+          echo "Warning: Directory ${dir} does not exist."
+        fi
+      '')
+      fontDirs}
 
     # Ensure the output directory is not empty
     if [ -z "$(ls -A $out/share/fonts/truetype)" ]; then

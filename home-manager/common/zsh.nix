@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ...}:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh.enable = true;
   programs.zsh.enableCompletion = true;
   programs.fzf.enableZshIntegration = true;
@@ -98,8 +102,7 @@
   programs.zsh.shellAliases = {
     cat = "bat --paging=never";
     rnd = "task add +rnd +next +@computer +@online";
-    l="ls -lh";
-
+    l = "ls -lh";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;

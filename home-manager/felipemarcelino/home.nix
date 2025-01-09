@@ -1,4 +1,3 @@
-
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
@@ -15,7 +14,6 @@
     username = "felipemarcelino";
     homeDirectory = "/home/${config.home.username}";
   };
-
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
@@ -39,7 +37,7 @@
     ripgrep
     tldr
     zip
-    duf 
+    duf
     dust
     unzip
     pragmata-monolisa-fonts
@@ -48,21 +46,19 @@
   # My modules
   home = {
     cli = {
-    	eza.enable = true;
-	zoxide.enable = true;
-	fzf.enable = true;
-	bat.enable = true;
-	starship.enable = true;
+      eza.enable = true;
+      zoxide.enable = true;
+      fzf.enable = true;
+      bat.enable = true;
+      starship.enable = true;
     };
 
     desktop = {
-       swayi3.enable = false; # wayland is broken when using nvidia proprietary driver -- waiting for 555v
-       i3.enable = true;
+      swayi3.enable = false; # wayland is broken when using nvidia proprietary driver -- waiting for 555v
+      i3.enable = true;
     };
   };
 
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
-
 }

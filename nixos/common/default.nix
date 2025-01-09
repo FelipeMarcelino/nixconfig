@@ -1,23 +1,20 @@
 # Common configuration for all hosts
 {
-
   pkgs,
   lib,
   inputs,
   outputs,
   ...
 }: {
-
   imports = [
     ./users
     inputs.home-manager.nixosModules.home-manager
   ];
 
   home-manager = {
-  	useUserPackages = true;
-	extraSpecialArgs = {inherit inputs outputs;};
+    useUserPackages = true;
+    extraSpecialArgs = {inherit inputs outputs;};
   };
-
 
   nixpkgs = {
     # You can add overlays here
@@ -64,6 +61,4 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
-
 }
-
