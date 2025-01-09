@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../common/default.nix
+      ./greetd.nix
     ];
 
   # Bootloader.
@@ -53,6 +54,7 @@
 	#  };
   services.xserver.desktopManager.gnome.enable = true;
   services.greetd.enable = true;
+  #programs.regreet.enable = true;
 
 
   # Configure keymap in X11
