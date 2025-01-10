@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  inputs,
   outputs,
   pkgs,
   ...
@@ -11,10 +12,12 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./zsh.nix
+    ./nixvim
   ];
 
   nixpkgs = {

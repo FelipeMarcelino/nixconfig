@@ -15,13 +15,11 @@
     homeDirectory = "/home/${config.home.username}";
   };
 
-  # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager 
+  # Enable home-manager
   programs.home-manager.enable = true;
 
   # Nicely reload system units when changing configs
