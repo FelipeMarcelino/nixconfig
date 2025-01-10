@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  imports = [./sway.nix ./i3.nix];
+  imports = [./wayland ./x11];
 }

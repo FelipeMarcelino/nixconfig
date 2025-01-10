@@ -38,13 +38,13 @@ in {
       flameshot
     ];
 
-    # home.file.".local/share/xsessions/i3.desktop".text = ''
-    #   [Desktop Entry]
-    #   Name=i3
-    #   Comment=Dynamic window manager
-    #   Exec=${pkgs.i3-gaps}/bin/i3
-    #   Type=XSession
-    # '';
+    home.file.".local/share/xsessions/i3.desktop".text = ''
+      [Desktop Entry]
+      Name=i3
+      Comment=Dynamic window manager
+      Exec=${pkgs.i3-gaps}/bin/i3
+      Type=XSession
+    '';
 
     xsession.windowManager.i3 = {
       enable = true;
@@ -202,6 +202,7 @@ in {
           outer = 4;
         };
       };
+      extraConfig = " for_window [class=.*] border pixel 4";
     };
   };
 }

@@ -1,0 +1,3 @@
+{pkgs, ...}: {
+  imports = [./sway.nix];
+}
