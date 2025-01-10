@@ -56,6 +56,7 @@
     desktop = {
       swayi3.enable = false; # wayland is broken when using nvidia proprietary driver -- waiting for 555v
       i3.enable = true;
+      autorandr.enable = true;
     };
   };
 
