@@ -1,4 +1,4 @@
-{config, pkgs, ...}: let 
+{config, pkgs, lib, ...}: let 
    cfg =  config.home.desktop.autorandr;
 in
 {
@@ -12,8 +12,8 @@ in
 
   config = lib.mkIf cfg.enable {
 	programs.autorandr.enable = true;
-	services.autorandr.ebnale = true;
-  }
+	services.autorandr.enable = true;
+  };
 
 	
 }

@@ -25,5 +25,7 @@
     pulse.enable = true;
   };
 
+  programs.git.enable = true;
+
   home-manager.users.felipemarcelino = import ../../../home-manager/felipemarcelino/${config.networking.hostName}.nix;
 }

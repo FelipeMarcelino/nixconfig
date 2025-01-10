@@ -21,9 +21,8 @@
   programs.firefox.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager and git
+  # Enable home-manager 
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
@@ -51,6 +50,7 @@
       fzf.enable = true;
       bat.enable = true;
       starship.enable = true;
+      git.enable = true;
     };
 
     desktop = {
