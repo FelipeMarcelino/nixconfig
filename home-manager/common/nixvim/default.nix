@@ -1,25 +1,26 @@
-{ config , pkgs, ...}:
 {
-   imports = [ ./keymapping.nix ./options.nix ./plugins.nix];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./keymapping.nix ./options.nix ./plugins.nix ./plugins];
 
-   home.packages = with pkgs; [ xclip ];
+  home.packages = with pkgs; [xclip];
 
-   programs.nixvim = {
-   	enable = true;
-	viAlias = true;
-	vimAlias = true;
+  programs.nixvim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
 
-	clipboard = {
-	    register = "unnamedplus";
-	    providers.xclip.enable = true;
-	};
+    clipboard = {
+      register = "unnamedplus";
+      providers.xclip.enable = true;
+    };
 
-	diagnostics = {
-	    virtual_text = false;
-	};
+    diagnostics = {
+      virtual_text = false;
+    };
 
-	colorschemes.onedark.enable = true;
-
-   };
+    colorschemes.onedark.enable = true;
+  };
 }
-
