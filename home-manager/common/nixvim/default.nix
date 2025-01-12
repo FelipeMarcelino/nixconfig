@@ -1,6 +1,6 @@
 { config , pkgs, ...}:
 {
-   imports = [ ./keymapping.nix ./options.nix ];
+   imports = [ ./keymapping.nix ./options.nix ./plugins.nix];
 
    home.packages = with pkgs; [ xclip ];
 
@@ -18,13 +18,7 @@
 	    virtual_text = false;
 	};
 
-	colorscheme = "onedark";
-
-	opts = {
-	    number = true;
-	    relativenumber = true;
-	    shiftwidth = 4;
-	};
+	colorschemes.onedark.enable = true;
 
    };
 }
