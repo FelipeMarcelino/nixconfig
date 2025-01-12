@@ -1,10 +1,11 @@
 {config, pkgs, ...}:
 {
     programs.nixvim.globals.mapleader = " ";
-    keymaps = [
+    programs.nixvim.keymaps = [
     {
 	key = ";";
 	action = ":";
     }
+
     ];
 }
