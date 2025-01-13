@@ -2,7 +2,6 @@
   pkgs,
   config,
   ...
-}:
-{
- imports = [./python.nix];
+}: {
+  imports = [./python.nix];
 }

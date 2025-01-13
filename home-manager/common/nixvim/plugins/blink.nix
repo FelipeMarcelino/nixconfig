@@ -94,15 +94,16 @@
         module = "blink.compat.source";
         score_offset = 0;
       };
-      npm = {
-        name = "npm";
-        module = "blink.compat.source";
-        score_offset = -3;
-      };
       spell = {
         name = "spell";
         module = "blink.compat.source";
         score_offset = -1;
+      };
+
+      nvim_lsp_signature_help = {
+        name = "nvim_lsp_signature_help";
+        module = "blink.compat.source";
+        score_offset = 1;
       };
       zsh = {
         name = "zsh";

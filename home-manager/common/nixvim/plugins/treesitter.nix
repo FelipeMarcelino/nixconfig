@@ -1,5 +1,8 @@
-{ config, pkgs, ...}:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.treesitter = {
     autoLoad = true;
     folding = true;

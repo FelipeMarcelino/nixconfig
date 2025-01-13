@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     (python311Full.withPackages (ps:
       with ps; [

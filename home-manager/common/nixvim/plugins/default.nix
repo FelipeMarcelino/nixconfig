@@ -3,5 +3,5 @@
   pkgs,
   ...
 }: {
-  imports = [./blink.nix ./cmp.nix ./lsp.nix ./treesitter.nix ./trouble.nix];
+  imports = [./auto-save.nix ./auto-session.nix ./blink.nix ./cmp.nix ./lsp.nix ./treesitter.nix ./trouble.nix];
 }
