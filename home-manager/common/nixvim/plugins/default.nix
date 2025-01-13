@@ -3,5 +3,5 @@
   pkgs,
   ...
 }: {
-  imports = [ ./blink.nix ./cmp.nix];
+  imports = [./blink.nix ./cmp.nix ./lsp.nix];
 }

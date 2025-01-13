@@ -9,7 +9,7 @@
     autoclose.enable = true;
     better-escape.enable = true;
     blink-cmp.enable = true;
-    cmp.enable = true;
+    #cmp.enable = true;
     commentary.enable = true;
     conform-nvim.enable = true;
     csvview.enable = true;
