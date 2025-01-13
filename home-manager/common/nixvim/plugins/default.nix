@@ -1,6 +1,7 @@
 {
-  config, pkgs, ...
-}:
-{
-  imports = [./cmp.nix];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [ ./blink.nix ./cmp.nix];
 }
