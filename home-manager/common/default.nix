@@ -18,6 +18,7 @@
     # ./nvim.nix
     ./zsh.nix
     ./nixvim
+    ./languages
   ];
 
   nixpkgs = {

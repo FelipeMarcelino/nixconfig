@@ -1,0 +1,351 @@
+-- Nixvim's internal module table
+-- Can be used to share code throughout init.lua
+local _M = {}
+
+-- Set up globals {{{
+do
+    local nixvim_globals = { localleader = ",", mapleader = " " }
+
+    for k, v in pairs(nixvim_globals) do
+        vim.g[k] = v
+    end
+end
+-- }}}
+
+-- Set up options {{{
+do
+    local nixvim_options = {
+        autoread = true,
+        breakindent = true,
+        ch = 3,
+        clipboard = "unnamedplus",
+        cursorline = true,
+        diffopt = "internal,filler,closeoff,vertical,iwhite,hiddenoff",
+        expandtab = true,
+        foldenable = false,
+        foldlevel = 1,
+        foldlevelstart = 1,
+        foldmethod = "expr",
+        foldnestmax = 10,
+        gdefault = true,
+        hidden = true,
+        iskeyword = "-,_",
+        list = true,
+        listchars = "tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮",
+        number = true,
+        relativenumber = true,
+        scrolloff = 8,
+        shiftround = true,
+        shiftwidth = 4,
+        shortmess = "filnxtToOFc",
+        showbreak = "↪ ",
+        showmatch = true,
+        showmode = false,
+        sidescroll = 5,
+        sidescrolloff = 20,
+        smartindent = true,
+        smarttab = true,
+        softtabstop = 4,
+        splitbelow = true,
+        splitright = true,
+        swapfile = false,
+        tabstop = 4,
+        termguicolors = true,
+        textwidth = 120,
+        title = true,
+        wildmode = "list:longest,list:full",
+        wrap = false,
+        writebackup = false,
+    }
+
+    for k, v in pairs(nixvim_options) do
+        vim.opt[k] = v
+    end
+end
+-- }}}
+
+_onedark = require("onedark")
+_onedark.setup({})
+_onedark.load()
+
+vim.diagnostic.config({ virtual_text = false })
+
+require("nvim-web-devicons").setup({})
+
+-- LSP {{{
+do
+    local __lspServers =
+        { { name = "zk" }, { name = "pylyzer" }, { name = "nil_ls" }, { name = "lua_ls" }, { name = "bashls" } }
+    -- Adding lspOnAttach function to nixvim module lua table so other plugins can hook into it.
+    _M.lspOnAttach = function(client, bufnr) end
+    local __lspCapabilities = function()
+        capabilities = vim.lsp.protocol.make_client_capabilities()
+
+        capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
+
+        return capabilities
+    end
+
+    local __setup = {
+        on_attach = _M.lspOnAttach,
+        capabilities = __lspCapabilities(),
+    }
+
+    for i, server in ipairs(__lspServers) do
+        if type(server) == "string" then
+            require("lspconfig")[server].setup(__setup)
+        else
+            local options = server.extraOptions
+
+            if options == nil then
+                options = __setup
+            else
+                options = vim.tbl_extend("keep", options, __setup)
+            end
+
+            require("lspconfig")[server.name].setup(options)
+        end
+    end
+end
+-- }}}
+
+require("zk").setup({})
+
+require("zellij").setup({})
+
+require("yazi").setup({})
+
+require("which-key").setup({})
+
+require("trouble").setup({})
+
+require("treesitter-context").setup({})
+
+vim.opt.runtimepath:prepend(vim.fs.joinpath(vim.fn.stdpath("data"), "site"))
+require("nvim-treesitter.configs").setup({
+    indent = { enable = true },
+    matchup = { enable = false },
+    parser_install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
+    refactor = {
+        highlight_current_scope = { enable = false },
+        highlight_definitions = { clear_on_cursor_move = true, enable = false },
+        navigation = {
+            enable = false,
+            keymaps = {
+                goto_definition = "gnd",
+                goto_next_usage = "<a-*>",
+                goto_previous_usage = "<a-#>",
+                list_definitions = "gnD",
+                list_definitions_toc = "gO",
+            },
+        },
+        smart_rename = { enable = false, keymaps = { smart_rename = "grr" } },
+    },
+})
+
+require("telescope").setup({})
+
+local __telescopeExtensions = {}
+for i, extension in ipairs(__telescopeExtensions) do
+    require("telescope").load_extension(extension)
+end
+
+require("spectre").setup({})
+
+require("sniprun").setup({})
+
+require("refactoring").setup({})
+
+require("project_nvim").setup({})
+
+require("nvim-autopairs").setup({})
+
+require("noice").setup({})
+
+require("neoscroll").setup({})
+
+require("luasnip").config.setup({})
+
+require("luasnip.loaders.from_vscode").lazy_load({})
+
+require("lualine").setup({})
+
+require("lsp_signature").setup({})
+
+require("ibl").setup({})
+
+require("inc_rename").setup({})
+
+require("gitsigns").setup({})
+
+require("gitblame").setup({})
+
+require("git-conflict").setup({})
+
+require("csvview").setup({})
+
+require("copilot").setup({
+    copilot_node_command = "/nix/store/wlpq101dsifq98z2bk300x4dk80wcybr-nodejs-18.20.5/bin/node",
+})
+
+require("conform").setup({})
+
+require("colorizer").setup({})
+
+require("cmp_git").setup({})
+
+require("bufferline").setup({})
+
+require("blink-compat").setup({})
+
+require("blink-cmp").setup({
+    appearance = { nerd_font_variant = "normal", use_nvim_cmp_as_default = true },
+    completion = {
+        accept = { auto_brackets = { enabled = true, semantic_token_resolution = { enabled = false } } },
+        documentation = { auto_show = true },
+    },
+    keymap = {
+        ["<A-S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<A-Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+        preset = "enter",
+    },
+    signature = { enabled = true, window = { border = "rounded" } },
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer", "luasnip", "copilot", "calc", "git", "spell", "zsh" },
+        providers = {
+            calc = { module = "blink.compat.source", name = "calc", score_offset = 2 },
+            cmdline_history = { module = "blink.compat.source", name = "cmdline_history", score_offset = 0 },
+            copilot = { async = true, module = "blink-cmp-copilot", name = "copilot", score_offset = 100 },
+            git = { module = "blink.compat.source", name = "git", score_offset = 0 },
+            lsp = { score_offset = 4 },
+            npm = { module = "blink.compat.source", name = "npm", score_offset = -3 },
+            spell = { module = "blink.compat.source", name = "spell", score_offset = -1 },
+            zsh = { module = "blink.compat.source", name = "zsh", score_offset = -3 },
+        },
+    },
+})
+
+require("better_escape").setup({})
+
+require("auto-session").setup({})
+
+require("auto-save").setup({})
+
+wilder = require("wilder")
+wilder.setup({})
+
+local __wilderOptions = {}
+for key, value in pairs(__wilderOptions) do
+    wilder.set_option(key, value)
+end
+
+require("bqf").setup({})
+
+vim.notify = require("notify")
+require("notify").setup({})
+
+require("neo-tree").setup({ document_symbols = { custom_kinds = {} } })
+
+require("lspsaga").setup({})
+
+require("lspkind").init({})
+
+require("nvim-lastplace").setup({})
+
+require("harpoon").setup({})
+
+require("diffview").setup({ use_icons = true })
+
+require("nvim-cursorline").setup({})
+
+require("autoclose").setup({})
+
+-- Set up keybinds {{{
+do
+    local __nixvim_binds = {
+        { action = require("intellitab").indent, key = "<Tab>", mode = "i" },
+        { action = ":", key = ";", mode = "" },
+        { action = ":w<CR>", key = "<leader>s", mode = "", options = { silent = true } },
+        { action = ":wa!<CR>", key = "<leader>S", mode = "", options = { silent = true } },
+        { action = ":w<CR>", key = "<C-s>w", mode = "", options = { silent = true } },
+        { action = ":split<CR>", key = "vs", mode = "", options = { silent = true } },
+        { action = ":vsplit<CR>", key = "vv", mode = "", options = { silent = true } },
+        { action = ":bd<CR>", key = "<leader>bq", mode = "", options = { silent = true } },
+        { action = "<C-w>h", key = "<C-h>", mode = "", options = { silent = true } },
+        { action = "<C-w>j", key = "<C-j>", mode = "", options = { silent = true } },
+        { action = "<C-w>l", key = "<C-l>", mode = "", options = { silent = true } },
+        { action = "<C-w>k", key = "<C-k>", mode = "", options = { silent = true } },
+        { action = ":vertical resize +2<CR>", key = "<C-S-l>", mode = "", options = { silent = true } },
+        { action = ":vertical resize -2<CR>", key = "<C-S-h>", mode = "", options = { silent = true } },
+        { action = ":resize +2<CR>", key = "<C-S-j>", mode = "", options = { silent = true } },
+        { action = ":resize -2<CR>", key = "<C-S-k>", mode = "", options = { silent = true } },
+        { action = "(v:count == 0 ? 'gj' : 'j')", key = "j", mode = "", options = { expr = true, silent = true } },
+        { action = "(v:count == 0? 'gk' : 'k')", key = "k", mode = "", options = { expr = true, silent = true } },
+        { action = ":m '>+1<CR>gv=gv", key = "J", mode = "v", options = { silent = true } },
+        { action = ":m '<-2<CR>gv=gv", key = "K", mode = "v", options = { silent = true } },
+        { action = "<gv", key = "<s-tab>", mode = "x", options = { silent = true } },
+        { action = ">gv", key = "<tab>", mode = "x", options = { silent = true } },
+        { action = "Nzzzv", key = "N", mode = "", options = { silent = true } },
+        { action = "nzzzv", key = "n", mode = "", options = { silent = true } },
+        { action = "", key = "<M-Q>", mode = "", options = { noremap = false, unique = true } },
+        { action = ":nohl<CR>", key = "<esc>", mode = "", options = { noremap = false, silent = true, unique = true } },
+        { action = "p`]", key = "p", mode = "", options = { silent = true } },
+        { action = "y`]", key = "y", mode = "v", options = { silent = true } },
+        { action = "py`]", key = "p", mode = "v", options = { silent = true } },
+        { action = '"+p', key = "<leader>p", mode = "", options = { noremap = false, silent = true } },
+        { action = '"+y', key = "<leader>y", mode = "", options = { noremap = false, silent = true } },
+        { action = ":q<CR>", key = "<C-q>", mode = "", options = { noremap = false, silent = true } },
+        { action = ":bprevious<CR>", key = "[b", mode = "", options = { silent = true } },
+        { action = ":bnext<CR>", key = "]b", mode = "", options = { silent = true } },
+    }
+    for i, map in ipairs(__nixvim_binds) do
+        vim.keymap.set(map.mode, map.key, map.action, map.options)
+    end
+end
+-- }}}
+
+-- Set up autogroups {{
+do
+    local __nixvim_autogroups = { nixvim_binds_LspAttach = { clear = true } }
+
+    for group_name, options in pairs(__nixvim_autogroups) do
+        vim.api.nvim_create_augroup(group_name, options)
+    end
+end
+-- }}
+-- Set up autocommands {{
+do
+    local __nixvim_autocommands = {
+        {
+            callback = function(args)
+                do
+                    local __nixvim_binds = {}
+
+                    for i, map in ipairs(__nixvim_binds) do
+                        local options = vim.tbl_extend("keep", map.options or {}, { buffer = args.buf })
+                        vim.keymap.set(map.mode, map.key, map.action, options)
+                    end
+                end
+            end,
+            desc = "Load keymaps for LspAttach",
+            event = "LspAttach",
+            group = "nixvim_binds_LspAttach",
+        },
+    }
+
+    for _, autocmd in ipairs(__nixvim_autocommands) do
+        vim.api.nvim_create_autocmd(autocmd.event, {
+            group = autocmd.group,
+            pattern = autocmd.pattern,
+            buffer = autocmd.buffer,
+            desc = autocmd.desc,
+            callback = autocmd.callback,
+            command = autocmd.command,
+            once = autocmd.once,
+            nested = autocmd.nested,
+        })
+    end
+end
+-- }}
