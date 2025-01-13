@@ -24,7 +24,6 @@
     friendly-snippets.enable = true;
     git-conflict.enable = true;
     gitblame.enable = true;
-    gitgutter.enable = true;
     inc-rename.enable = true;
     indent-blankline.enable = true;
     lastplace.enable = true;
@@ -38,14 +37,40 @@
     noice.enable = true;
     nix.enable = true;
     nvim-autopairs.enable = true;
+    nvim-colorizer.enable = true;
     telescope.enable = true;
     treesitter.enable = true;
     treesitter-context.enable = true;
+    treesitter-refactor.enable = true;
+    treesitter-textobjects.enable = true;
+    spectre.enable = true;
+    intellitab.enable = true;
+    project-nvim.enable = true;
+    markdown-preview.enable = true;
+    gitmessenger.enable = true;
+    gitsigns.enable = true;
+    neo-tree.enable = true;
+    diffview.enable = true;
+    notify.enable = true;
+    cursorline.enable = true;
+    harpoon.enable = true;
+    vim-matchup.enable = true;
+    sniprun.enable = true;
+    nvim-bqf.enable = true;
+    undotree.enable = true;
+    which-key.enable = true;
     trouble.enable = true;
+    refactoring.enable = true;
     web-devicons.enable = true;
     zellij.enable = true;
     zk.enable = true;
+    wilder.enable = true;
+    yazi.enable = true;
+    vim-surround.enable = true;
+    bufferline.enable = true;
   };
+
+
 
   programs.nixvim.extraPlugins = [
     #    pkgs.vimPlugins.blink-ripgrep-nvim
