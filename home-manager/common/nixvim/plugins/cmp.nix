@@ -26,7 +26,6 @@
 
       settings.window.documentation.border = "rounded";
       settings.window.completion.border = "double";
-      
 
       mapping = {
         "<C-Space>" = "cmp.mapping.complete()";

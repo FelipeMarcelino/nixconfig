@@ -9,8 +9,15 @@
     autoclose.enable = true;
     better-escape.enable = true;
     blink-cmp.enable = true;
+    cmp-calc.enable = true;
+    cmp-git.enable = true;
+    cmp-spell.enable = true;
+    cmp-zsh.enable = true;
+    cmp-cmdline-history.enable = true;
+    cmp-emoji.enable = true;
     #cmp.enable = true;
     commentary.enable = true;
+    copilot-lua.enable = true;
     conform-nvim.enable = true;
     csvview.enable = true;
     direnv.enable = true;
@@ -28,13 +35,19 @@
     lualine.enable = true;
     luasnip.enable = true;
     neoscroll.enable = true;
+    noice.enable = true;
     nix.enable = true;
     nvim-autopairs.enable = true;
     telescope.enable = true;
     treesitter.enable = true;
     treesitter-context.enable = true;
+    trouble.enable = true;
     web-devicons.enable = true;
     zellij.enable = true;
     zk.enable = true;
   };
+
+  programs.nixvim.extraPlugins = [
+    #    pkgs.vimPlugins.blink-ripgrep-nvim
+  ];
 }
