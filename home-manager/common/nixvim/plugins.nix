@@ -37,7 +37,7 @@
     noice.enable = true;
     nix.enable = true;
     nvim-autopairs.enable = true;
-    nvim-colorizer.enable = true;
+    colorizer.enable = true;
     telescope.enable = true;
     treesitter.enable = true;
     treesitter-context.enable = true;
@@ -69,8 +69,6 @@
     vim-surround.enable = true;
     bufferline.enable = true;
   };
-
-
 
   programs.nixvim.extraPlugins = [
     #    pkgs.vimPlugins.blink-ripgrep-nvim
