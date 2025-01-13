@@ -16,6 +16,7 @@
     cmp-cmdline-history.enable = true;
     cmp-emoji.enable = true;
     cmp-nvim-lsp-signature-help.enable = true;
+    copilo-cmp.enable= true;
     #cmp.enable = true;
     commentary.enable = true;
     copilot-lua.enable = true;
