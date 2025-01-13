@@ -74,6 +74,14 @@
           ./home-manager/felipemarcelino/solid.nix
         ];
       };
+      "onboarding@ubuntu" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # Configuration for the second user
+          ./home-manager/onboarding/ubuntu.nix
+        ];
+      };
     };
 
     "onboarding@ubuntu" = home-manager.lib.homeManagerConfiguration {
