@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-
   programs.nixvim.plugins = {
     auto-save.enable = true;
     auto-session.enable = true;
@@ -35,6 +34,7 @@
     lsp-signature.enable = true;
     lspkind.enable = true;
     lspsaga.enable = true;
+    lz-n.enable = true;
     lualine.enable = true;
     luasnip.enable = true;
     neoscroll.enable = true;
