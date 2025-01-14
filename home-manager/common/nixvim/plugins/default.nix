@@ -31,6 +31,5 @@
     ./nvim-autopairs.nix
     ./trouble.nix
     ./spectre.nix
-    ./vim-matchup.nix
   ];
 }
