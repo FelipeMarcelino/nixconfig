@@ -35,5 +35,6 @@
     ./vim-matchup.nix
     ./undotree.nix
     ./which-key.nix
+    ./yazi.nix
   ];
 }
