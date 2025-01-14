@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     auto-save.enable = true;
     auto-session.enable = true;
@@ -59,7 +60,7 @@
     cursorline.enable = true;
     harpoon.enable = true;
     vim-matchup.enable = true;
-    sniprun.enable = true;
+    #sniprun.enable = true;
     nvim-bqf.enable = true;
     undotree.enable = true;
     which-key.enable = true;
