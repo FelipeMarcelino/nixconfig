@@ -11,7 +11,7 @@
     };
   };
 
-  keymaps = [
+  programs.nixvim.keymaps = [
     {
       mode = "n";
       key = "<leader>rs";

@@ -22,6 +22,7 @@
     ./noice.nix
     ./treesitter.nix
     ./telescope.nix
+    ./project-nvim.nix
     ./nvim-autopairs.nix
     ./trouble.nix
     ./spectre.nix

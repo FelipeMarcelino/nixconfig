@@ -50,7 +50,6 @@
     treesitter-refactor.enable = true;
     treesitter-textobjects.enable = true;
     spectre.enable = true;
-    intellitab.enable = true;
     project-nvim.enable = true;
     markdown-preview.enable = true;
     gitmessenger.enable = true;
