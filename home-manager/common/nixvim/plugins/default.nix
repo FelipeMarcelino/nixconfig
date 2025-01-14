@@ -20,6 +20,7 @@
     ./indent-blankline.nix
     ./noice.nix
     ./treesitter.nix
+    ./nvim-autopairs.nix
     ./trouble.nix
   ];
 }

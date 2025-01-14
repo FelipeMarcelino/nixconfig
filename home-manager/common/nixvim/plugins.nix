@@ -41,6 +41,7 @@
     neoscroll.enable = true;
     noice.enable = true;
     nix.enable = true;
+    nix-develop.enable = true;
     nvim-autopairs.enable = true;
     colorizer.enable = true;
     telescope.enable = true;

@@ -70,7 +70,7 @@
           };
 
           progress.enabled = true;
-          signature.enabled = !config.plugins.lsp-signature.enable;
+          signature.enabled = false;
         };
 
         popupmenu.backend = "nui";
@@ -143,7 +143,7 @@
     };
   };
 
-  keymaps = lib.mkIf (config.plugins.telescope.enable && config.plugins.noice.enable) [
+  programs.nixvim.keymaps = [
     {
       mode = "n";
       key = "<leader>fn";
