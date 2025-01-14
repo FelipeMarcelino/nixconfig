@@ -8,6 +8,7 @@
     ./auto-save.nix
     ./auto-session.nix
     ./blink.nix
+    ./bufferline.nix
     ./better-escape.nix
     ./cmp.nix
     ./conform.nix
