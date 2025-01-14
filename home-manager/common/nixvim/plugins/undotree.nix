@@ -1,7 +1,9 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins = {
-
     settings = {
       CursorLine = true;
       DiffAutoOpen = true;
