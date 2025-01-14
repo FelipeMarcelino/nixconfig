@@ -4,8 +4,7 @@
   self,
   system,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins = {
     treesitter = {
       enable = true;
@@ -17,7 +16,8 @@
         highlight = {
           additional_vim_regex_highlighting = true;
           enable = true;
-          disable = # Lua
+          disable =
+            # Lua
             ''
               function(lang, bufnr)
                 return vim.api.nvim_buf_line_count(bufnr) > 10000 end
@@ -50,7 +50,6 @@
     };
 
     treesitter-refactor = {
-
       highlightDefinitions = {
         enable = true;
         clearOnCursorMove = true;

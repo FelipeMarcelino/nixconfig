@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.lualine.settings = {
     options = {
       disabled_filetypes = {

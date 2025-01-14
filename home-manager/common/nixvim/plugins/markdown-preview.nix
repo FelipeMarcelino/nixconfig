@@ -1,7 +1,9 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins.markdown-preview = {
-
     settings = {
       auto_close = 0;
       theme = "dark";

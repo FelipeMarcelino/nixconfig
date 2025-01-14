@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  inherit (builtins) toJSON;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  inherit (builtins) toJSON;
+in {
   programs.nixvim.plugins = {
     gitsigns = {
       settings = {

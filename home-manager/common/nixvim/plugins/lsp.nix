@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins.lsp.servers = {
     bashls.enable = true;
     pylyzer.enable = true;
@@ -119,5 +118,4 @@
       desc = "Rename";
     }
   ];
-
 }

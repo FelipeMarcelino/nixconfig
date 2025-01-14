@@ -1,5 +1,8 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.keymaps = [
     {
       mode = "n";
@@ -12,7 +15,6 @@
   ];
 
   programs.nixvim.plugins.neo-tree = {
-
     closeIfLastWindow = true;
 
     filesystem = {

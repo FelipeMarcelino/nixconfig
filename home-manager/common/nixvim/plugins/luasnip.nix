@@ -1,5 +1,8 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins.luasnip = {
     settings = {
       snippets = {

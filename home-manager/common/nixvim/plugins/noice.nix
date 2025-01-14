@@ -1,8 +1,10 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins = {
     noice = {
-
       settings = {
         # Hides the title above noice boxes
         cmdline = {
@@ -52,7 +54,7 @@
               pattern = "^:%s*he?l?p?%s+";
               icon = "󰋖";
             };
-            input = { };
+            input = {};
           };
         };
 

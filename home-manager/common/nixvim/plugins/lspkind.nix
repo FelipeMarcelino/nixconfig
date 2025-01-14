@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.lspkind = {
     cmp.enable = true;
     cmp.menu = {
