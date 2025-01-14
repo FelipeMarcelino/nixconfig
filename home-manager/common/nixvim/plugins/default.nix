@@ -11,6 +11,7 @@
     ./better-escape.nix
     ./cmp.nix
     ./conform.nix
+    ./colorizer.nix
     ./copilot.nix
     ./git-conflict.nix
     ./lsp.nix

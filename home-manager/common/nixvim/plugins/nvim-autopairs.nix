@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  programs.nixvim.plugins.nvim-autopairs = {
+  programs.nixvim.plugins.nvim-autopairs.settings = {
     check_ts = true;
   };
 }
