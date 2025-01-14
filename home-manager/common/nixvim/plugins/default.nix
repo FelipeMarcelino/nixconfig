@@ -19,6 +19,7 @@
     ./lualine.nix
     ./luasnip.nix
     ./indent-blankline.nix
+    ./markdown-preview.nix
     ./noice.nix
     ./treesitter.nix
     ./telescope.nix
