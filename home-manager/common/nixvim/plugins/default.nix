@@ -14,6 +14,7 @@
     ./colorizer.nix
     ./copilot.nix
     ./git-conflict.nix
+    ./gitsigns.nix
     ./lsp.nix
     ./lspkind.nix
     ./lualine.nix
