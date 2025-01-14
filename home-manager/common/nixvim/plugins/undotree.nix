@@ -2,8 +2,9 @@
   config,
   lib,
   ...
-}: {
-  programs.nixvim.plugins = {
+}:
+{
+  programs.nixvim.plugins.undotree = {
     settings = {
       CursorLine = true;
       DiffAutoOpen = true;
