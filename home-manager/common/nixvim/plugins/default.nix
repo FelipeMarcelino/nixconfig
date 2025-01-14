@@ -16,6 +16,7 @@
     ./lsp.nix
     ./lspkind.nix
     ./lualine.nix
+    ./luasnip.nix
     ./indent-blankline.nix
     ./treesitter.nix
     ./trouble.nix
