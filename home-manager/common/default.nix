@@ -5,7 +5,8 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -50,8 +51,13 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
+
+  fonts.fontconfig.enable = true;
 }
