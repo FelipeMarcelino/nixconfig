@@ -30,6 +30,7 @@
     ./project-nvim.nix
     ./nvim-autopairs.nix
     ./trouble.nix
+    ./refactoring.nix
     ./spectre.nix
     ./vim-matchup.nix
     ./undotree.nix

@@ -38,7 +38,7 @@
 
   programs.nixvim.plugins.which-key.settings.spec = [
     {
-      __unkeyed-1 = "<leader>x";
+      __unkeyed-1 = "<leader>u";
       mode = "n";
       icon = "";
       group = "Trouble";
