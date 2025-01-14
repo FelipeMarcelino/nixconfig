@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./auto-save.nix
     ./auto-session.nix
@@ -31,5 +32,6 @@
     ./trouble.nix
     ./spectre.nix
     ./vim-matchup.nix
+    ./undotree.nix
   ];
 }
