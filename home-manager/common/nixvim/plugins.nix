@@ -67,9 +67,9 @@
     trouble.enable = true;
     refactoring.enable = true;
     web-devicons.enable = true;
-    zellij.enable = true;
+    #zellij.enable = true;
     zk.enable = true;
-    wilder.enable = true;
+    #wilder.enable = true;
     yazi.enable = true;
     vim-surround.enable = true;
     bufferline.enable = true;
