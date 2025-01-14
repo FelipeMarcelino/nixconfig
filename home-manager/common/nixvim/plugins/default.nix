@@ -24,5 +24,6 @@
     ./telescope.nix
     ./nvim-autopairs.nix
     ./trouble.nix
+    ./spectre.nix
   ];
 }
