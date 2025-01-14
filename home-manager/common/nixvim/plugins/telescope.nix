@@ -123,7 +123,7 @@
         action = "quickfix";
         options.desc = "Search quickfix";
       };
-      "<leader>fw" = lib.mkIf (!config.plugins.telescope.extensions.live-grep-args.enable) {
+      "<leader>fw" = {
         action = "live_grep";
         options.desc = "Live grep";
       };
@@ -170,8 +170,8 @@
     };
   };
 
-  keymaps = lib.mkIf config.plugins.telescope.enable [
-    (lib.mkIf (!config.plugins.fzf-lua.enable) {
+  programs.nixvim.keymaps = [
+    {
       mode = "n";
       key = "<leader>fC";
       action.__raw = ''
@@ -187,7 +187,7 @@
         desc = "Find config files";
         silent = true;
       };
-    })
+    }
     {
       mode = "n";
       key = "<leader>fF";
@@ -242,45 +242,45 @@
         silent = true;
       };
     }
-    (lib.mkIf config.plugins.telescope.extensions.file-browser.enable {
+    {
       mode = "n";
       key = "<leader>fe";
       action = "<cmd>Telescope file_browser<CR>";
       options = {
         desc = "File Explorer";
       };
-    })
-    (lib.mkIf config.plugins.telescope.extensions.frecency.enable {
+    }
+    {
       mode = "n";
       key = "<leader>fO";
       action = "<cmd>Telescope frecency<CR>";
       options = {
         desc = "Find Frequent Files";
       };
-    })
-    (lib.mkIf config.plugins.telescope.extensions.undo.enable {
+    }
+    {
       mode = "n";
       key = "<leader>fu";
       action = "<cmd>Telescope undo<CR>";
       options = {
         desc = "List undo history";
       };
-    })
-    (lib.mkIf config.plugins.telescope.extensions.manix.enable {
+    }
+    {
       mode = "n";
       key = "<leader>fM";
       action = "<cmd>Telescope manix<CR>";
       options = {
         desc = "Search manix";
       };
-    })
-    (lib.mkIf (config.telescope.extensions.live-grep-args.enable) {
+    }
+    {
       mode = "n";
       key = "<leader>fw";
       action = "<cmd>Telescope live_grep_args<CR>";
       options = {
         desc = "Live grep (args)";
       };
-    })
+    }
   ];
 }
