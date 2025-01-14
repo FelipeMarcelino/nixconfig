@@ -16,6 +16,7 @@
     ./diffview.nix
     ./git-conflict.nix
     ./gitsigns.nix
+    ./harpoon.nix
     ./lsp.nix
     ./lspkind.nix
     ./lualine.nix
