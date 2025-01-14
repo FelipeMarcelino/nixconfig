@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  plugins.which-key = {
+  programs.nixvim.plugins.which-key = {
     enable = true;
 
     lazyLoad.settings.event = "DeferredUIEnter";
