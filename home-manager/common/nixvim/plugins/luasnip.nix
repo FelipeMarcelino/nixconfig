@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   programs.nixvim.plugins.luasnip = {
-    settings = 
+    settings = {
       snippets = {
         expand.__raw = "function(snippet) require('luasnip').lsp_expand(snippet) end";
         active.__raw = ''
@@ -14,5 +14,6 @@
         '';
         jump.__raw = "function(direction) require('luasnip').jump(direction) end";
       };
+    };
   };
 }

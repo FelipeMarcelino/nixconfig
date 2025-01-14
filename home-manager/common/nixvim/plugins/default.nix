@@ -18,6 +18,7 @@
     ./lualine.nix
     ./luasnip.nix
     ./indent-blankline.nix
+    ./noice.nix
     ./treesitter.nix
     ./trouble.nix
   ];
