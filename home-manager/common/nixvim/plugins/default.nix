@@ -21,6 +21,7 @@
     ./indent-blankline.nix
     ./noice.nix
     ./treesitter.nix
+    ./telescope.nix
     ./nvim-autopairs.nix
     ./trouble.nix
   ];
