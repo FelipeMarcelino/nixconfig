@@ -7,7 +7,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
 
   home = {
@@ -53,7 +54,7 @@
     desktop = {
       swayi3.enable = false; # wayland is broken when using nvidia proprietary driver -- waiting for 555v
       i3.enable = false;
-      autorandr.enable = true;
+      autorandr.enable = false;
     };
   };
 
