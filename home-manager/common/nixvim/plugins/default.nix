@@ -13,6 +13,7 @@
     ./conform.nix
     ./colorizer.nix
     ./copilot.nix
+    ./diffview.nix
     ./git-conflict.nix
     ./gitsigns.nix
     ./lsp.nix
