@@ -21,6 +21,7 @@
     ./luasnip.nix
     ./indent-blankline.nix
     ./markdown-preview.nix
+    ./neo-tree.nix
     ./noice.nix
     ./treesitter.nix
     ./telescope.nix

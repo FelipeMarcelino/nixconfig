@@ -3,7 +3,7 @@ let
   inherit (builtins) toJSON;
 in
 {
-  plugins = {
+  programs.nixvim.plugins = {
     gitsigns = {
       settings = {
         current_line_blame = true;
@@ -34,7 +34,7 @@ in
     ];
   };
 
-  keymaps = [
+  programs.nixvim.keymaps = [
     # UI binds
     {
       mode = "n";
