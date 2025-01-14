@@ -14,6 +14,7 @@
     ./copilot.nix
     ./git-conflict.nix
     ./lsp.nix
+    ./lspkind.nix
     ./indent-blankline.nix
     ./treesitter.nix
     ./trouble.nix
