@@ -15,6 +15,7 @@
     ./git-conflict.nix
     ./lsp.nix
     ./lspkind.nix
+    ./lualine.nix
     ./indent-blankline.nix
     ./treesitter.nix
     ./trouble.nix

@@ -3,7 +3,7 @@
 
   programs.nixvim.plugins.lspkind = {
     cmp.enable = true;
-    menu = {
+    cmp.menu = {
       buffer = "";
       calc = "";
       cmdline = "";
