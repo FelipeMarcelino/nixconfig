@@ -2,10 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins.lsp.servers = {
     bashls.enable = true;
-    pylyzer.enable = true;
+    #pylyzer.enable = true;
+    pylsp.enable = true;
     zk.enable = true;
     dockerls.enable = true;
     jsonls.enable = true;
