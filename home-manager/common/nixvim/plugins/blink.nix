@@ -9,7 +9,6 @@
 }:
 {
   programs.nixvim.extraPlugins = [
-    self.packages.${system}.blink-emoji
     pkgs.vimPlugins.blink-ripgrep-nvim
   ];
 
@@ -104,7 +103,6 @@
               "snippets"
               # Community
               "copilot"
-              "emoji"
               "ripgrep"
               # Cmp sources
               # TODO: migrate when available
@@ -122,11 +120,6 @@
                 module = "blink-cmp-copilot";
                 async = true;
                 score_offset = 100;
-              };
-              emoji = {
-                name = "Emoji";
-                module = "blink-emoji";
-                score_offset = 1;
               };
               ripgrep = {
                 name = "Ripgrep";

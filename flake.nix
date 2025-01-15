@@ -70,7 +70,7 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         solid = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit self inputs outputs; };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/solid
@@ -83,7 +83,7 @@
       homeConfigurations = {
         "felipemarcelino@solid" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs self; };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/felipemarcelino/solid.nix
@@ -91,7 +91,7 @@
         };
         "onboarding@ubuntu" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs self; };
           modules = [
             # Configuration for the second user
             ./home-manager/onboarding/ubuntu.nix
