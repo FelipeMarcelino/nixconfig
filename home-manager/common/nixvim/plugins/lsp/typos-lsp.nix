@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  programs.nixvim.lsp.plugins = {
+  programs.nixvim.plugins = {
     lsp = {
       servers = {
         typos_lsp = {
