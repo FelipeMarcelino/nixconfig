@@ -4,7 +4,7 @@
     ./pylsp.nix
     ./typos-lsp.nix
     ./harper.nix
-    ./nix-ls.nix
+    ./nil-ls.nix
     ./statix.nix
   ];
 }
