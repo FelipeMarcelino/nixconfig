@@ -2,10 +2,10 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     spectre = {
-      enable = true;
       lazyLoad = {
         settings = {
           cmd = "Spectre";
