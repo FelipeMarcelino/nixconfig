@@ -5,37 +5,37 @@
 }:
 {
   imports = [
-    # ./auto-save.nix
-    # ./auto-session.nix
+    ./auto-save.nix
+    ./auto-session.nix
     ./blink.nix
-    # ./bufferline.nix
-    # ./better-escape.nix
+    ./bufferline.nix
+    ./better-escape.nix
     #./cmp.nix
-    # ./conform.nix
-    # ./colorizer.nix
-    # ./copilot.nix
-    # ./diffview.nix
-    # ./git-conflict.nix
-    # ./gitsigns.nix
-    # ./harpoon.nix
+    ./conform.nix
+    ./colorizer.nix
+    ./copilot.nix
+    ./diffview.nix
+    ./git-conflict.nix
+    ./gitsigns.nix
+    ./harpoon.nix
     ./lsp.nix
     ./lspkind.nix
-    # ./lualine.nix
-    # ./luasnip.nix
-    # ./indent-blankline.nix
-    # ./markdown-preview.nix
-    # ./neo-tree.nix
-    # ./noice.nix
-    #./treesitter.nix
-    # ./telescope.nix
-    # ./project-nvim.nix
-    # ./nvim-autopairs.nix
-    # ./trouble.nix
-    # ./refactoring.nix
-    # ./spectre.nix
-    # ./vim-matchup.nix
-    # ./undotree.nix
-    # ./which-key.nix
-    # ./yazi.nix
+    ./lualine.nix
+    #./luasnip.nix
+    ./indent-blankline.nix
+    ./markdown-preview.nix
+    ./neo-tree.nix
+    ./noice.nix
+    ./treesitter.nix
+    ./telescope.nix
+    ./project-nvim.nix
+    ./nvim-autopairs.nix
+    ./trouble.nix
+    ./refactoring.nix
+    ./spectre.nix
+    ./vim-matchup.nix
+    ./undotree.nix
+    ./which-key.nix
+    ./yazi.nix
   ];
 }
