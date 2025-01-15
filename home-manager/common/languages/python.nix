@@ -18,5 +18,6 @@
     doge
     bandit
     poetry
+    stdenv.cc.cc
   ];
 }

@@ -16,6 +16,8 @@
     homeDirectory = "/home/${config.home.username}";
   };
 
+  imports = [ ./zsh.nix ];
+
   # Install firefox.
   # home.packages = with pkgs; [ steam ];
 
