@@ -73,7 +73,7 @@
     yazi.enable = true;
     vim-surround.enable = true;
     bufferline.enable = true;
-    codensap.enable = true;
+    codesnap.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
