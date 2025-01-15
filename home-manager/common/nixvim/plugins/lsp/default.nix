@@ -2,5 +2,6 @@
 {
   imports = [
     ./pylsp.nix
+    ./typos-lsp.nix
   ];
 }
