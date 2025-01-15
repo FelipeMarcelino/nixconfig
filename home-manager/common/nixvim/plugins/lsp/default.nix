@@ -1,4 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./pylsp.nix ];
+  imports = [
+    ./pylsp.nix
+  ];
 }
