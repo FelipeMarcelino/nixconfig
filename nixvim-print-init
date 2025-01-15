@@ -1,0 +1,1482 @@
+-- Nixvim's internal module table
+-- Can be used to share code throughout init.lua
+local _M = {}
+
+-- Set up globals {{{
+do
+    local nixvim_globals = {
+        localleader = ",",
+        mapleader = " ",
+        matchup_surround_enabled = 1,
+        matchup_transmute_enabled = 1,
+        mkdp_auto_close = 0,
+        mkdp_theme = "dark",
+        undotree_CursorLine = true,
+        undotree_DiffAutoOpen = true,
+        undotree_DiffCommand = "diff",
+        undotree_DiffpanelHeight = 10,
+        undotree_HelpLine = true,
+        undotree_HighlightChangedText = true,
+        undotree_HighlightChangedWithSign = true,
+        undotree_HighlightSyntaxAdd = "DiffAdd",
+        undotree_HighlightSyntaxChange = "DiffChange",
+        undotree_HighlightSyntaxDel = "DiffDelete",
+        undotree_RelativeTimestamp = true,
+        undotree_SetFocusWhenToggle = true,
+        undotree_ShortIndicators = false,
+        undotree_TreeNodeShape = "*",
+        undotree_TreeReturnShape = "\\",
+        undotree_TreeSplitShape = "/",
+        undotree_TreeVertShape = "|",
+    }
+
+    for k, v in pairs(nixvim_globals) do
+        vim.g[k] = v
+    end
+end
+-- }}}
+
+-- Set up options {{{
+do
+    local nixvim_options = {
+        autoread = true,
+        breakindent = true,
+        ch = 3,
+        clipboard = "unnamedplus",
+        cursorline = true,
+        diffopt = "internal,filler,closeoff,vertical,iwhite,hiddenoff",
+        expandtab = true,
+        foldenable = false,
+        foldexpr = "nvim_treesitter#foldexpr()",
+        foldlevel = 1,
+        foldlevelstart = 1,
+        foldmethod = "expr",
+        foldnestmax = 10,
+        gdefault = true,
+        hidden = true,
+        iskeyword = "-,_",
+        list = true,
+        listchars = "tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮",
+        number = true,
+        relativenumber = true,
+        scrolloff = 8,
+        shiftround = true,
+        shiftwidth = 4,
+        shortmess = "filnxtToOFc",
+        showbreak = "↪ ",
+        showmatch = true,
+        showmode = false,
+        sidescroll = 5,
+        sidescrolloff = 20,
+        smartindent = true,
+        smarttab = true,
+        softtabstop = 4,
+        splitbelow = true,
+        splitright = true,
+        swapfile = false,
+        tabstop = 4,
+        termguicolors = true,
+        textwidth = 120,
+        title = true,
+        wildmode = "list:longest,list:full",
+        wrap = false,
+        writebackup = false,
+    }
+
+    for k, v in pairs(nixvim_options) do
+        vim.opt[k] = v
+    end
+end
+-- }}}
+
+require("lz.n").load({
+    {
+        "yazi.nvim",
+        after = function()
+            require("yazi").setup({})
+        end,
+        cmd = { "Yazi" },
+    },
+    {
+        "which-key.nvim",
+        after = function()
+            require("which-key").setup({
+                replace = {
+                    desc = {
+                        { "<space>", "SPACE" },
+                        { "<leader>", "SPACE" },
+                        { "<[cC][rR]>", "RETURN" },
+                        { "<[tT][aA][bB]>", "TAB" },
+                        { "<[bB][sS]>", "BACKSPACE" },
+                    },
+                },
+                spec = {
+                    { "<leader>b", group = "Buffers" },
+                    { "<leader>bs", group = "󰒺 Sort", icon = "" },
+                    { "<leader>g", group = "Git" },
+                    { "<leader>f", group = "Find" },
+                    { "<leader>r", group = "Refactor", icon = " " },
+                    { "<leader>t", group = "Terminal" },
+                    { "<leader>u", group = "UI/UX" },
+                    { "<leader>r", group = "Refactor", icon = " ", mode = "x" },
+                    { "<leader>u", group = "Trouble", icon = "", mode = "n" },
+                    { "<leader>l", group = "LSP", icon = " " },
+                    { "<leader>la", desc = "Code Action" },
+                    { "<leader>ld", desc = "Definition" },
+                    { "<leader>lD", desc = "References" },
+                    { "<leader>lf", desc = "Format" },
+                    { "<leader>l[", desc = "Prev" },
+                    { "<leader>l]", desc = "Next" },
+                    { "<leader>lt", desc = "Type Definition" },
+                    { "<leader>li", desc = "Implementation" },
+                    { "<leader>lh", desc = "Lsp Hover" },
+                    { "<leader>lH", desc = "Diagnostic Hover" },
+                    { "<leader>lr", desc = "Rename" },
+                    { "<leader>h", group = "Harpoon", icon = "󱡀 " },
+                    { "<leader>ha", desc = "Add" },
+                    { "<leader>he", desc = "QuickMenu" },
+                    { "<leader>hj", desc = "1" },
+                    { "<leader>hk", desc = "2" },
+                    { "<leader>hl", desc = "3" },
+                    { "<leader>hm", desc = "4" },
+                    { "<leader>gh", group = "Hunks", icon = " " },
+                    { "<leader>ug", group = "Git" },
+                },
+                win = { border = "single" },
+            })
+        end,
+        event = "DeferredUIEnter",
+    },
+    {
+        "telescope.nvim",
+        after = function()
+            require("telescope").setup({
+                defaults = {
+                    file_ignore_patterns = {
+                        "^.git/",
+                        "^.mypy_cache/",
+                        "^__pycache__/",
+                        "^output/",
+                        "^data/",
+                        "%.ipynb",
+                    },
+                    set_env = { COLORTERM = "truecolor" },
+                },
+                extensions = {
+                    file_browser = { hidden = true },
+                    ["ui-select"] = { require("telescope.themes").get_dropdown({}) },
+                    undo = {
+                        layout_config = { preview_height = 0.8 },
+                        layout_strategy = "vertical",
+                        side_by_side = true,
+                    },
+                },
+                pickers = { colorscheme = { enable_preview = true } },
+            })
+
+            local __telescopeExtensions =
+                { "undo", "ui-select", "manix", "live_grep_args", "fzf", "file_browser", "refactoring", "projects" }
+            for i, extension in ipairs(__telescopeExtensions) do
+                require("telescope").load_extension(extension)
+            end
+        end,
+        cmd = "Telescope",
+    },
+    {
+        "nvim-spectre",
+        after = function()
+            require("spectre").setup({})
+        end,
+        cmd = "Spectre",
+    },
+    {
+        "refactoring.nvim",
+        after = function()
+            require("refactoring").setup({})
+        end,
+        cmd = "Refactor",
+    },
+    {
+        "CopilotChat.nvim",
+        after = function()
+            require("CopilotChat").setup({})
+        end,
+        cmd = "CopilotChat",
+    },
+    {
+        "nvim-colorizer.lua",
+        after = function()
+            require("colorizer").setup({})
+        end,
+        cmd = "ColorizerToggle",
+    },
+    {
+        "bufferline.nvim",
+        after = function()
+            require("bufferline").setup({
+                options = {
+                    always_show_bufferline = true,
+                    buffer_close_icon = "󰅖",
+                    close_command = function(bufnum)
+                        require("mini.bufremove").delete(bufnum)
+                    end,
+                    close_icon = "",
+                    diagnostics = "nvim_lsp",
+                    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+                        local s = ""
+                        for e, n in pairs(diagnostics_dict) do
+                            local sym = e == "error" and " " or (e == "warning" and " " or "")
+                            if sym ~= "" then
+                                s = s .. " " .. n .. sym
+                            end
+                        end
+                        return s
+                    end,
+                    enforce_regular_tabs = false,
+                    groups = {
+                        items = {
+                            {
+                                highlight = { fg = "#a6da95", sp = "#494d64", underline = true },
+                                matcher = function(buf)
+                                    return buf.name:match("%test") or buf.name:match("%.spec")
+                                end,
+                                name = "Tests",
+                                priority = 2,
+                            },
+                            {
+                                auto_close = false,
+                                highlight = { fg = "#ffffff", sp = "#494d64", undercurl = true },
+                                matcher = function(buf)
+                                    return buf.name:match("%.md") or buf.name:match("%.txt")
+                                end,
+                                name = "Docs",
+                            },
+                        },
+                        options = { toggle_hidden_on_enter = true },
+                    },
+                    indicator = { icon = "▎", style = "icon" },
+                    left_trunc_marker = "",
+                    max_name_length = 18,
+                    max_prefix_length = 15,
+                    mode = "buffers",
+                    modified_icon = "●",
+                    numbers = function(opts)
+                        return string.format("%s·%s", opts.raise(opts.id), opts.lower(opts.ordinal))
+                    end,
+                    offsets = {
+                        {
+                            filetype = "neo-tree",
+                            highlight = "Directory",
+                            text = "File Explorer",
+                            text_align = "center",
+                        },
+                    },
+                    persist_buffer_sort = true,
+                    right_mouse_command = "vertical sbuffer %d",
+                    right_trunc_marker = "",
+                    separator_style = "slant",
+                    show_buffer_close_icons = true,
+                    show_buffer_icons = true,
+                    show_close_icon = true,
+                    show_tab_indicators = true,
+                    sort_by = "extension",
+                    tab_size = 18,
+                },
+            })
+        end,
+        event = "BufEnter",
+    },
+})
+
+_onedark = require("onedark")
+_onedark.setup({})
+_onedark.load()
+
+vim.diagnostic.config({ virtual_text = false })
+
+vim.cmd([[let $BAT_THEME = 'Catppuccin Macchiato'
+]])
+require("nvim-web-devicons").setup({})
+
+-- LSP {{{
+do
+    local __lspServers = {
+        { name = "zk" },
+        { name = "yamlls" },
+        { name = "sqls" },
+        { name = "ruff" },
+        { name = "pylyzer" },
+        { name = "nil_ls" },
+        { name = "marksman" },
+        { name = "lua_ls" },
+        { name = "jsonls" },
+        { name = "dockerls" },
+        { name = "bashls" },
+    }
+    -- Adding lspOnAttach function to nixvim module lua table so other plugins can hook into it.
+    _M.lspOnAttach = function(client, bufnr)
+        -- LSP Inlay Hints {{{
+        if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+        -- }}}
+    end
+    local __lspCapabilities = function()
+        capabilities = vim.lsp.protocol.make_client_capabilities()
+
+        capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
+
+        return capabilities
+    end
+
+    local __setup = {
+        on_attach = _M.lspOnAttach,
+        capabilities = __lspCapabilities(),
+    }
+
+    for i, server in ipairs(__lspServers) do
+        if type(server) == "string" then
+            require("lspconfig")[server].setup(__setup)
+        else
+            local options = server.extraOptions
+
+            if options == nil then
+                options = __setup
+            else
+                options = vim.tbl_extend("keep", options, __setup)
+            end
+
+            require("lspconfig")[server.name].setup(options)
+        end
+    end
+end
+-- }}}
+
+require("zk").setup({})
+
+require("trouble").setup({
+    auto_close = true,
+    auto_refresh = true,
+    focus = true,
+    follow = true,
+    modes = {
+        preview_float = {
+            mode = "diagnostics",
+            preview = {
+                border = "rounded",
+                position = { 0, -2 },
+                relative = "editor",
+                size = { height = 0.4, width = 0.4 },
+                title = "Preview",
+                title_pos = "center",
+                type = "float",
+                zindex = 200,
+            },
+        },
+    },
+    open_no_results = true,
+})
+
+require("treesitter-context").setup({ max_lines = 4, min_window_height = 40, multiwindow = true, separator = "-" })
+
+vim.opt.runtimepath:prepend(vim.fs.joinpath(vim.fn.stdpath("data"), "site"))
+require("nvim-treesitter.configs").setup({
+    highlight = {
+        additional_vim_regex_highlighting = true,
+        disable = function(lang, bufnr)
+            return vim.api.nvim_buf_line_count(bufnr) > 10000
+        end,
+        enable = true,
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "gnn",
+            node_decremental = "grm",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+        },
+    },
+    indent = { enable = true },
+    matchup = { enable = false },
+    parser_install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
+    refactor = {
+        highlight_current_scope = { enable = false },
+        highlight_definitions = { clear_on_cursor_move = true, enable = true },
+        navigation = {
+            enable = true,
+            keymaps = {
+                goto_definition = "gnd",
+                goto_next_usage = "<a-*>",
+                goto_previous_usage = "<a-#>",
+                list_definitions = "gnD",
+                list_definitions_toc = "gO",
+            },
+        },
+        smart_rename = { enable = true, keymaps = { smart_rename = "grr" } },
+    },
+})
+
+require("project_nvim").setup({})
+
+require("nvim-autopairs").setup({ check_ts = true })
+
+require("noice").setup({
+    cmdline = {
+        format = {
+            cmdline = { icon = "", lang = "vim", opts = { border = { text = { top = "Cmd" } } }, pattern = "^:" },
+            filter = {
+                icon = "",
+                lang = "bash",
+                opts = { border = { text = { top = "Bash" } } },
+                pattern = "^:%s*!",
+            },
+            help = { icon = "󰋖", pattern = "^:%s*he?l?p?%s+" },
+            lua = { icon = "", lang = "lua", pattern = "^:%s*lua%s+" },
+            search_down = { icon = " ", kind = "search", lang = "regex", pattern = "^/" },
+            search_up = { icon = " ", kind = "search", lang = "regex", pattern = "^%?" },
+        },
+    },
+    lsp = {
+        override = {
+            ["cmp.entry.get_documentation"] = true,
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+        },
+        progress = { enabled = true },
+        signature = { enabled = false },
+    },
+    messages = { view = "mini", view_error = "mini", view_warn = "mini" },
+    popupmenu = { backend = "nui" },
+    presets = {
+        bottom_search = false,
+        command_palette = true,
+        inc_rename = true,
+        long_message_to_split = true,
+        lsp_doc_border = true,
+    },
+    routes = {
+        { filter = { event = "msg_show", kind = "search_count" }, opts = { skip = true } },
+        {
+            filter = {
+                cond = function(message)
+                    local client = vim.tbl_get(message.opts, "progress", "client")
+                    local servers = { "jdtls" }
+
+                    for index, value in ipairs(servers) do
+                        if value == client then
+                            return true
+                        end
+                    end
+                end,
+                event = "lsp",
+                kind = "progress",
+            },
+            opts = { skip = true },
+        },
+    },
+    views = {
+        cmdline_popup = { border = { style = "single" } },
+        confirm = { border = { style = "single", text = { top = "" } } },
+    },
+})
+
+require("neoscroll").setup({})
+
+require("luasnip").config.setup({
+    snippets = {
+        active = function(filter)
+            if filter and filter.direction then
+                return require("luasnip").jumpable(filter.direction)
+            end
+            return require("luasnip").in_snippet()
+        end,
+        expand = function(snippet)
+            require("luasnip").lsp_expand(snippet)
+        end,
+        jump = function(direction)
+            require("luasnip").jump(direction)
+        end,
+    },
+})
+
+require("luasnip.loaders.from_vscode").lazy_load({})
+
+require("lualine").setup({
+    options = {
+        disabled_filetypes = {
+            "startify",
+            "neo-tree",
+            statusline = { "dap-repl" },
+            winbar = { "aerial", "dap-repl", "neotest-summary" },
+        },
+        globalstatus = true,
+    },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch" },
+        lualine_c = { "filename", "diff" },
+        lualine_x = {
+            "diagnostics",
+            {
+                function()
+                    local msg = ""
+                    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+                    local clients = vim.lsp.get_active_clients()
+                    if next(clients) == nil then
+                        return msg
+                    end
+                    for _, client in ipairs(clients) do
+                        local filetypes = client.config.filetypes
+                        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                            return client.name
+                        end
+                    end
+                    return msg
+                end,
+                color = { fg = "#ffffff" },
+                icon = "",
+            },
+            "encoding",
+            "fileformat",
+            "filetype",
+        },
+        lualine_y = {
+            {
+                "aerial",
+                colored = true,
+                cond = function()
+                    local buf_size_limit = 1024 * 1024
+                    if vim.api.nvim_buf_get_offset(0, vim.api.nvim_buf_line_count(0)) > buf_size_limit then
+                        return false
+                    end
+
+                    return true
+                end,
+                dense = false,
+                dense_sep = ".",
+                depth = nil,
+                sep = " ) ",
+            },
+        },
+        lualine_z = { { "location" } },
+    },
+    winbar = {
+        lualine_c = { { "navic" } },
+        lualine_x = { { "filename", newfile_status = true, path = 3, shorting_target = 150 } },
+    },
+})
+
+require("lsp_signature").setup({})
+
+require("ibl").setup({})
+
+require("inc_rename").setup({})
+
+require("gitsigns").setup({
+    current_line_blame = true,
+    current_line_blame_opts = {
+        delay = 500,
+        ignore_blank_lines = true,
+        ignore_whitespace = true,
+        virt_text = true,
+        virt_text_pos = "eol",
+    },
+    signcolumn = false,
+})
+
+require("gitblame").setup({})
+
+require("git-conflict").setup({
+    default_mappings = { both = "cb", next = "]x", none = "c0", ours = "co", prev = "[x", theirs = "ct" },
+})
+
+require("csvview").setup({})
+
+require("copilot").setup({
+    copilot_node_command = "/nix/store/wlpq101dsifq98z2bk300x4dk80wcybr-nodejs-18.20.5/bin/node",
+    panel = { enabled = false },
+    suggestion = { enabled = false },
+})
+
+local slow_format_filetypes = {}
+
+require("conform").setup({
+    default_format_opts = { lsp_format = "fallback" },
+    format_after_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+        end
+
+        if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+            return
+        end
+
+        return { lsp_fallback = true }
+    end,
+    format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+        end
+
+        -- Disable autoformat for slow filetypes
+        if slow_format_filetypes[vim.bo[bufnr].filetype] then
+            return
+        end
+
+        -- Disable autoformat for files in a certain path
+        local bufname = vim.api.nvim_buf_get_name(bufnr)
+        if bufname:match("/node_modules/") or bufname:match("/.direnv/") then
+            return
+        end
+
+        local function on_format(err)
+            if err and err:match("timeout$") then
+                slow_format_filetypes[vim.bo[bufnr].filetype] = true
+            end
+        end
+
+        return { timeout_ms = 200, lsp_fallback = true }, on_format
+    end,
+    formatters = {
+        bicep = { command = "/nix/store/dfjv4sq5jc1h0bnw04ygdgbhwmr72rb7-bicep-0.32.4/bin/bicep" },
+        biome = { command = "/nix/store/fmbjln2w5mpzp2fg4dywkz15brs60s90-biome-1.9.4/bin/biome" },
+        black = { command = "/nix/store/6hzzb8rcgjp37zid550q2iwvpsn0xc75-python3.12-black-24.8.0/bin/black" },
+        ["cmake-format"] = {
+            command = "/nix/store/4rvgkvrsgz47ivqlkknzf8n9ams79zn0-cmake-format-0.6.13/bin/cmake-format",
+        },
+        csharpier = { command = "/nix/store/02mw5skvs9h1y16ppkv9jq9v28qls54c-csharpier-0.30.3/bin/dotnet-csharpier" },
+        deno_fmt = { command = "/nix/store/h5vk6cynslr4xslfg9fl105l0wpzs496-deno-2.1.4/bin/deno" },
+        fantomas = { command = "/nix/store/vhy11ls160d9xh4a93322b2f67wsdv82-fantomas-6.3.16/bin/fantomas" },
+        gdformat = { command = "/nix/store/pfzrw81i08qhqvvypmp37qrsyr42c4ak-gdtoolkit-4.3.1/bin/gdformat" },
+        ["google-java-format"] = {
+            command = "/nix/store/whl0p23d2rcs9qwpmanr9xfgdc71cyr7-google-java-format-1.25.2/bin/google-java-format",
+        },
+        isort = { command = "/nix/store/86bwljlbav1z8rv33d1x2vd620ab5vfq-python3.12-isort-5.13.2/bin/isort" },
+        jq = { command = "/nix/store/c79nkzxaiki5r7igd4a5lawwdds38f2l-jq-1.7.1-bin/bin/jq" },
+        nixfmt = { command = "/nix/store/lch913ar0a3w3f6d63crf5vfvpckddk1-nixfmt-unstable-2024-12-04/bin/nixfmt" },
+        prettierd = { command = "/nix/store/yx9r7wi3w1pg3s02rynq9hwf5aq1iha4-prettierd-0.25.3/bin/prettierd" },
+        ruff = { command = "/nix/store/420navi08sq1z79c3fhdalnl37l6hcbj-ruff-0.8.5/bin/ruff" },
+        rustfmt = { command = "/nix/store/xpfccfj01hlnc347l3m6cljmhq4m9j0f-rustfmt-1.83.0/bin/rustfmt" },
+        shellcheck = { command = "/nix/store/g6fx0dy7203d6b9mcm366wqjlvgjk4bg-shellcheck-0.10.0-bin/bin/shellcheck" },
+        shellharden = { command = "/nix/store/k2mbj9ad7hfzzainiz46ngfgxdpdyma9-shellharden-4.3.1/bin/shellharden" },
+        shfmt = { command = "/nix/store/88nm2h1pxpcyb8wlkai0kjzlncsfx9y6-shfmt-3.10.0/bin/shfmt" },
+        sqlfluff = { command = "/nix/store/jd5nalxkk511ipkcfxmskfn6wch9bap3-sqlfluff-3.2.5/bin/sqlfluff" },
+        squeeze_blanks = { command = "/nix/store/4s9rah4cwaxflicsk5cndnknqlk9n4p3-coreutils-9.5/bin/cat" },
+        stylelint = { command = "/nix/store/nsi55gqyvi2gsdnnxmv6c4bcpbclbx4c-stylelint-16.12.0/bin/stylelint" },
+        stylua = { command = "/nix/store/6y2rlwdsp6w3k7ghjrmgg5pwfqpqbhqm-stylua-2.0.2/bin/stylua" },
+        swift_format = { command = "/nix/store/1vhnzi7pc1cxf5pjiwq41d93bdx8hb8v-swift-format-5.8/bin/swift-format" },
+        taplo = { command = "/nix/store/25kkgr42cslhms8i28yix4nzjb3155a3-taplo-0.9.3/bin/taplo" },
+        terraform_fmt = { command = "/nix/store/35ibn3z2r1989hd8dsm8wg9jhklxp5vk-terraform-1.10.3/bin/terraform" },
+        xmlformat = { command = "/nix/store/vv32rqb4l30kjii00ivpnf8i5pxzf72g-xmlformat-1.04/bin/xmlformat" },
+        yamlfmt = { command = "/nix/store/5bwvg832bz45p3ph3lhiz8f1vxyf7hrz-yamlfmt-0.14.0/bin/yamlfmt" },
+        zigfmt = { command = "/nix/store/fr6zv46mwvikz78jpvis2iq33f5jg2zl-zig-0.13.0/bin/zig" },
+    },
+    formatters_by_ft = {
+        _ = { "squeeze_blanks", "trim_whitespace", "trim_newlines" },
+        bash = { "shellcheck", "shellharden", "shfmt" },
+        bicep = { "bicep" },
+        c = { "clang_format" },
+        cmake = { "cmake-format" },
+        cpp = { "clang_format" },
+        cs = { "csharpier" },
+        css = { "stylelint" },
+        fish = { "fish_indent" },
+        fsharp = { "fantomas" },
+        gdscript = { "gdformat" },
+        java = { "google-java-format" },
+        javascript = { "biome", "prettierd", stop_after_first = true, timeout_ms = 2000 },
+        json = { "jq" },
+        lua = { "stylua" },
+        markdown = { "deno_fmt" },
+        nix = { "nixfmt" },
+        python = { "isort", "ruff" },
+        rust = { "rustfmt" },
+        sh = { "shellcheck", "shellharden", "shfmt" },
+        sql = { "sqlfluff" },
+        swift = { "swift_format" },
+        terraform = { "terraform_fmt" },
+        toml = { "taplo" },
+        typescript = { "biome", "prettierd", stop_after_first = true, timeout_ms = 2000 },
+        xml = { "xmlformat", "xmllint" },
+        yaml = { "yamlfmt" },
+        zig = { "zigfmt" },
+    },
+})
+
+require("blink-compat").setup({})
+
+require("blink-cmp").setup({
+    appearance = { nerd_font_variant = "normal", use_nvim_cmp_as_default = true },
+    completion = {
+        accept = { auto_brackets = { enabled = true, semantic_token_resolution = { enabled = false } } },
+        documentation = { auto_show = true },
+    },
+    keymap = {
+        ["<A-S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<A-Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+        preset = "enter",
+    },
+    signature = { enabled = true, window = { border = "rounded" } },
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer", "luasnip", "copilot", "calc", "git", "spell", "zsh" },
+        providers = {
+            calc = { module = "blink.compat.source", name = "calc", score_offset = 2 },
+            cmdline_history = { module = "blink.compat.source", name = "cmdline_history", score_offset = 0 },
+            copilot = { async = true, module = "blink-cmp-copilot", name = "copilot", score_offset = 100 },
+            git = { module = "blink.compat.source", name = "git", score_offset = 0 },
+            lsp = { score_offset = 4 },
+            nvim_lsp_signature_help = {
+                module = "blink.compat.source",
+                name = "nvim_lsp_signature_help",
+                score_offset = 1,
+            },
+            spell = { module = "blink.compat.source", name = "spell", score_offset = -1 },
+            zsh = { module = "blink.compat.source", name = "zsh", score_offset = -3 },
+        },
+    },
+})
+
+require("better_escape").setup({ mapping = { "jj", "jk" }, timeout = 500 })
+
+require("auto-session").setup({
+    auto_restore = false,
+    auto_save = true,
+    auto_session = {
+        create_enabled = true,
+        enable_last_session = false,
+        enabled = true,
+        root_dir = "/home/felipemarcelino/Sessions/",
+        suppress_dirs = { "~/.cache", "~/.local/share", "/tmp", "/var/tmp", "~/", "~/Projects" },
+        use_git_branch = true,
+    },
+    cwd_change_handling = true,
+    log_level = "info",
+    session_lens = {
+        load_on_setup = true,
+        previewer = true,
+        session_control = { controlDir = "/home/felipemarcelino/Sessions/", controlFilename = "session_control.json" },
+    },
+})
+
+require("auto-save").setup({ write_all_buffers = true })
+
+require("bqf").setup({})
+
+vim.notify = require("notify")
+require("notify").setup({})
+
+require("neo-tree").setup({
+    close_if_last_window = true,
+    document_symbols = { custom_kinds = {} },
+    filesystem = {
+        filtered_items = {
+            hide_dotfiles = false,
+            hide_hidden = false,
+            never_show_by_pattern = { ".direnv", ".git" },
+            visible = true,
+        },
+        follow_current_file = { enabled = true, leaveDirsOpen = true },
+        use_libuv_file_watcher = vim.fn.has("win32") ~= 1,
+    },
+    window = { auto_expand_width = false, width = 40 },
+})
+
+require("lspkind").init({})
+
+require("nvim-lastplace").setup({})
+
+require("harpoon").setup({
+    global_settings = {
+        enter_on_sendcmd = true,
+        excluded_filetypes = { "harpoon", "alpha", "NvimTree" },
+        mark_branch = true,
+        save_on_change = true,
+    },
+})
+require("telescope").load_extension("harpoon")
+
+require("diffview").setup({ use_icons = true })
+
+require("nvim-cursorline").setup({})
+
+require("autoclose").setup({})
+
+-- Set up keybinds {{{
+do
+    local __nixvim_binds = {
+        { action = "<cmd>Telescope marks<cr>", key = "<leader>f'", mode = "n", options = { desc = "View marks" } },
+        {
+            action = "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+            key = "<leader>f/",
+            mode = "n",
+            options = { desc = "Fuzzy find in current buffer" },
+        },
+        {
+            action = "<cmd>Telescope resume<cr>",
+            key = "<leader>f<CR>",
+            mode = "n",
+            options = { desc = "Resume action" },
+        },
+        {
+            action = "<cmd>Telescope autocommands<cr>",
+            key = "<leader>fa",
+            mode = "n",
+            options = { desc = "View autocommands" },
+        },
+        { action = "<cmd>Telescope buffers<cr>", key = "<leader>fb", mode = "n", options = { desc = "View buffers" } },
+        { action = "<cmd>Telescope commands<cr>", key = "<leader>fc", mode = "n", options = { desc = "View commands" } },
+        {
+            action = "<cmd>Telescope diagnostics<cr>",
+            key = "<leader>fd",
+            mode = "n",
+            options = { desc = "View diagnostics" },
+        },
+        { action = "<cmd>Telescope find_files<cr>", key = "<leader>ff", mode = "n", options = { desc = "Find files" } },
+        {
+            action = "<cmd>Telescope help_tags<cr>",
+            key = "<leader>fh",
+            mode = "n",
+            options = { desc = "View help tags" },
+        },
+        { action = "<cmd>Telescope keymaps<cr>", key = "<leader>fk", mode = "n", options = { desc = "View keymaps" } },
+        {
+            action = "<cmd>Telescope man_pages<cr>",
+            key = "<leader>fm",
+            mode = "n",
+            options = { desc = "View man pages" },
+        },
+        {
+            action = "<cmd>Telescope oldfiles<cr>",
+            key = "<leader>fo",
+            mode = "n",
+            options = { desc = "View old files" },
+        },
+        {
+            action = "<cmd>Telescope quickfix<cr>",
+            key = "<leader>fq",
+            mode = "n",
+            options = { desc = "Search quickfix" },
+        },
+        {
+            action = "<cmd>Telescope registers<cr>",
+            key = "<leader>fr",
+            mode = "n",
+            options = { desc = "View registers" },
+        },
+        {
+            action = "<cmd>Telescope lsp_document_symbols<cr>",
+            key = "<leader>fs",
+            mode = "n",
+            options = { desc = "Search symbols" },
+        },
+        { action = "<cmd>Telescope live_grep<cr>", key = "<leader>fw", mode = "n", options = { desc = "Live grep" } },
+        {
+            action = "<cmd>Telescope git_branches<cr>",
+            key = "<leader>gB",
+            mode = "n",
+            options = { desc = "View git branches" },
+        },
+        {
+            action = "<cmd>Telescope git_commits<cr>",
+            key = "<leader>gC",
+            mode = "n",
+            options = { desc = "View git commits" },
+        },
+        {
+            action = "<cmd>Telescope git_stash<cr>",
+            key = "<leader>gS",
+            mode = "n",
+            options = { desc = "View git stashes" },
+        },
+        {
+            action = "<cmd>Telescope git_status<cr>",
+            key = "<leader>gs",
+            mode = "n",
+            options = { desc = "View git status" },
+        },
+        { action = require("harpoon.mark").add_file, key = "<leader>ha", mode = "n", options = { silent = true } },
+        {
+            action = require("harpoon.ui").toggle_quick_menu,
+            key = "<leader>he",
+            mode = "n",
+            options = { silent = true },
+        },
+        {
+            action = function()
+                require("harpoon.ui").nav_file(1)
+            end,
+            key = "<leader>hj",
+            mode = "n",
+            options = { silent = true },
+        },
+        {
+            action = function()
+                require("harpoon.ui").nav_file(2)
+            end,
+            key = "<leader>hk",
+            mode = "n",
+            options = { silent = true },
+        },
+        {
+            action = function()
+                require("harpoon.ui").nav_file(3)
+            end,
+            key = "<leader>hl",
+            mode = "n",
+            options = { silent = true },
+        },
+        {
+            action = function()
+                require("harpoon.ui").nav_file(4)
+            end,
+            key = "<leader>hm",
+            mode = "n",
+            options = { silent = true },
+        },
+        { action = ":", key = ";", mode = "" },
+        { action = ":w<CR>", key = "<leader>s", mode = "", options = { silent = true } },
+        { action = ":wa!<CR>", key = "<leader>S", mode = "", options = { silent = true } },
+        { action = ":w<CR>", key = "<C-s>w", mode = "", options = { silent = true } },
+        { action = ":split<CR>", key = "vs", mode = "", options = { silent = true } },
+        { action = ":vsplit<CR>", key = "vv", mode = "", options = { silent = true } },
+        { action = ":bd<CR>", key = "<leader>bq", mode = "", options = { silent = true } },
+        { action = "<C-w>h", key = "<C-h>", mode = "", options = { silent = true } },
+        { action = "<C-w>j", key = "<C-j>", mode = "", options = { silent = true } },
+        { action = "<C-w>l", key = "<C-l>", mode = "", options = { silent = true } },
+        { action = "<C-w>k", key = "<C-k>", mode = "", options = { silent = true } },
+        { action = ":vertical resize +2<CR>", key = "<C-S-l>", mode = "", options = { silent = true } },
+        { action = ":vertical resize -2<CR>", key = "<C-S-h>", mode = "", options = { silent = true } },
+        { action = ":resize +2<CR>", key = "<C-S-j>", mode = "", options = { silent = true } },
+        { action = ":resize -2<CR>", key = "<C-S-k>", mode = "", options = { silent = true } },
+        { action = "(v:count == 0 ? 'gj' : 'j')", key = "j", mode = "", options = { expr = true, silent = true } },
+        { action = "(v:count == 0? 'gk' : 'k')", key = "k", mode = "", options = { expr = true, silent = true } },
+        { action = ":m '>+1<CR>gv=gv", key = "J", mode = "v", options = { silent = true } },
+        { action = ":m '<-2<CR>gv=gv", key = "K", mode = "v", options = { silent = true } },
+        { action = "<gv", key = "<s-tab>", mode = "x", options = { silent = true } },
+        { action = ">gv", key = "<tab>", mode = "x", options = { silent = true } },
+        { action = "Nzzzv", key = "N", mode = "", options = { silent = true } },
+        { action = "nzzzv", key = "n", mode = "", options = { silent = true } },
+        { action = "", key = "<M-Q>", mode = "", options = { noremap = false, unique = true } },
+        { action = ":nohl<CR>", key = "<esc>", mode = "", options = { noremap = false, silent = true, unique = true } },
+        { action = "p`]", key = "p", mode = "", options = { silent = true } },
+        { action = "y`]", key = "y", mode = "v", options = { silent = true } },
+        { action = "py`]", key = "p", mode = "v", options = { silent = true } },
+        { action = '"+p', key = "<leader>p", mode = "", options = { noremap = false, silent = true } },
+        { action = '"+y', key = "<leader>y", mode = "", options = { noremap = false, silent = true } },
+        { action = ":q<CR>", key = "<C-q>", mode = "", options = { noremap = false, silent = true } },
+        { action = ":bprevious<CR>", key = "[b", mode = "", options = { silent = true } },
+        { action = ":bnext<CR>", key = "]b", mode = "", options = { silent = true } },
+        {
+            action = "<cmd>BufferLineTogglePin<cr>",
+            key = "<leader>bP",
+            mode = "n",
+            options = { desc = "Pin buffer toggle" },
+        },
+        { action = "<cmd>BufferLinePick<cr>", key = "<leader>bp", mode = "n", options = { desc = "Pick Buffer" } },
+        {
+            action = "<cmd>BufferLineSortByDirectory<cr>",
+            key = "<leader>bsd",
+            mode = "n",
+            options = { desc = "Sort By Directory" },
+        },
+        {
+            action = "<cmd>BufferLineSortByExtension<cr>",
+            key = "<leader>bse",
+            mode = "n",
+            options = { desc = "Sort By Extension" },
+        },
+        {
+            action = "<cmd>BufferLineSortByRelativeDirectory<cr>",
+            key = "<leader>bsr",
+            mode = "n",
+            options = { desc = "Sort By Relative Directory" },
+        },
+        {
+            action = function()
+                vim.g.colorizing_enabled = not vim.g.colorizing_enabled
+                vim.cmd("ColorizerToggle")
+                vim.notify(string.format("Colorizing %s", bool2str(vim.g.colorizing_enabled), "info"))
+            end,
+            key = "<leader>uC",
+            mode = "n",
+            options = { desc = "Colorizing toggle", silent = true },
+        },
+        { action = "<cmd>CopilotChat<CR>", key = "<leader>ac", mode = "n", options = { desc = "Copilot Chat" } },
+        {
+            action = function()
+                local input = vim.fn.input("Quick Chat: ")
+                if input ~= "" then
+                    require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+                end
+            end,
+            key = "<leader>aq",
+            mode = "n",
+            options = { desc = "Quick Chat" },
+        },
+        {
+            action = function()
+                local actions = require("CopilotChat.actions")
+                require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+            end,
+            key = "<leader>ah",
+            mode = "n",
+            options = { desc = "Help Actions" },
+        },
+        {
+            action = function()
+                local actions = require("CopilotChat.actions")
+                require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+            end,
+            key = "<leader>ap",
+            mode = "n",
+            options = { desc = "Prompt Actions" },
+        },
+        {
+            action = function()
+                vim.g.diffview_enabled = not vim.g.diffview_enabled
+                if vim.g.diffview_enabled then
+                    vim.cmd("DiffviewClose")
+                else
+                    vim.cmd("DiffviewOpen")
+                end
+            end,
+            key = "<leader>gd",
+            mode = "n",
+            options = { desc = "Git Diff toggle", silent = true },
+        },
+        { action = "<cmd>GitConflictNextConflict<CR>", key = "<leader>gc]", mode = "n", options = { desc = "Next" } },
+        { action = "<cmd>GitConflictPrevConflict<CR>", key = "<leader>gc[", mode = "n", options = { desc = "Prev" } },
+        { action = "<cmd>GitConflictRefresh<CR>", key = "<leader>gcr", mode = "n", options = { desc = "Refresh" } },
+        {
+            action = "<cmd>GitConflictChooseBase<CR>",
+            key = "<leader>gcb",
+            mode = "n",
+            options = { desc = "Choose Base" },
+        },
+        {
+            action = "<cmd>GitConflictChooseBoth<CR>",
+            key = "<leader>gcB",
+            mode = "n",
+            options = { desc = "Choose Both" },
+        },
+        {
+            action = "<cmd>GitConflictChooseTheirs<CR>",
+            key = "<leader>gct",
+            mode = "n",
+            options = { desc = "Choose Theirs" },
+        },
+        {
+            action = "<cmd>GitConflictChooseOurs<CR>",
+            key = "<leader>gco",
+            mode = "n",
+            options = { desc = "Choose Ours" },
+        },
+        {
+            action = "<cmd>GitConflictChooseNone<CR>",
+            key = "<leader>gcn",
+            mode = "n",
+            options = { desc = "Choose None" },
+        },
+        { action = "<cmd>GitConflictListQf<CR>", key = "<leader>gcl", mode = "n", options = { desc = "List" } },
+        {
+            action = "<cmd>Gitsigns toggle_current_line_blame<CR>",
+            key = "<leader>ugb",
+            mode = "n",
+            options = { desc = "Git Blame toggle" },
+        },
+        {
+            action = "<cmd>Gitsigns toggle_deleted<CR>",
+            key = "<leader>ugd",
+            mode = "n",
+            options = { desc = "Deleted toggle" },
+        },
+        {
+            action = "<cmd>Gitsigns toggle_linehl<CR>",
+            key = "<leader>ugl",
+            mode = "n",
+            options = { desc = "Line Highlight toggle" },
+        },
+        {
+            action = "<cmd>Gitsigns toggle_numhl<CR>",
+            key = "<leader>ugh",
+            mode = "n",
+            options = { desc = "Number Highlight toggle" },
+        },
+        {
+            action = "<cmd>Gitsigns toggle_word_diff<CR>",
+            key = "<leader>ugw",
+            mode = "n",
+            options = { desc = "Word Diff toggle" },
+        },
+        {
+            action = "<cmd>Gitsigns toggle_signs<CR>",
+            key = "<leader>ugs",
+            mode = "n",
+            options = { desc = "Signs toggle" },
+        },
+        {
+            action = function()
+                require("gitsigns").blame_line({ full = true })
+            end,
+            key = "<leader>gb",
+            mode = "n",
+            options = { desc = "Git Blame toggle", silent = true },
+        },
+        {
+            action = function()
+                if vim.wo.diff then
+                    return "<leader>gp"
+                end
+
+                vim.schedule(function()
+                    require("gitsigns").prev_hunk()
+                end)
+
+                return "<Ignore>"
+            end,
+            key = "<leader>ghp",
+            mode = "n",
+            options = { desc = "Previous hunk", silent = true },
+        },
+        {
+            action = function()
+                if vim.wo.diff then
+                    return "<leader>gn"
+                end
+
+                vim.schedule(function()
+                    require("gitsigns").next_hunk()
+                end)
+
+                return "<Ignore>"
+            end,
+            key = "<leader>ghn",
+            mode = "n",
+            options = { desc = "Next hunk", silent = true },
+        },
+        {
+            action = "<cmd>Gitsigns stage_hunk<CR>",
+            key = "<leader>ghs",
+            mode = { "n", "v" },
+            options = { desc = "Stage hunk" },
+        },
+        {
+            action = "<cmd>Gitsigns undo_stage_hunk<CR>",
+            key = "<leader>ghu",
+            mode = "n",
+            options = { desc = "Undo stage hunk" },
+        },
+        {
+            action = "<cmd>Gitsigns reset_hunk<CR>",
+            key = "<leader>ghr",
+            mode = { "n", "v" },
+            options = { desc = "Reset hunk" },
+        },
+        {
+            action = "<cmd>Gitsigns preview_hunk<CR>",
+            key = "<leader>ghP",
+            mode = "n",
+            options = { desc = "Preview hunk" },
+        },
+        {
+            action = "<cmd>Gitsigns preview_hunk_inline<CR>",
+            key = "<leader>gh<C-p>",
+            mode = "n",
+            options = { desc = "Preview hunk inline" },
+        },
+        {
+            action = "<cmd>Gitsigns stage_buffer<CR>",
+            key = "<leader>gS",
+            mode = "n",
+            options = { desc = "Stage buffer" },
+        },
+        {
+            action = "<cmd>Gitsigns reset_buffer<CR>",
+            key = "<leader>gR",
+            mode = "n",
+            options = { desc = "Reset buffer" },
+        },
+        {
+            action = "<cmd>IBLToggle<CR>",
+            key = "<leader>ui",
+            mode = "n",
+            options = { desc = "Indent-Blankline toggle" },
+        },
+        {
+            action = "<cmd>IBLToggleScope<CR>",
+            key = "<leader>uI",
+            mode = "n",
+            options = { desc = "Indent-Blankline Scope toggle" },
+        },
+        { action = "<cmd>MarkdownPreview<cr>", key = "<leader>pm", mode = "n", options = { desc = "Markdown Preview" } },
+        {
+            action = "<cmd>Neotree action=focus reveal toggle<CR>",
+            key = "-",
+            mode = "n",
+            options = { desc = "Explorer toggle" },
+        },
+        {
+            action = "<cmd>Telescope noice<CR>",
+            key = "<leader>fn",
+            mode = "n",
+            options = { desc = "Find notifications" },
+        },
+        {
+            action = "<cmd>TSContextToggle<cr>",
+            key = "<leader>ut",
+            mode = "n",
+            options = { desc = "Treesitter Context toggle" },
+        },
+        {
+            action = function()
+                require("telescope.builtin").find_files({
+                    prompt_title = "Config Files",
+                    cwd = vim.fn.stdpath("config"),
+                    follow = true,
+                })
+            end,
+            key = "<leader>fC",
+            mode = "n",
+            options = { desc = "Find config files", silent = true },
+        },
+        {
+            action = function()
+                require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
+            end,
+            key = "<leader>fF",
+            mode = "n",
+            options = { desc = "Find all files", silent = true },
+        },
+        {
+            action = function()
+                require("telescope.builtin").colorscheme({ enable_preview = true })
+            end,
+            key = "<leader>fT",
+            mode = "n",
+            options = { desc = "Find theme", silent = true },
+        },
+        {
+            action = function()
+                require("telescope.builtin").live_grep({
+                    additional_args = function(args)
+                        return vim.list_extend(args, { "--hidden", "--no-ignore" })
+                    end,
+                })
+            end,
+            key = "<leader>fW",
+            mode = "n",
+            options = { desc = "Find words in all files", silent = true },
+        },
+        {
+            action = function()
+                require("telescope.builtin").live_grep({ grep_open_files = true })
+            end,
+            key = "<leader>f?",
+            mode = "n",
+            options = { desc = "Find words in all open buffers", silent = true },
+        },
+        {
+            action = "<cmd>Telescope file_browser<CR>",
+            key = "<leader>fe",
+            mode = "n",
+            options = { desc = "File Explorer" },
+        },
+        {
+            action = "<cmd>Telescope frecency<CR>",
+            key = "<leader>fO",
+            mode = "n",
+            options = { desc = "Find Frequent Files" },
+        },
+        { action = "<cmd>Telescope undo<CR>", key = "<leader>fu", mode = "n", options = { desc = "List undo history" } },
+        { action = "<cmd>Telescope manix<CR>", key = "<leader>fM", mode = "n", options = { desc = "Search manix" } },
+        {
+            action = "<cmd>Telescope live_grep_args<CR>",
+            key = "<leader>fw",
+            mode = "n",
+            options = { desc = "Live grep (args)" },
+        },
+        { action = "<cmd>Telescope projects<CR>", key = "<leader>fp", mode = "n", options = { desc = "Find projects" } },
+        {
+            action = "<cmd>Trouble preview_float toggle<cr>",
+            key = "<leader>ud",
+            mode = "n",
+            options = { desc = "Diagnostics toggle" },
+        },
+        {
+            action = "<cmd>Trouble preview_float toggle filter.buf=0<cr>",
+            key = "<leader>uD",
+            mode = "n",
+            options = { desc = "Buffer Diagnostics toggle" },
+        },
+        { action = "<cmd>Refactor extract<cr>", key = "<leader>re", mode = "x", options = { desc = "Extract" } },
+        {
+            action = "<cmd>Refactor extract_to_file<cr>",
+            key = "<leader>rE",
+            mode = "x",
+            options = { desc = "Extract to file" },
+        },
+        { action = "cmd>Refactor extract_var<cr>", key = "<leader>rv", mode = "x", options = { desc = "Extract var" } },
+        { action = "<cmd>Refactor inline_var<CR>", key = "<leader>ri", mode = "n", options = { desc = "Inline var" } },
+        { action = "<cmd>Refactor inline_func<CR>", key = "<leader>rI", mode = "n", options = { desc = "Inline Func" } },
+        {
+            action = "<cmd>Refactor extract_block<CR>",
+            key = "<leader>rb",
+            mode = "n",
+            options = { desc = "Extract block" },
+        },
+        {
+            action = "<cmd>Refactor extract_block_to_file<CR>",
+            key = "<leader>rB",
+            mode = "n",
+            options = { desc = "Extract block to file" },
+        },
+        {
+            action = function()
+                require("telescope").extensions.refactoring.refactors()
+            end,
+            key = "<leader>fR",
+            mode = "n",
+            options = { desc = "Refactoring", silent = true },
+        },
+        { action = "<cmd>Spectre<CR>", key = "<leader>rs", mode = "n", options = { desc = "Spectre toggle" } },
+        { action = "<cmd>UndotreeToggle<CR>", key = "<leader>uu", mode = "n", options = { desc = "Undotree toggle" } },
+        { action = "<CMD>Yazi<CR>", key = "<leader>e", mode = "n", options = { desc = "Yazi (current file)" } },
+        { action = "<CMD>Yazi toggle<CR>", key = "<leader>E", mode = "n", options = { desc = "Yazi (resume)" } },
+    }
+    for i, map in ipairs(__nixvim_binds) do
+        vim.keymap.set(map.mode, map.key, map.action, map.options)
+    end
+end
+-- }}}
+
+-- Set up autogroups {{
+do
+    local __nixvim_autogroups = { nixvim_binds_LspAttach = { clear = true } }
+
+    for group_name, options in pairs(__nixvim_autogroups) do
+        vim.api.nvim_create_augroup(group_name, options)
+    end
+end
+-- }}
+-- Set up autocommands {{
+do
+    local __nixvim_autocommands = {
+        {
+            callback = function(args)
+                do
+                    local __nixvim_binds = {
+                        {
+                            action = vim.diagnostic.open_float,
+                            key = "<leader>lH",
+                            mode = "n",
+                            options = { desc = "Lsp diagnostic open_float", silent = true },
+                        },
+                        {
+                            action = vim.diagnostic.goto_prev,
+                            key = "<leader>l[",
+                            mode = "n",
+                            options = { desc = "Lsp diagnostic goto_prev", silent = true },
+                        },
+                        {
+                            action = vim.diagnostic.goto_next,
+                            key = "<leader>l]",
+                            mode = "n",
+                            options = { desc = "Lsp diagnostic goto_next", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.references,
+                            key = "<leader>lD",
+                            mode = "n",
+                            options = { desc = "Lsp buf references", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.code_action,
+                            key = "<leader>la",
+                            mode = "n",
+                            options = { desc = "Lsp buf code_action", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.definition,
+                            key = "<leader>ld",
+                            mode = "n",
+                            options = { desc = "Lsp buf definition", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.format,
+                            key = "<leader>lf",
+                            mode = "n",
+                            options = { desc = "Lsp buf format", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.hover,
+                            key = "<leader>lh",
+                            mode = "n",
+                            options = { desc = "Lsp buf hover", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.implementation,
+                            key = "<leader>li",
+                            mode = "n",
+                            options = { desc = "Lsp buf implementation", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.rename,
+                            key = "<leader>lr",
+                            mode = "n",
+                            options = { desc = "Lsp buf rename", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.type_definition,
+                            key = "<leader>lt",
+                            mode = "n",
+                            options = { desc = "Lsp buf type_definition", silent = true },
+                        },
+                        {
+                            action = vim.lsp.buf.format,
+                            key = "<leader>lf",
+                            mode = "v",
+                            options = { buffer = false, desc = "Format selection", silent = true },
+                        },
+                        {
+                            action = "<CMD>PeekDefinition textDocument/definition<CR>",
+                            key = "<leader>lp",
+                            mode = "n",
+                            options = { desc = "Preview definition" },
+                        },
+                        {
+                            action = "<CMD>PeekDefinition textDocument/typeDefinition<CR>",
+                            key = "<leader>lP",
+                            mode = "n",
+                            options = { desc = "Preview type definition" },
+                        },
+                    }
+
+                    for i, map in ipairs(__nixvim_binds) do
+                        local options = vim.tbl_extend("keep", map.options or {}, { buffer = args.buf })
+                        vim.keymap.set(map.mode, map.key, map.action, options)
+                    end
+                end
+            end,
+            desc = "Load keymaps for LspAttach",
+            event = "LspAttach",
+            group = "nixvim_binds_LspAttach",
+        },
+    }
+
+    for _, autocmd in ipairs(__nixvim_autocommands) do
+        vim.api.nvim_create_autocmd(autocmd.event, {
+            group = autocmd.group,
+            pattern = autocmd.pattern,
+            buffer = autocmd.buffer,
+            desc = autocmd.desc,
+            callback = autocmd.callback,
+            command = autocmd.command,
+            once = autocmd.once,
+            nested = autocmd.nested,
+        })
+    end
+end
+-- }}
