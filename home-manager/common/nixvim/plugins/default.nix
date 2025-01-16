@@ -37,6 +37,7 @@
     ./markdown-preview.nix
     ./markview.nix
     ./mini.nix
+    ./mini-bufremove.nix
     ./neo-tree.nix
     ./navic.nix
     ./noice.nix
