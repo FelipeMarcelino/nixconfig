@@ -94,6 +94,7 @@
     statuscol.enable = true;
     sqlite-lua.enable = true;
     smartcolumn.enable = true;
+    sleuth.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
