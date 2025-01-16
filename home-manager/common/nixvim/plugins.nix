@@ -89,6 +89,7 @@
     yanky.enable = true;
     wakatime.enable = true;
     ts-comments.enable = true;
+    toggleterm.enable = true;
   };
 
   programs.nixvim.extraPlugins = [

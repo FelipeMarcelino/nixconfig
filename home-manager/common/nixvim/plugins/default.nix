@@ -44,6 +44,7 @@
     ./nvim-autopairs.nix
     ./trouble.nix
     ./ts-comments.nix
+    ./toggleterm.nix
     ./refactoring.nix
     ./spectre.nix
     ./vim-matchup.nix
