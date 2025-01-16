@@ -21,6 +21,7 @@
     ./fastaction.nix
     ./gitsigns.nix
     ./git-worktree.nix
+    ./gitignore.nix
     ./harpoon.nix
     ./lsp.nix
     ./lspkind.nix

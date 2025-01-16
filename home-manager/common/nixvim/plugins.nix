@@ -78,6 +78,7 @@
     fastaction.enable = true;
     flash.enable = true;
     git-worktree.enable = true;
+    gitignore.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
