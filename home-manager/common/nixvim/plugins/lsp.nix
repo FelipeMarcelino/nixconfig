@@ -9,7 +9,7 @@
 
   programs.nixvim.plugins.lsp.servers = {
     bashls.enable = true;
-    #pylyzer.enable = true;
+    pylyzer.enable = true;
     pylsp.enable = true;
     zk.enable = true;
     dockerls.enable = true;
@@ -17,7 +17,7 @@
     lua_ls.enable = true;
     marksman.enable = true;
     nil_ls.enable = true;
-    #ruff.enable = true;
+    ruff.enable = true;
     sqls.enable = true;
     yamlls.enable = true;
   };
