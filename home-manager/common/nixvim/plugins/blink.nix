@@ -180,7 +180,7 @@
       cmp-spell.enable = true;
       # cmp-treesitter.enable = true;
       cmp-zsh.enable = true;
-      cmp-vimwiki-tags = true;
+      #cmp-vimwiki-tags.enable = true;
 
       lsp.capabilities = # Lua
         ''
