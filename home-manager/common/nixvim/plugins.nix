@@ -98,8 +98,4 @@
     otter.enable = true;
     navic.enable = true;
   };
-
-  programs.nixvim.extraPlugins = [
-    #    pkgs.vimPlugins.blink-ripgrep-nvim
-  ];
 }

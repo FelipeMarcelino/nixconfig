@@ -57,6 +57,7 @@
     foldlevel = 99;
     foldenable = true;
     list = true;
+    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize";
 
     fillchars = {
       horiz = "━";
