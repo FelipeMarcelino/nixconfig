@@ -75,6 +75,7 @@
     bufferline.enable = true;
     codesnap.enable = true;
     debugprint.enable = true;
+    fastaction.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
