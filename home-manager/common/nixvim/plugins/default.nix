@@ -49,5 +49,6 @@
     ./undotree.nix
     ./which-key.nix
     ./yazi.nix
+    ./yanky.nix
   ];
 }
