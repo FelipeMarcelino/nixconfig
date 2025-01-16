@@ -83,6 +83,7 @@
     grug-far.enable = true;
     hardtime.enable = true;
     helpview.enable = true;
+    illuminate.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
