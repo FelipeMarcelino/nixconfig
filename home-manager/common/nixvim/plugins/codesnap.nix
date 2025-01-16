@@ -22,7 +22,7 @@
       };
 
       settings = {
-        code_font_family = "MonaspiceNe Nerd Font";
+        code_font_family = "MonoLisa Nerd Font";
         save_path = "$XDG_PICTURES_DIR/screenshots";
         mac_window_bar = true;
         title = "CodeSnap.nvim";

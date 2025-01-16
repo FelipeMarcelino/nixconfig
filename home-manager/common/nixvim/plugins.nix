@@ -74,6 +74,7 @@
     vim-surround.enable = true;
     bufferline.enable = true;
     codesnap.enable = true;
+    debugprint.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
