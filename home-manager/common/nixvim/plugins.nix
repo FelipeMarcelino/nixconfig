@@ -92,6 +92,7 @@
     toggleterm.enable = true;
     todo-comments.enable = true;
     statuscol.enable = true;
+    sqlite-lua.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
