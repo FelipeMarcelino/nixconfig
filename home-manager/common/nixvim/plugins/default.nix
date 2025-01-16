@@ -43,6 +43,7 @@
     ./todo-comments.nix
     ./project-nvim.nix
     ./nvim-autopairs.nix
+    ./otter.nix
     ./trouble.nix
     ./ts-comments.nix
     ./toggleterm.nix

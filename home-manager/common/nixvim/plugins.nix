@@ -95,6 +95,7 @@
     sqlite-lua.enable = true;
     smartcolumn.enable = true;
     sleuth.enable = true;
+    otter.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
