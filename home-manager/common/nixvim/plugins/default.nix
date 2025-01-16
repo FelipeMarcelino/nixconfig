@@ -49,6 +49,7 @@
     ./refactoring.nix
     ./spectre.nix
     ./statuscol.nix
+    ./smartcolumn.nix
     ./vim-matchup.nix
     ./undotree.nix
     ./which-key.nix
