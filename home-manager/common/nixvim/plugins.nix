@@ -88,6 +88,7 @@
     markview.enable = true;
     yanky.enable = true;
     wakatime.enable = true;
+    ts-comments.enable = true;
   };
 
   programs.nixvim.extraPlugins = [

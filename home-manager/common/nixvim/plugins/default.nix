@@ -43,6 +43,7 @@
     ./project-nvim.nix
     ./nvim-autopairs.nix
     ./trouble.nix
+    ./ts-comments.nix
     ./refactoring.nix
     ./spectre.nix
     ./vim-matchup.nix
