@@ -31,7 +31,7 @@
       };
     };
 
-    programs.nixvim.plugins.which-key.settings.spec = [
+    which-key.settings.spec = [
       {
         __unkeyed-1 = "<leader>c";
         mode = "v";
