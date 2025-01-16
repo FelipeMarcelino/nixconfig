@@ -17,9 +17,6 @@
     extraSpecialArgs = { inherit inputs outputs; };
   };
 
-  home-manager.packages = with pkgs; [
-    nerd-fonts.monaspace
-  ];
 
   nixpkgs = {
     # You can add overlays here
