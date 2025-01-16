@@ -81,6 +81,7 @@
     gitignore.enable = true;
     glance.enable = true;
     grug-far.enable = true;
+    hardtime.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
