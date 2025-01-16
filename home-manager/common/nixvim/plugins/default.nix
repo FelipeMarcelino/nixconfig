@@ -35,6 +35,7 @@
     ./illuminate.nix
     ./lightbulb.nix
     ./markdown-preview.nix
+    ./markview.nix
     ./neo-tree.nix
     ./noice.nix
     ./treesitter.nix

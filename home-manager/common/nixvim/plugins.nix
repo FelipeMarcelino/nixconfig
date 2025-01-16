@@ -85,6 +85,7 @@
     helpview.enable = true;
     illuminate.enable = true;
     nvim-lightbulb.enable = true;
+    markview.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
