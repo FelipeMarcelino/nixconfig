@@ -48,6 +48,7 @@
     ./toggleterm.nix
     ./refactoring.nix
     ./spectre.nix
+    ./statuscol.nix
     ./vim-matchup.nix
     ./undotree.nix
     ./which-key.nix

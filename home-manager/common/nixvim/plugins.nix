@@ -91,6 +91,7 @@
     ts-comments.enable = true;
     toggleterm.enable = true;
     todo-comments.enable = true;
+    statuscol.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
