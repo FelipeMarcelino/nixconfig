@@ -98,5 +98,6 @@
     otter.enable = true;
     navic.enable = true;
     mini.enable = true;
+    comment-box.enable = true;
   };
 }

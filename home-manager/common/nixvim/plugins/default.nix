@@ -12,6 +12,7 @@
     ./better-escape.nix
     #./cmp.nix
     ./conform.nix
+    ./comment-box.nix
     ./codesnap.nix
     ./colorizer.nix
     ./copilot.nix
