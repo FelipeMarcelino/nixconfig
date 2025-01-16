@@ -16,6 +16,7 @@
     ./colorizer.nix
     ./copilot.nix
     ./diffview.nix
+    ./flash.nix
     ./git-conflict.nix
     ./fastaction.nix
     ./gitsigns.nix

@@ -76,6 +76,7 @@
     codesnap.enable = true;
     debugprint.enable = true;
     fastaction.enable = true;
+    flash.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
