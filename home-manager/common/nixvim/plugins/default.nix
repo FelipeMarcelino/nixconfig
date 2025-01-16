@@ -25,6 +25,7 @@
     ./gitignore.nix
     ./grug-far.nix
     ./harpoon.nix
+    ./hardtime.nix
     ./lsp.nix
     ./lspkind.nix
     ./lualine.nix
