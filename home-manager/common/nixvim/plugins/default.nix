@@ -37,6 +37,7 @@
     ./markdown-preview.nix
     ./markview.nix
     ./neo-tree.nix
+    ./navic.nix
     ./noice.nix
     ./treesitter.nix
     ./telescope.nix
