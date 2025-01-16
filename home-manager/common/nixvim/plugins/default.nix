@@ -32,6 +32,8 @@
     ./lualine.nix
     #./luasnip.nix
     ./indent-blankline.nix
+    ./illuminate.nix
+    ./lightbulb.nix
     ./markdown-preview.nix
     ./neo-tree.nix
     ./noice.nix

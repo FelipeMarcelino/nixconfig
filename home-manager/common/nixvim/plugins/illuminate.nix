@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  plugins = {
+  programs.nixvim.plugins = {
     illuminate = {
 
       # TODO: migrate to mkNeovimPlugin

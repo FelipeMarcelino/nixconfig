@@ -84,6 +84,7 @@
     hardtime.enable = true;
     helpview.enable = true;
     illuminate.enable = true;
+    nvim-lightbulb.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
