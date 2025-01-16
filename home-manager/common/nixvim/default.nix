@@ -10,6 +10,7 @@
     ./plugins.nix
     ./plugins
     ./filetype.nix
+    ./performance.nix
   ];
 
   home.packages = with pkgs; [ xclip ];
