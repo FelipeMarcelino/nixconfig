@@ -25,7 +25,7 @@
     conform-nvim.enable = true;
     csvview.enable = true;
     direnv.enable = true;
-    #friendly-snippets.enable = true;
+    friendly-snippets.enable = true;
     git-conflict.enable = true;
     #gitblame.enable = true;
     inc-rename.enable = true;
@@ -77,6 +77,7 @@
     debugprint.enable = true;
     fastaction.enable = true;
     flash.enable = true;
+    git-worktree.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
