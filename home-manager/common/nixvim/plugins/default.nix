@@ -40,6 +40,7 @@
     ./noice.nix
     ./treesitter.nix
     ./telescope.nix
+    ./todo-comments.nix
     ./project-nvim.nix
     ./nvim-autopairs.nix
     ./trouble.nix
