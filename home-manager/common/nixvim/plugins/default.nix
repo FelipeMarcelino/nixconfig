@@ -38,6 +38,7 @@
     ./markview.nix
     ./mini.nix
     ./mini-bufremove.nix
+    ./mini-map.nix
     ./neo-tree.nix
     ./navic.nix
     ./noice.nix
