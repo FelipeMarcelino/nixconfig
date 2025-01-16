@@ -12,7 +12,7 @@
     ./better-escape.nix
     #./cmp.nix
     ./conform.nix
-    ./codesnap.nir
+    ./codesnap.nix
     ./colorizer.nix
     ./copilot.nix
     ./diffview.nix
