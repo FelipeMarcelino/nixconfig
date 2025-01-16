@@ -20,6 +20,7 @@
     ./git-conflict.nix
     ./fastaction.nix
     ./gitsigns.nix
+    ./glance.nix
     ./git-worktree.nix
     ./gitignore.nix
     ./harpoon.nix
