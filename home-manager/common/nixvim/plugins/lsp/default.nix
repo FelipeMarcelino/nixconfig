@@ -6,5 +6,6 @@
     ./harper.nix
     ./nil-ls.nix
     ./statix.nix
+    ./ruff.nix
   ];
 }
