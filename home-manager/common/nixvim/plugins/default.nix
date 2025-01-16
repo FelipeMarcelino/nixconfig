@@ -23,6 +23,7 @@
     ./glance.nix
     ./git-worktree.nix
     ./gitignore.nix
+    ./grug-far.nix
     ./harpoon.nix
     ./lsp.nix
     ./lspkind.nix

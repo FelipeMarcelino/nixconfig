@@ -80,6 +80,7 @@
     git-worktree.enable = true;
     gitignore.enable = true;
     glance.enable = true;
+    grug-far.enable = true;
   };
 
   programs.nixvim.extraPlugins = [
