@@ -36,6 +36,7 @@
     ./lightbulb.nix
     ./markdown-preview.nix
     ./markview.nix
+    ./mini.nix
     ./neo-tree.nix
     ./navic.nix
     ./noice.nix

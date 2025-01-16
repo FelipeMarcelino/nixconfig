@@ -97,5 +97,6 @@
     sleuth.enable = true;
     otter.enable = true;
     navic.enable = true;
+    mini.enable = true;
   };
 }
