@@ -2,10 +2,17 @@
   config,
   pkgs,
   ...
-}: {
-  imports = [./keymapping.nix ./options.nix ./plugins.nix ./plugins];
+}:
+{
+  imports = [
+    ./keymapping.nix
+    ./options.nix
+    ./plugins.nix
+    ./plugins
+    ./filetype.nix
+  ];
 
-  home.packages = with pkgs; [xclip];
+  home.packages = with pkgs; [ xclip ];
 
   programs.nixvim = {
     enable = true;
