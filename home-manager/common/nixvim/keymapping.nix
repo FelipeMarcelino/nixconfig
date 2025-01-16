@@ -12,6 +12,30 @@
       action = ":";
     }
     {
+      key = "<Space>";
+      action = "<NOP>";
+    }
+    {
+      key = "<BS>";
+      action = "<BS>x";
+    }
+    {
+      key = "Y";
+      action = "y$";
+    }
+    {
+      key = "<C-c>";
+      action = "<cmd>b#<CR>";
+    }
+    {
+      key = "<C-[>";
+      action = "<cmd>cnext<CR>";
+    }
+    {
+      key = "<C-]>";
+      action = "<cmd>cprev<CR>";
+    }
+    {
       action = ":w<CR>";
       key = "<leader>s";
       options.silent = true;
@@ -63,23 +87,27 @@
     }
     {
       action = ":vertical resize +2<CR>";
-      key = "<C-S-l>";
+      key = "<C-Left>";
       options.silent = true;
     }
     {
       action = ":vertical resize -2<CR>";
-      key = "<C-S-h>";
+      key = "<C-Right>";
       options.silent = true;
     }
     {
       action = ":resize +2<CR>";
-      key = "<C-S-j>";
+      key = "<C-Down>";
       options.silent = true;
     }
     {
       action = ":resize -2<CR>";
-      key = "<C-S-k>";
+      key = "<C-Up>";
       options.silent = true;
+    }
+    {
+      key = "<C-n>";
+      action = "<Cmd>enew<CR>";
     }
     {
       action = "(v:count == 0 ? 'gj' : 'j')";
@@ -126,6 +154,10 @@
       action = "nzzzv";
       key = "n";
       options.silent = true;
+    }
+    {
+      key = "<leader>Q";
+      action = "<Cmd>q!<CR>";
     }
     {
       action = "";
@@ -186,5 +218,94 @@
       key = "]b";
       options.silent = true;
     }
+    {
+      key = "<TAB>";
+      action = "<cmd>bnext<CR>";
+    }
+    {
+      key = "<S-TAB>";
+      action = "<cmd>bprevious<CR>";
+    }
+
+    {
+      action = ":ZkNew { title = vim.fn.input('Title: ')}<CR>";
+      key = "<leader>zn";
+      options.silent = true;
+      desc = "Create a new note with specified title";
+    }
+    {
+      action = ":ZkNotes { sort = {'modified'} }<CR>";
+      key = "<leader>zo";
+      options.silent = true;
+      desc = "Open zk notes without search";
+    }
+    {
+      action = ":ZkTags<CR>";
+      key = "<leader>zt";
+      options.silent = true;
+      desc = "Open tags";
+    }
+    {
+      action = ":ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>";
+      key = "<leader>zf";
+      options.silent = true;
+      desc = "Opens notes sorted by modified date with search ";
+    }
+    {
+      action = ":'<,'>ZkMatch<CR>";
+      key = "<leader>zf";
+      options.silent = true;
+      mode = "v";
+      desc = " Opens a notes picker, filters for notes that match the text in the last visual selection ";
+    }
   ];
+
+  files."after/ftplugin/markdown.lua" = {
+    keymaps = [
+      {
+        mode = "n";
+        key = "<CR>";
+        action.__raw = "vim.lsp.buf.definition";
+        desc = "Go to note (definition)";
+      }
+      {
+        action = ":ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>";
+        key = "<leader>zn";
+        options.silent = true;
+        desc = "Create a note with a specified title";
+      }
+      {
+        action = ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>";
+        key = "<leader>znt";
+        options.silent = true;
+        mode = "v";
+        desc = "Create a note with the title from visual selected text";
+      }
+      {
+        action = ":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>";
+        key = "<leader>znc";
+        options.silent = true;
+        mode = "v";
+        desc = "Create a new note using the visual selected text as content";
+      }
+      {
+        action = "<Cmd>ZkBacklinks<CR>";
+        key = "<leader>zb";
+        options.silent = true;
+        desc = "Show notes backlinks";
+      }
+      {
+        action = "<Cmd>ZkLinks<CR>";
+        key = "<leader>zl";
+        options.silent = true;
+        desc = "Show notes links";
+      }
+      {
+        action = ":'<,'>lua vim.lsp.buf.range_code_action()<CR>";
+        key = "<leader>za";
+        options.silent = true;
+        mode = "v";
+      }
+    ];
+  };
 }
