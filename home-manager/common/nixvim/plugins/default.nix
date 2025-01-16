@@ -17,7 +17,7 @@
     ./copilot.nix
     ./diffview.nix
     ./git-conflict.nix
-    ./fastfold.nix
+    ./fastaction.nix
     ./gitsigns.nix
     ./harpoon.nix
     ./lsp.nix
