@@ -3,7 +3,6 @@ let
   cfg = config.plugins.hardtime;
 in
 {
-  globals.disable_hardtime = true;
 
   programs.nixvim.plugins = {
     hardtime = {
