@@ -108,6 +108,7 @@
               "git"
               "spell"
               "zsh"
+              "cmp-vimwiki-tags"
             ];
             providers = {
               # BUILT-IN SOURCES
@@ -150,6 +151,11 @@
                 module = "blink.compat.source";
                 score_offset = -3;
               };
+              cmp-vimwiki-tags = {
+                name = "cmp-vimwiki-tags";
+                module = "blink.compat.source";
+                score_offset = -0;
+              };
             };
           };
         };
@@ -174,6 +180,7 @@
       cmp-spell.enable = true;
       # cmp-treesitter.enable = true;
       cmp-zsh.enable = true;
+      cmp-vimwiki-tags = true;
 
       lsp.capabilities = # Lua
         ''
