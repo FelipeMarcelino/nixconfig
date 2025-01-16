@@ -26,6 +26,7 @@
     ./grug-far.nix
     ./harpoon.nix
     ./hardtime.nix
+    ./helpview.nix
     ./lsp.nix
     ./lspkind.nix
     ./lualine.nix
