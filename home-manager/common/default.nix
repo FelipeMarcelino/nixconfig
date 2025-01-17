@@ -61,6 +61,10 @@
   };
 
   fonts.fontconfig.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   home.packages = with pkgs; [
     nerd-fonts.monaspace
