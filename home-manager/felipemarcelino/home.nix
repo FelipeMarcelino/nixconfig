@@ -7,7 +7,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
 
   home = {
@@ -38,6 +39,8 @@
     dust
     unzip
     pragmata-monolisa-fonts
+    element-desktop
+    discord
   ];
 
   # My modules

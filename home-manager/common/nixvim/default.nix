@@ -19,6 +19,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    withPython3 = true;
 
     clipboard = {
       register = "unnamedplus";
@@ -30,5 +31,13 @@
     };
 
     colorschemes.onedark.enable = true;
+
+    extraPython3Packages = python-pkgs: [
+      python-pkgs.numpy
+      python-pkgs.pandas
+      python-pkgs.scipy
+      python-pkgs.matplotlib
+      python-pkgs.requests
+    ];
   };
 }
