@@ -574,13 +574,6 @@ do
         { name = "sqls" },
         {
             extraOptions = {
-                init_options = { settings = { args = { "--config=/home/felipemarcelino/.config/ruff.toml" } } },
-            },
-            name = "ruff",
-        },
-        { name = "pylyzer" },
-        {
-            extraOptions = {
                 settings = {
                     pylsp = {
                         configurationSources = { "flake8" },
