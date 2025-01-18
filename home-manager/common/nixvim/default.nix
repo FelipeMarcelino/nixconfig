@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./keymapping.nix
     ./options.nix
@@ -27,7 +28,10 @@
       virtual_text = false;
     };
 
-    colorschemes.onedark.enable = true;
+    colorschemes.catppuccin.enable = true;
+    colorschemes.catppuccin.settings = {
+      flavour = "mocha";
+    };
 
     extraPython3Packages = python-pkgs: [
       python-pkgs.numpy
