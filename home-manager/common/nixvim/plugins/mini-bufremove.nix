@@ -1,10 +1,12 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   programs.nixvim.plugins = {
     mini = {
-
       modules = {
-        bufremove = { };
+        bufremove = {};
       };
     };
   };

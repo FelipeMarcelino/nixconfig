@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.neovim = {
     enable = false;
     viAlias = true;
@@ -8,5 +11,5 @@
     defaultEditor = true;
   };
 
-  imports = [ ./core.nix ];
+  imports = [./core.nix];
 }

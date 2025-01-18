@@ -1,8 +1,10 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins.statuscol = {
-
-    lazyLoad.settings.event = [ "BufEnter" ];
+    lazyLoad.settings.event = ["BufEnter"];
 
     settings = {
       relculright = true;
@@ -10,15 +12,15 @@
       segments = [
         {
           hl = "FoldColumn";
-          text = [ { __raw = "require('statuscol.builtin').foldfunc"; } ];
+          text = [{__raw = "require('statuscol.builtin').foldfunc";}];
           click = "v:lua.ScFa";
         }
         {
           text = null;
           sign = {
-            name = [ ".*" ];
-            namespace = [ ".*" ];
-            text = [ ".*" ];
+            name = [".*"];
+            namespace = [".*"];
+            text = [".*"];
             maxwidth = 2;
             auto = true;
           };
@@ -27,7 +29,7 @@
         {
           text = [
             " "
-            { __raw = "require('statuscol.builtin').lnumfunc"; }
+            {__raw = "require('statuscol.builtin').lnumfunc";}
             " "
           ];
           click = "v:lua.ScLa";
@@ -35,7 +37,7 @@
         {
           text = null;
           sign = {
-            name = [ ".*" ];
+            name = [".*"];
             maxwidth = 2;
             colwidth = 1;
             auto = true;

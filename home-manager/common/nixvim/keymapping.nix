@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   programs.nixvim.globals.mapleader = " ";
   programs.nixvim.globals.localleader = "\\";
   programs.nixvim = {

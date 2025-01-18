@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.ts-comments = {
-
     settings = {
       lang = {
         astro = "<!-- %s -->";

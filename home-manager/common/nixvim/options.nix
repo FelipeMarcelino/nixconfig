@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   programs.nixvim.opts = {
     autoread = true;
     hidden = true;

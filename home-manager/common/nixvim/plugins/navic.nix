@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Shows the breadcrumb lsp node path in lualine
   programs.nixvim.plugins.navic = {
     enable = true;

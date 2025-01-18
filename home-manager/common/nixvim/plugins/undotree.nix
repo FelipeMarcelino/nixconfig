@@ -2,8 +2,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins.undotree = {
     settings = {
       CursorLine = true;

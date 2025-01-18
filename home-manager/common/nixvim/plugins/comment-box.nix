@@ -1,8 +1,10 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   programs.nixvim.plugins = {
     comment-box = {
-
       lazyLoad = {
         settings = {
           cmd = [

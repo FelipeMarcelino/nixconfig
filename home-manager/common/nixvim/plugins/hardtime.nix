@@ -1,9 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.plugins.hardtime;
-in
 {
-
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.plugins.hardtime;
+in {
   programs.nixvim.plugins = {
     hardtime = {
       enable = true;

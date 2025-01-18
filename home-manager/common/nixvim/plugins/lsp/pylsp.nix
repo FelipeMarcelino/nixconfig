@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
-
+}: {
   programs.nixvim.plugins.lsp.servers.pylsp.settings = {
     configurationSources = "flake8";
     plugins = {

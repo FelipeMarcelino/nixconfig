@@ -1,8 +1,10 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins = {
     gitignore = {
-
       # TODO: migrate to mkNeovimPlugin
       # lazyLoad.settings.keys = [ "<leader>gi" ];
       # lazyLoad.settings.cmd = [ "Gitignore" ];

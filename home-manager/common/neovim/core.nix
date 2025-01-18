@@ -1,6 +1,9 @@
-{pkgs, config, ...}:
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.neovim.extraConfig = ''
-    set 
+    set
   '';
 }

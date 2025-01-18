@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.which-key = {
     enable = true;
 
@@ -41,7 +43,6 @@
       ];
 
       replace = {
-
         desc = [
           [
             "<space>"
@@ -68,7 +69,6 @@
       win = {
         border = "single";
       };
-
     };
   };
 }

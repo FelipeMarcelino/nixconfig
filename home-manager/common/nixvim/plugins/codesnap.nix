@@ -3,13 +3,10 @@
   lib,
   config,
   ...
-}:
-{
-
+}: {
   #FIXME: Plugin not working with shortcuts
   programs.nixvim.plugins = {
     codesnap = {
-
       lazyLoad = {
         settings = {
           cmd = [

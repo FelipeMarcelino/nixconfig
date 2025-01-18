@@ -1,7 +1,9 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins.toggleterm = {
-
     lazyLoad = {
       settings = {
         cmd = "ToggleTerm";

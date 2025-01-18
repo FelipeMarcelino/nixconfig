@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   programs.nixvim.plugins = {
     grug-far = {
       enable = true;

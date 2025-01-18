@@ -1,8 +1,10 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins = {
     yanky = {
-
       lazyLoad = {
         settings = {
           keys = [
@@ -127,7 +129,7 @@
           storage_path.__raw = "vim.fn.stdpath('data') .. '/databases/yanky.db'";
           sync_with_numbered_registers = true;
           cancel_event = "update";
-          ignore_registers = [ "_" ];
+          ignore_registers = ["_"];
           update_register_on_cycle = false;
         };
       };

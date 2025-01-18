@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins = {
     glance = {
-
       lazyLoad.settings.cmd = "Glance";
 
       settings = {

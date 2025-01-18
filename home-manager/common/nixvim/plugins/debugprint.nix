@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins = {
     debugprint = {
-
       lazyLoad.settings = {
         keys = [
           "g?"

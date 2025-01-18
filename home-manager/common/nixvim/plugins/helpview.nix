@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.helpview = {
     enable = true;
 
     lazyLoad.settings.ft = "help";
 
     settings = {
-
-      buf_ignore = [ ];
+      buf_ignore = [];
 
       mode = [
         "n"

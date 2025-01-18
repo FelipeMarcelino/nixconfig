@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   xdg.enable = true;
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
@@ -14,5 +13,4 @@
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
     };
   };
-
 }

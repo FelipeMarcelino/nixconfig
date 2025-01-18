@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins = {
     illuminate = {
-
       # TODO: migrate to mkNeovimPlugin
       # lazyLoad.settings.event = "DeferredUIEnter";
 

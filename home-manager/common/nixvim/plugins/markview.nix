@@ -1,14 +1,16 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim.plugins.markview = {
-
     lazyLoad = {
       settings = {
         ft = "markdown";
       };
     };
     settings = {
-      buf_ignore = [ ];
+      buf_ignore = [];
 
       modes = [
         "n"

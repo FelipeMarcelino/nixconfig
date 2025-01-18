@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}:
-
-{
+}: {
   programs.zsh.sessionVariables = {
     ARTIFACTORY_USERNAME = "felipe.marcelino";
     ARTIFACTORY_PASSWORD = "cmVmdGtuOjAxOjE3Njc4NzU0MjY6ZElxZkNvUzlmS1BTTVUzcVd0dHd2ZkhUMFBE";
@@ -17,5 +15,4 @@
     export PATH=~/Projects/cliditas/bin:$PATH
     export PATH=~/Projects/cliditas/include/linux:$PATH
   '';
-
 }

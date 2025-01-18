@@ -2,8 +2,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins.auto-session = {
     settings.log_level = "info";
     settings.auto_restore = true;

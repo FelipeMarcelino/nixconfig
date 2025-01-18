@@ -1,12 +1,15 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.ruff = {
     enable = true;
     settings = {
       line-length = 120;
       indent-width = 4;
-      fixable = [ "ALL" ];
-      unfixable = [ ];
+      fixable = ["ALL"];
+      unfixable = [];
       dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$";
       lint = {
         select = [

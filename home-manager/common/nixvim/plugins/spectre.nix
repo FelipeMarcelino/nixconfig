@@ -2,8 +2,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins = {
     spectre = {
       lazyLoad = {

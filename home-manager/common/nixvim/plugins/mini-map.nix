@@ -1,8 +1,10 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins = {
     mini = {
-
       modules = {
         map = {
           # __raw = lua code

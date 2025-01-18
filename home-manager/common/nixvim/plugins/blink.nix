@@ -4,8 +4,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   programs.nixvim.extraPlugins = [
     pkgs.vimPlugins.blink-ripgrep-nvim
   ];
@@ -13,7 +12,6 @@
   programs.nixvim.plugins = lib.mkMerge [
     {
       blink-cmp = {
-
         settings = {
           completion = {
             ghost_text.enabled = true;
@@ -37,7 +35,7 @@
                     __unkeyed-2 = "kind";
                     gap = 1;
                   }
-                  { __unkeyed-1 = "source_name"; }
+                  {__unkeyed-1 = "source_name";}
                 ];
                 components = {
                   kind_icon = {
@@ -182,7 +180,8 @@
       cmp-zsh.enable = true;
       #cmp-vimwiki-tags.enable = true;
 
-      lsp.capabilities = # Lua
+      lsp.capabilities =
+        # Lua
         ''
           capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
         '';

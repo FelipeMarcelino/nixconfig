@@ -1,6 +1,8 @@
-{ lib, config, ... }:
 {
-
+  lib,
+  config,
+  ...
+}: {
   programs.nixvim.keymaps = [
     {
       mode = "n";

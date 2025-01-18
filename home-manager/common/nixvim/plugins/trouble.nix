@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins.trouble = {
     autoLoad = true;
     settings = {

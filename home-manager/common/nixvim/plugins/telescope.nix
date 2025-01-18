@@ -2,8 +2,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   programs.nixvim.plugins.telescope = {
     # TODO: figure out proper lazy loading
     lazyLoad.settings.cmd = "Telescope";
