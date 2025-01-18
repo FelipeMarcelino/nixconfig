@@ -52,6 +52,7 @@
       bat.enable = true;
       starship.enable = true;
       git.enable = true;
+      ghostty.enable = true;
     };
 
     desktop = {
@@ -59,8 +60,6 @@
       i3.enable = true;
       autorandr.enable = true;
     };
-
-    terminal.ghostty.enable = true;
 
   };
 
