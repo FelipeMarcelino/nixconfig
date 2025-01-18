@@ -7,7 +7,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
 
   home = {
@@ -59,7 +60,7 @@
       autorandr.enable = true;
     };
 
-    #terminal.ghostty.enable = true;
+    terminal.ghostty.enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
