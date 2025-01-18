@@ -9,7 +9,7 @@ let
   cfg = config.home.cli.starship or { enable = false; };
 in
 {
-  options.home.cli.starship = mkOption {
+  options.home.desktop.ghostty = mkOption {
     description = "Enable ghostty terminal emulater";
     type = types.attrs;
     default = {

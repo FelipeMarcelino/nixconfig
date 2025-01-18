@@ -52,7 +52,6 @@
       bat.enable = true;
       starship.enable = true;
       git.enable = true;
-      ghostty.enable = true;
     };
 
     desktop = {
@@ -60,6 +59,8 @@
       i3.enable = true;
       autorandr.enable = true;
     };
+
+    home.terminal.ghostty.enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
