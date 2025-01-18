@@ -7,6 +7,5 @@
     ./fzf.nix
     ./starship.nix
     ./git.nix
-    ./ghostty.nix
   ];
 }
