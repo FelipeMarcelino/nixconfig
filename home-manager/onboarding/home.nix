@@ -7,7 +7,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
 
   home = {
@@ -15,7 +16,7 @@
     homeDirectory = "/home/${config.home.username}";
   };
 
-  imports = [./zsh.nix];
+  imports = [ ./zsh.nix ];
 
   # Install firefox.
   # home.packages = with pkgs; [ steam ];
@@ -57,6 +58,8 @@
       i3.enable = false;
       autorandr.enable = false;
     };
+
+    terminal.ghostty.enable = true;
   };
 
   programs.granted = {

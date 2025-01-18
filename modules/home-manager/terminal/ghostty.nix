@@ -34,9 +34,14 @@ in
       window-inherit-working-directory = true
       window-inherit-font-size = true
       window-decoration = false
+      custom-shader-animation = true
+      bold-is-bright = true
       clipboard-trim-trailing-spaces = true
       copy-on-select = true
       window-save-state = always
+      mouse-hide-while-typing = true
+      gtk-single-instance = true
+      gtk-titlebar = false
       keybind = ctrl+w>l=goto_split:right
       keybind = ctrl+w>h=goto_split:left
       keybind = ctrl+w>j=goto_split:bottom

@@ -6,4 +6,5 @@
   cli = import ./cli/default.nix;
   desktop = import ./desktop/default.nix;
   terminal = import ./terminal/default.nix;
+  programs = import ./programs/rofi.nix;
 }

@@ -37,7 +37,6 @@ in
     xsession.enable = true;
 
     home.packages = with pkgs; [
-      rofi
       arandr
       flameshot
     ];
