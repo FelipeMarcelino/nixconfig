@@ -13,8 +13,6 @@
     ./performance.nix
   ];
 
-  home.packages = with pkgs; [ xclip ];
-
   programs.nixvim = {
     enable = true;
     viAlias = true;
