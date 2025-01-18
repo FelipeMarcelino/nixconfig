@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   mod = "Mod1";
   base00 = "#282c34";
   base01 = "#353b45";
@@ -21,12 +22,15 @@
   base0D = "#61afef";
   base0E = "#c678dd";
   base0F = "#be5046";
-  cfg = config.home.desktop.i3 or {enable = false;};
-in {
+  cfg = config.home.desktop.i3 or { enable = false; };
+in
+{
   options.home.desktop.i3 = lib.mkOption {
     description = "Enable i3 wm with startx ";
     type = lib.types.attrs;
-    default = {enable = false;};
+    default = {
+      enable = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -52,50 +56,50 @@ in {
       config = {
         fonts = {
           size = 18.0;
-          names = ["MonoLisa Nerd Font"];
+          names = [ "MonoLisa Nerd Font" ];
         };
-        bars = [];
+        bars = [ ];
         modifier = mod;
-        terminal = "kgx";
+        terminal = "ghostty";
         workspaceOutputAssign = [
           {
-            output = ["DP-0"];
+            output = [ "DP-0" ];
             workspace = "1";
           }
           {
-            output = ["DP-4"];
+            output = [ "DP-4" ];
             workspace = "2";
           }
           {
-            output = ["DP-0"];
+            output = [ "DP-0" ];
             workspace = "3";
           }
           {
-            output = ["DP-4"];
+            output = [ "DP-4" ];
             workspace = "4";
           }
           {
-            output = ["DP-0"];
+            output = [ "DP-0" ];
             workspace = "5";
           }
           {
-            output = ["DP-4"];
+            output = [ "DP-4" ];
             workspace = "6";
           }
           {
-            output = ["DP-0"];
+            output = [ "DP-0" ];
             workspace = "7";
           }
           {
-            output = ["DP-4"];
+            output = [ "DP-4" ];
             workspace = "8";
           } # Possible chatgpt?
           {
-            output = ["DP-0"];
+            output = [ "DP-0" ];
             workspace = "9";
           }
           {
-            output = ["DP-4"];
+            output = [ "DP-4" ];
             workspace = "10";
           }
         ];
@@ -106,7 +110,7 @@ in {
           "${mod}+l" = "focus right";
           "${mod}+j" = "focus down";
           "${mod}+k" = "focus up";
-          "${mod}+Return" = "exec --no-startup-id kgx";
+          "${mod}+Return" = "exec --no-startup-id ghostty";
           "${mod}+d" = "exec rofi -show drun -icon-theme candy-icons";
           "${mod}+q" = "kill";
           "${mod}+Shift+c" = "reload";
@@ -124,7 +128,8 @@ in {
           "${mod}+e" = "layout toggle split";
           "${mod}+Shift+space" = "floating toggle";
           "${mod}+space" = "focus mode_toggle";
-          "${mod}+Shift+e" = "exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
+          "${mod}+Shift+e" =
+            "exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
           "${mod}+1" = "workspace number 1";
           "${mod}+2" = "workspace number 2";
           "${mod}+3" = "workspace number 3";
