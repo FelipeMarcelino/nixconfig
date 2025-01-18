@@ -1,4 +1,4 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./rofi.nix ];
+  imports = [ ./rofi ];
 }

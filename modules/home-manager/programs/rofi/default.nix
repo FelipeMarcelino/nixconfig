@@ -9,7 +9,7 @@ let
   cfg = config.home.programs.rofi or { enable = false; };
 in
 {
-  options.home.programs.programs = mkOption {
+  options.home.programs.rofi = mkOption {
     description = "Enable rofi launch program";
     type = types.attrs;
     default = {
@@ -21,6 +21,7 @@ in
     programs.rofi = {
       enable = true;
       font = "PragmataProMono Nerd Font";
+      configPath = "./style.rasi";
     };
   };
 }
