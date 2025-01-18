@@ -22,7 +22,8 @@ in
     programs.rofi = {
       enable = true;
       font = "PragmataProMono Nerd Font";
-      theme = builtins.readFile ./theme.rasi;
+      theme = "${toString ./mytheme.rasi}";
     };
   };
+
 }
