@@ -7,6 +7,7 @@
 with lib;
 let
   cfg = config.home.programs.rofi or { enable = false; };
+  inherit (config.lib.formats.rasi) mkLiteral;
 in
 {
   options.home.programs.rofi = mkOption {
@@ -21,7 +22,7 @@ in
     programs.rofi = {
       enable = true;
       font = "PragmataProMono Nerd Font";
-      configPath = "./style.rasi";
+      theme = builtins.readFile ./theme.rasi;
     };
   };
 }
