@@ -12,12 +12,6 @@ pkgs.mkShell {
   buildInputs = [
     pythonPackages.python
     pythonPackages.venvShellHook
-    pythonPackages.numpy
-    pythonPackages.numba
-    pythonPackages.pandas
-    pythonPackages.tensorflow
-    pythonPackages.ruff
-    pythonPackages.python-lsp-server
 
   ];
   venvDir = "./.venv";
