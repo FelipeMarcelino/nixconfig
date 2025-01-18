@@ -6,11 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.home.terminal.starship or { enable = false; };
+  cfg = config.home.terminal.ghostty or { enable = false; };
 in
 {
   options.home.terminal.ghostty = mkOption {
-    description = "Enable ghostty terminal emulater";
+    description = "Enable ghostty terminal emulator";
     type = types.attrs;
     default = {
       enable = false;
