@@ -9,8 +9,8 @@
 
   programs.nixvim.plugins.lsp.servers = {
     bashls.enable = true;
-    pylyzer.enable = true;
-    pylsp.enable = false;
+    pylyzer.enable = false;
+    pylsp.enable = true;
     zk.enable = true;
     dockerls.enable = true;
     jsonls.enable = true;
