@@ -10,7 +10,7 @@ let
 in
 {
   options.home.home.ghostty = mkOption {
-    description = "Enable starship for shell";
+    description = "Enable ghostty terminal emulator";
     type = types.attrs;
     default = {
       enable = false;

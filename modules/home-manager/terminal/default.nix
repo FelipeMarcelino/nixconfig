@@ -1,3 +1,4 @@
+{ pkgs, config, ... }:
 {
-  import = [ ./ghostty.nix ];
+  imports = [ ./ghostty.nix ];
 }
