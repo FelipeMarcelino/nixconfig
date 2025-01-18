@@ -18,6 +18,5 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ ghostty ];
   };
 }
