@@ -18,6 +18,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    adfsdfsdf
     home.packages = with pkgs; [ ghostty ];
   };
+
 }

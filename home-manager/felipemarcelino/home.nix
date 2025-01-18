@@ -60,7 +60,7 @@
       autorandr.enable = true;
     };
 
-    terminal.ghostty.enable = true;
+    #terminal.ghostty.enable = true;
 
   };
 
