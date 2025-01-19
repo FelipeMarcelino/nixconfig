@@ -49,7 +49,6 @@
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
       customLibs = import ./lib;
-      extendLib = nixpkgs.lib.extend customLibs;
     in
     {
       # Your custom packages
@@ -61,8 +60,6 @@
 
       templates = import ./templates;
 
-      lib = extendLib;
-
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
       # Reusable nixos modules you might want to export
@@ -70,13 +67,19 @@
       nixosModules = import ./modules/nixos;
       # Reusable home-manager modules you might want to export
       # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
+      homeManagerModules = import ./modules/home-manager { inherit customLibs; };
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         solid = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs systems; };
+          specialArgs = {
+            inherit
+              inputs
+              outputs
+              customLibs
+              ;
+          };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/solid
@@ -93,8 +96,7 @@
             inherit
               inputs
               outputs
-              systems
-              lib
+              customLibs
               ;
           };
           modules = [
@@ -104,7 +106,13 @@
         };
         "onboarding@ubuntu" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs systems; };
+          extraSpecialArgs = {
+            inherit
+              inputs
+              outputs
+              customLibs
+              ;
+          };
           modules = [
             # Configuration for the second user
             ./home-manager/onboarding/ubuntu.nix

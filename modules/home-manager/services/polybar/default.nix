@@ -1,5 +1,6 @@
 {
   config,
+  customLibs,
   lib,
   pkgs,
   ...
@@ -11,7 +12,7 @@ let
 
   mainBar = import ./bar.nix { inherit config; };
 
-  openGithub = "${lib.exe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
+  openGithub = "${customLibs.exe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
 
   mypolybar = pkgs.polybar.override {
     alsaSupport = true;
@@ -27,7 +28,7 @@ let
   mods2 = lib.readFile ./user_modules.ini;
 
   bluetoothScript = pkgs.callPackage ./scripts/bluetooth.nix { };
-  klsScript = pkgs.callPackage ../../scripts/keyboard-layout-switch.nix { };
+  #klsScript = pkgs.callPackage ../../scripts/keyboard-layout-switch.nix { };
   monitorScript = pkgs.callPackage ./scripts/monitor.nix { };
   mprisScript = pkgs.callPackage ./scripts/mpris.nix { };
   networkScript = pkgs.callPackage ./scripts/network.nix { };
@@ -47,19 +48,19 @@ let
   '';
 
   #FIXME: FIx github token
-  github = ''
-    [module/clickable-github]
-    inherit = module/github
-    token = "AAAAAAAAAAAAAAAAAAAAA"; 
-    user = FelipeMarcelino
-    label = %{A1:${openGithub}:}  %notifications%%{A}
-  '';
+  # github = ''
+  #   [module/clickable-github]
+  #   inherit = module/github
+  #   token = "AAAAAAAAAAAAAAAAAAAAA";
+  #   user = FelipeMarcelino
+  #   label = %{A1:${openGithub}:}  %notifications%%{A}
+  # '';
 
-  keyboard = ''
-    [module/clickable-keyboard]
-    inherit = module/keyboard
-    label-layout = %{A1:${klsScript}/bin/kls:}  %layout% %icon% %{A}
-  '';
+  # keyboard = ''
+  #   [module/clickable-keyboard]
+  #   inherit = module/keyboard
+  #   label-layout = %{A1:${klsScript}/bin/kls:}  %layout% %icon% %{A}
+  # '';
 
   mpris = ''
     [module/mpris]
@@ -67,7 +68,7 @@ let
 
     exec = ${mprisScript}/bin/mpris
     tail = true
-    click-left = ${lib.exe pkgs.spotify}
+    click-left = ${customLibs.exe pkgs.spotify}
 
     label-maxlen = 60
 
@@ -84,7 +85,7 @@ let
     tail = true
   '';
 
-  customMods = mainBar + bctl + cal + github + keyboard + mpris + xmonad;
+  customMods = mainBar + bctl + cal + mpris + xmonad;
 
   cfg = config.home.services.polybar or { enable = false; };
 in
