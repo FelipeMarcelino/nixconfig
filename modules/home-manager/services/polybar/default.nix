@@ -46,11 +46,12 @@ let
     label = %{A1:${openCalendar}:}%time%%{A}
   '';
 
+  #FIXME: FIx github token
   github = ''
     [module/clickable-github]
     inherit = module/github
-    token = ${config.secrets.githubToken}
-    user = gvolpe
+    token = "AAAAAAAAAAAAAAAAAAAAA"; 
+    user = FelipeMarcelino
     label = %{A1:${openGithub}:}  %notifications%%{A}
   '';
 

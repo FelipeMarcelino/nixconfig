@@ -1,15 +1,6 @@
 { config, ... }:
 
 let
-  inherit (config.services.polybar.fontsizes)
-    font0
-    font1
-    font2
-    font3
-    font4
-    font5
-    ;
-
   bar = ''
     [bar/main]
     monitor = ''${env:MONITOR:DP-4}
@@ -40,17 +31,17 @@ let
     border-color = ''${color.ac}
 
     ; Text Fonts
-    font-0 = Iosevka Nerd Font:style=Medium:size=${toString font0};3
+    font-0 = Iosevka Nerd Font:style=Medium:size=10;3
     ; Icons Fonts
-    font-1 = icomoon\-feather:style=Medium:size=${toString font1};3
+    font-1 = icomoon\-feather:style=Medium:size=12;3
     ; Powerline Glyphs
-    font-2 = Iosevka Nerd Font:style=Medium:size=${toString font2};3
+    font-2 = Iosevka Nerd Font:style=Medium:size=24;3
     ; Larger font size for bar fill icons
-    font-3 = Iosevka Nerd Font:style=Medium:size=${toString font3};3
+    font-3 = Iosevka Nerd Font:style=Medium:size=18;3
     ; Smaller font size for shorter spaces
-    font-4 = Iosevka Nerd Font:style=Medium:size=${toString font4};3
+    font-4 = Iosevka Nerd Font:style=Medium:size=5;3
     ; Keyboard layout icons
-    font-5 = FlagsWorldColor:size=${toString font5}:antialias=false;3
+    font-5 = FlagsWorldColor:size=10:antialias=false;3
     ;font-5 = "MaterialIcons:size=40;0"
     ;font-6 = Font Awesome 5 Free:style=Solid:pixelsize=20;3
     ;font-5 = Unifont:size=64:antialias=false;1
