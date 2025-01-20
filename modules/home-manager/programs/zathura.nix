@@ -21,6 +21,13 @@ in
     programs.zathura = {
       enable = true;
       extraConfig = ''
+        set recolor
+        set statusbar-h-padding 0
+        set statusbar-v-padding 0
+        set page-padding 1
+        set selection-clipboard clipboard
+        map i recolor
+        set font                        "PragmataProMono Nerd Font"
         set default-fg                rgba(202,211,245,1)
         set default-bg 			          rgba(36,39,58,1)
 

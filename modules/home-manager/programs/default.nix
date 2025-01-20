@@ -3,5 +3,6 @@
   imports = [
     ./rofi
     ./feh.nix
+    ./zathura.nix
   ];
 }

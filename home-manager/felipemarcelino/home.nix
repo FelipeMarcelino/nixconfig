@@ -72,7 +72,8 @@
     };
 
     terminal.ghostty.enable = true;
-    programd = {
+
+    programs = {
       rofi.enable = true;
       feh.enable = true;
       zathura.enable = true;
