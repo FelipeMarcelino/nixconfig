@@ -57,6 +57,13 @@ in
           size = 18.0;
           names = [ "MonoLisa Nerd Font" ];
         };
+        startup = [
+          {
+            command = "feh --bg-scale ${config.home.homeDirectory}/.wallappers/horizontal.jpg ${config.home.homeDirectory}/.wallpapers/vertical.png";
+            always = true;
+            notification = false;
+          }
+        ];
         bars = [ ];
         modifier = mod;
         terminal = "ghostty";

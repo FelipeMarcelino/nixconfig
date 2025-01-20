@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./rofi ];
+  imports = [
+    ./rofi
+    ./feh.nix
+  ];
 }

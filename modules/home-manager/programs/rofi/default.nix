@@ -23,6 +23,7 @@ in
       enable = true;
       font = "PragmataProMono Nerd Font";
       theme = "${toString ./mytheme.rasi}";
+      terminal = "ghostty";
     };
   };
 

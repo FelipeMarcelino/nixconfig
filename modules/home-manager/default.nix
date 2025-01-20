@@ -7,4 +7,5 @@
   desktop = import ./desktop/default.nix;
   terminal = import ./terminal/default.nix;
   programs = import ./programs/default.nix;
+  services = import ./services/default.nix;
 }
