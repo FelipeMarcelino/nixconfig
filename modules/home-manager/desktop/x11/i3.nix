@@ -59,7 +59,7 @@ in
         };
         startup = [
           {
-            command = "feh --bg-scale ${config.home.homeDirectory}/.wallappers/horizontal.jpg ${config.home.homeDirectory}/.wallpapers/vertical.png";
+            command = "feh --bg-scale ${config.home.homeDirectory}/.wallpappers/horizontal.jpg ${config.home.homeDirectory}/.wallpappers/vertical.png";
             always = true;
             notification = false;
           }
