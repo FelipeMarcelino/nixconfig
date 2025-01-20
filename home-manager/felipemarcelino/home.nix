@@ -72,8 +72,11 @@
     };
 
     terminal.ghostty.enable = true;
-    programs.rofi.enable = true;
-    programs.feh.enable = true;
+    programd = {
+      rofi.enable = true;
+      feh.enable = true;
+      zathura.enable = true;
+    };
 
     services = {
       polybar.enable = true;
