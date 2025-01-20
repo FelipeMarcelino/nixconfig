@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./polybar ];
+  imports = [
+    ./dunst.nix
+    ./polybar
+  ];
 }

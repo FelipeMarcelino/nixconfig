@@ -75,7 +75,10 @@
     programs.rofi.enable = true;
     programs.feh.enable = true;
 
-    services.polybar.enable = true;
+    services = {
+      polybar.enable = true;
+      dunst.enable = true;
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
