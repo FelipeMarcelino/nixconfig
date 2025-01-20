@@ -6,11 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.home.programs.dunst or { enable = false; };
+  cfg = config.home.services.dunst or { enable = false; };
 in
 {
-  options.home.programs.dunst = mkOption {
-    description = "Enable notifier dusntrc";
+  options.home.services.dunst = mkOption {
+    description = "Enable notifier dusnt with catppuccin theme";
     type = types.attrs;
     default = {
       enable = false;
@@ -18,9 +18,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.dunst.enable = true;
+    services.dunst.enable = true;
 
-    programs.dunst.settings = {
+    services.dunst.settings = {
       global = {
         frame_color = "#8aadf4";
         separator_color = "frame";
@@ -61,7 +61,7 @@ in
       };
     };
 
-    programs.dunst.iconTheme = {
+    services.dunst.iconTheme = {
       name = "BeautyLine";
       package = pkgs.beauty-line-icon-theme;
       size = "16x16";
