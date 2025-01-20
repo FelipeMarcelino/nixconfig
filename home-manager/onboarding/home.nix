@@ -59,7 +59,7 @@
       autorandr.enable = false;
     };
 
-    terminal.ghostty.enable = true;
+    programs.zathura.enable = true;
   };
 
   programs.granted = {
