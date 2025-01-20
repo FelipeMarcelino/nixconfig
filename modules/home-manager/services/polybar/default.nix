@@ -56,6 +56,7 @@ let
     [module/clickable-github]
     inherit = module/github
     token = ${"env:GITHUB_ACCESS_TOKEN"};
+    empty-notifications = true
     user = FelipeMarcelino
     label = %{A1:${openGithub}:}  %notifications%%{A}
   '';
@@ -79,14 +80,6 @@ let
     interval = 2
     format =   <label>
     format-padding = 2
-  '';
-
-  xmonad = ''
-    [module/xmonad]
-    type = custom/script
-    exec = ${pkgs.xmonad-log}/bin/xmonad-log
-
-    tail = true
   '';
 
   customMods = mainBar + bctl + cal + mpris + github + keyboard;
