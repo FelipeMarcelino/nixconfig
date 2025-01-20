@@ -52,7 +52,7 @@ let
   github = ''
      [module/clickable-github]
      inherit = module/github
-     token = "AAAAAAAAAAAAAAAAAAAAA";
+     token = ${"env:GITHUB_ACCESS_TOKEN"};
      user = FelipeMarcelino
     label = %{A1:${openGithub}:}  %notifications%%{A}
   '';
