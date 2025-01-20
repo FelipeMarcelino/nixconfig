@@ -45,6 +45,15 @@
 
   imports = [ ./zsh.nix ];
 
+  # Walppapers
+  systemd.user.tmpfiles.rules = [
+    "d ${config.home.homeDirectory}/.wallappers/ 0755 felipemarcelino wheel - -"
+  ];
+  home.file."${config.home.homeDirectory}/.wallappers/vertical.png".source =
+    ../../wallpapers/solid/monitor_vertical/forrest.png;
+  home.file."${config.home.homeDirectory}/.wallappers/horizontal.jpg".source =
+    ../../wallpapers/solid/monitor_horizontal/shaded_landscape.jpg;
+
   # My modules
   home = {
     cli = {
