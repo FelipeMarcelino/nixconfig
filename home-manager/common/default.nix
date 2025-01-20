@@ -5,7 +5,8 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -19,6 +20,13 @@
     ./zsh.nix
     ./xdg.nix
     ./nixvim
+    ./udiskie.nix
+    inputs.self.homeManagerModules.cli
+    inputs.self.homeManagerModules.desktop
+    inputs.self.homeManagerModules.terminal
+    inputs.self.homeManagerModules.programs
+    inputs.self.homeManagerModules.services
+
   ];
 
   nixpkgs = {
