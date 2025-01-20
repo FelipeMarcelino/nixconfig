@@ -64,7 +64,7 @@ let
   keyboard = ''
     [module/clickable-keyboard]
     inherit = module/keyboard
-    label-layout = %{A1:${klsScript}/bin/kls:}  %layout% %icon% %{A}
+    label-layout = %{A1:${klsScript}/bin/kls:}  %layout% %{A}
   '';
 
   mpris = ''
