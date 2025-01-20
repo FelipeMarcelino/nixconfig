@@ -8,12 +8,15 @@
 
 let
 
+  openGithubScript = pkgs.writeShellScriptBin "open-github" ''
+    ${pkgs.firefox-beta-bin}/bin/firefox-beta -new-tab https://github.com/notifications
+  '';
+
   openCalendar = "${pkgs.xfce.orage}/bin/orage";
 
   mainBar = import ./bar.nix { inherit config; };
 
-  #openGithub = "${customLibs.exe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
-  openGithub = "${lib.getExe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
+  openGithub = "${openGithubScript}/bin/open-github";
 
   mypolybar = pkgs.polybarFull.override {
     alsaSupport = true;
@@ -29,7 +32,7 @@ let
   mods2 = lib.readFile ./user_modules.ini;
 
   bluetoothScript = pkgs.callPackage ./scripts/bluetooth.nix { };
-  #klsScript = pkgs.callPackage ../../scripts/keyboard-layout-switch.nix { };
+  klsScript = pkgs.callPackage ./scripts/keyboard-layout-switch.nix { };
   monitorScript = pkgs.callPackage ./scripts/monitor.nix { };
   mprisScript = pkgs.callPackage ./scripts/mpris.nix { };
   networkScript = pkgs.callPackage ./scripts/network.nix { };
@@ -50,18 +53,18 @@ let
 
   #FIXME: FIx github token
   github = ''
-     [module/clickable-github]
-     inherit = module/github
-     token = ${"env:GITHUB_ACCESS_TOKEN"};
-     user = FelipeMarcelino
+    [module/clickable-github]
+    inherit = module/github
+    token = ${"env:GITHUB_ACCESS_TOKEN"};
+    user = FelipeMarcelino
     label = %{A1:${openGithub}:}  %notifications%%{A}
   '';
 
-  # keyboard = ''
-  #   [module/clickable-keyboard]
-  #   inherit = module/keyboard
-  #   label-layout = %{A1:${klsScript}/bin/kls:}  %layout% %icon% %{A}
-  # '';
+  keyboard = ''
+    [module/clickable-keyboard]
+    inherit = module/keyboard
+    label-layout = %{A1:${klsScript}/bin/kls:}  %layout% %icon% %{A}
+  '';
 
   mpris = ''
     [module/mpris]
@@ -86,7 +89,7 @@ let
     tail = true
   '';
 
-  customMods = mainBar + bctl + cal + mpris + github;
+  customMods = mainBar + bctl + cal + mpris + github + keyboard;
 
   cfg = config.home.services.polybar or { enable = false; };
 in

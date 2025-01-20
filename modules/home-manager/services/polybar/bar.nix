@@ -48,8 +48,8 @@ let
     [bar/top]
     inherit = bar/main
 
-    modules-left = right-end-top nixos i3 left-end-bottom right-end-top left-end-top
-    modules-right = left-end-top clickable-keyboard clickable-github temperature clickable-date battery
+    modules-left = right-end-top nixos i3 left-end-bottom right-end-top title left-end-top
+    modules-right = left-end-top clickable-keyboard clickable-github temperature clickable-date 
     modules-center = tray
     enable-ipc = true
   '';
