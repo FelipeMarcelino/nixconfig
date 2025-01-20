@@ -12,9 +12,10 @@ let
 
   mainBar = import ./bar.nix { inherit config; };
 
-  openGithub = "${customLibs.exe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
+  #openGithub = "${customLibs.exe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
+  openGithub = "${lib.getExe pkgs.firefox-beta-bin} -new-tab https\\://github.com/notifications";
 
-  mypolybar = pkgs.polybar.override {
+  mypolybar = pkgs.polybarFull.override {
     alsaSupport = true;
     githubSupport = true;
     mpdSupport = true;
@@ -48,13 +49,13 @@ let
   '';
 
   #FIXME: FIx github token
-  # github = ''
-  #   [module/clickable-github]
-  #   inherit = module/github
-  #   token = "AAAAAAAAAAAAAAAAAAAAA";
-  #   user = FelipeMarcelino
-  #   label = %{A1:${openGithub}:}  %notifications%%{A}
-  # '';
+  github = ''
+     [module/clickable-github]
+     inherit = module/github
+     token = "AAAAAAAAAAAAAAAAAAAAA";
+     user = FelipeMarcelino
+    label = %{A1:${openGithub}:}  %notifications%%{A}
+  '';
 
   # keyboard = ''
   #   [module/clickable-keyboard]
@@ -68,7 +69,7 @@ let
 
     exec = ${mprisScript}/bin/mpris
     tail = true
-    click-left = ${customLibs.exe pkgs.spotify}
+    click-left = ${lib.getExe pkgs.spotify}
 
     label-maxlen = 60
 
@@ -85,7 +86,7 @@ let
     tail = true
   '';
 
-  customMods = mainBar + bctl + cal + mpris + xmonad;
+  customMods = mainBar + bctl + cal + mpris + github;
 
   cfg = config.home.services.polybar or { enable = false; };
 in
@@ -108,6 +109,10 @@ in
       nerd-fonts.iosevka
       icomoon-feather
     ];
+
+    programs.spotify-player.enable = true;
+    services.mpd.enable = true;
+    services.mpd-mpris.enable = true;
 
     services.polybar = {
       enable = true;

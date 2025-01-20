@@ -67,7 +67,7 @@
       nixosModules = import ./modules/nixos;
       # Reusable home-manager modules you might want to export
       # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager { inherit customLibs; };
+      homeManagerModules = import ./modules/home-manager;
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -77,12 +77,13 @@
             inherit
               inputs
               outputs
-              customLibs
               ;
           };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/solid
+
+            { home-manager.extraSpecialArgs = { inherit customLibs; }; }
           ];
         };
       };
@@ -96,12 +97,12 @@
             inherit
               inputs
               outputs
-              customLibs
               ;
           };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/felipemarcelino/solid.nix
+
           ];
         };
         "onboarding@ubuntu" = home-manager.lib.homeManagerConfiguration {
@@ -110,12 +111,12 @@
             inherit
               inputs
               outputs
-              customLibs
               ;
           };
           modules = [
             # Configuration for the second user
             ./home-manager/onboarding/ubuntu.nix
+
           ];
         };
       };

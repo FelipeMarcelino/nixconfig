@@ -62,6 +62,7 @@
 
     terminal.ghostty.enable = true;
     programs.rofi.enable = true;
+    programs.feh.enable = true;
 
     services.polybar.enable = true;
   };
