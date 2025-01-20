@@ -43,6 +43,8 @@
     discord
   ];
 
+  imports = [ ./zsh.nix ];
+
   # My modules
   home = {
     cli = {
