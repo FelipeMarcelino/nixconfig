@@ -21,7 +21,7 @@ in
     programs.taskwarrior = {
       enable = true;
       dataLocation = "$TASKWARRIOR_DIR";
-      colorTheme = ./taskwarrior.theme;
+      colorTheme = ./taskwarrior-catppuccin-theme.theme;
     };
 
     home.packages = with pkgs; [
