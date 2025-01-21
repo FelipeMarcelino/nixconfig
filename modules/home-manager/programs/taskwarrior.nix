@@ -10,7 +10,7 @@ let
 in
 {
   options.home.programs.taskwarrior = mkOption {
-    description = "Enable taskwarrior, a task manager";
+    description = "Enable taskwarrior, a task manager. In also enables tui option (taskwarrior-tui)";
     type = types.attrs;
     default = {
       enable = false;
@@ -21,10 +21,16 @@ in
     programs.taskwarrior = {
       enable = true;
       dataLocation = "$TASKWARRIOR_DIR";
+      colorTheme = ./taskwarrior.theme;
     };
+
+    home.packages = with pkgs; [
+      taskwarrior-tui
+    ];
+
+    systemd.user.tmpfiles.rules = [
+      "d ${config.home.homeDirectory}/Taskwarrior/ 0755 felipemarcelino wheel - -"
+    ];
   };
 
-  systemd.user.tmpfiles.rules = [
-    "d ${config.home.homeDirectory}/Taskwarrior/ 0755 felipemarcelino wheel - -"
-  ];
 }
