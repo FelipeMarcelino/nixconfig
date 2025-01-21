@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins.auto-session = {
     settings.log_level = "info";
     settings.auto_restore = true;
@@ -18,6 +19,7 @@
         "/tmp"
         "/var/tmp"
         "~/Projects"
+        "~/Zettelkasten/"
       ];
       root_dir = "${config.home.homeDirectory}/Sessions/";
     };
