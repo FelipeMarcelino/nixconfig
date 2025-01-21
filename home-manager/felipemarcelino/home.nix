@@ -67,6 +67,7 @@
       feh.enable = true;
       zathura.enable = true;
       zettelkasten.enable = true;
+      taskwarrior.enable = true;
     };
 
     services = {
