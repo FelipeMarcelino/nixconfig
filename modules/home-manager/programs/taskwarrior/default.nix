@@ -66,7 +66,7 @@ in
     ];
 
     systemd.user.tmpfiles.rules = [
-      "d ${config.home.homeDirectory}/Taskwarrior/ 0755 felipemarcelino wheel - -"
+      "d ${config.home.homeDirectory}/Taskwarrior/ 0755 ${config.home.username} wheel - -"
     ];
 
     programs.zsh.shellAliases = {
