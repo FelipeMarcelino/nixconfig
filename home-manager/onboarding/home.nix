@@ -28,17 +28,6 @@
   systemd.user.startServices = "sd-switch";
 
   home.packages = with pkgs; [
-    coreutils
-    htop-vim
-    httpie
-    jq
-    procs
-    ripgrep
-    tldr
-    zip
-    duf
-    dust
-    unzip
     pragmata-monolisa-fonts
   ];
 

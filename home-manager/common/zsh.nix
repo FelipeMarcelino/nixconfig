@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.zsh.enable = true;
   programs.zsh.enableCompletion = true;
   programs.fzf.enableZshIntegration = true;
@@ -29,11 +30,11 @@
     dot = "$HOME/Project/nixconfig";
   };
   programs.zsh.history.extended = true;
-  programs.zsh.historySubstringSearch.searchDownKey = [];
+  programs.zsh.historySubstringSearch.searchDownKey = [ ];
   programs.zsh.initExtraBeforeCompInit = ''
     fpath+="$HOME/.zsh/completions"
   '';
-  programs.zsh.historySubstringSearch.searchUpKey = [];
+  programs.zsh.historySubstringSearch.searchUpKey = [ ];
   programs.zsh.oh-my-zsh.plugins = [
     "sudo"
     "vi-mode"
@@ -97,12 +98,15 @@
   programs.zsh.loginExtra = ''
     bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
-    bindkey '^X' run_rfv
   '';
   programs.zsh.shellAliases = {
     cat = "bat --paging=never";
     rnd = "task add +rnd +next +@computer +@online";
     l = "ls -lh";
+    rm = "echo 'This is not the command you are looking for. Use tp'; false";
+    tp = "trash-put";
+    du = "dust";
+    df = "duf";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;

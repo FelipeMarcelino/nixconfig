@@ -75,5 +75,18 @@
   home.packages = with pkgs; [
     nerd-fonts.monaspace
     xclip
+    trash-cli
+
+    coreutils
+    htop-vim
+    httpie
+    jq
+    procs
+    ripgrep
+    tldr
+    zip
+    duf
+    dust
+    unzip
   ];
 }
