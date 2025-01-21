@@ -14,6 +14,7 @@
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.sops-nix.homeManagerModules.sops
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -93,6 +94,8 @@
     duf
     dust
     unzip
+    age
+    sops
   ];
 
   home = {
@@ -113,4 +116,8 @@
       broot.enable = true;
     };
   };
+
+  systemd.user.tmpfiles.rules = [
+    "d ${config.home.homeDirectory}/.config/sops/age/ 0755 ${config.home.username} - -"
+  ];
 }

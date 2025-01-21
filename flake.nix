@@ -26,6 +26,7 @@
       url = "github:moyiz/blink-emoji.nvim";
       flake = false;
     };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
