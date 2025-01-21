@@ -48,6 +48,17 @@ in
           edlast = "zk edit --limit 1 --sort modified- $@";
           recent = "zk edit --sort created --created-after 'last two weeks' --interactive";
           lucky = "zk list --quiet --format full --sort random --limit 1";
+          ls = "zk list $@";
+          ed = "zk edit $@";
+          n = "zk new $@";
+          paths = "zk list --quiet --format \"'{{path}}'\" --delimiter ' ' $@";
+          inline = "zk list --quiet --format {{path}} --delimiter , $@";
+          nt = "zk new --title \"$*";
+          bl = "zk list --link-to $@";
+          unliked-mentions = "zk list --mentioned-by $1 --no-linked-by $1";
+          log = "zk list --quiet --format path --delimiter0 $@ | xargs -0 git log --patch --";
+          save = "git add . && git commit -m \"$*\"";
+          cp = ''mkdir -p "$1" && zk list --quiet --format path --delimiter0 \$\{@:2\} | xargs -t -0 -I % cp --parents "%" "$1"'';
         };
         lsp.diagnostics = {
           wiki-title = "hint";
@@ -57,6 +68,15 @@ in
           note-label = "{{title-or-path}}";
           note-filter-text = "{{title}} {{path}}";
           note-detail = "{{filename-stem}}";
+        };
+        group.journal = {
+          paths = [
+            "journal/weekly"
+            "journal/daily"
+          ];
+        };
+        group.journal.note = {
+          filename = "{{format-date now}}";
         };
       };
     };
