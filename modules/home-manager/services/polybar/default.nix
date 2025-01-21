@@ -46,6 +46,7 @@ let
     click-left = ${bluetoothScript}/bin/bluetooth-ctl --toggle &
   '';
 
+  # FIXME Not working
   taskwarrior = ''
     [module/taskwarrior]
     type = custom/script

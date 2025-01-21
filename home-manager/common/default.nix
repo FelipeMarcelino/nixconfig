@@ -89,4 +89,6 @@
     dust
     unzip
   ];
+
+  home.programs.broot.enable = true;
 }

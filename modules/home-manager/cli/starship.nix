@@ -27,6 +27,7 @@ in
             symbol = " ";
             when = true;
             shell = "zsh";
+            ignore_timeout = true;
           };
         };
       };
