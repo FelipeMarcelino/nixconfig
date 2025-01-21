@@ -116,4 +116,8 @@
       broot.enable = true;
     };
   };
+
+  systemd.user.tmpfiles.rules = [
+    "d ${config.home.homeDirectory}/.config/sops/age/ 0755 ${config.home.username} - -"
+  ];
 }

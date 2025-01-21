@@ -71,7 +71,7 @@
     defaultSopsFormat = "yaml";
     secrets."github_token" = {
       sopsFile = ../../secrets/felipemarcelino.yaml;
-      path = "${config.home.homeDirectory}/.local/share/secrets/spotify/username";
+      path = "${config.home.homeDirectory}/.local/share/secrets/github_token";
     };
   };
 

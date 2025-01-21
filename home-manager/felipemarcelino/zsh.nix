@@ -5,7 +5,7 @@
 }:
 {
   programs.zsh.sessionVariables = {
-    GITHUB_ACCESS_TOKEN = "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";
+    GITHUB_ACCESS_TOKEN = ''$(${pkgs.coreutils}/bin/cat ${config.sops.secrets."github_token".path})'';
     ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Zettelkasten";
   };
 
