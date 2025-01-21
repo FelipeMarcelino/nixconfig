@@ -36,6 +36,7 @@ let
   monitorScript = pkgs.callPackage ./scripts/monitor.nix { };
   mprisScript = pkgs.callPackage ./scripts/mpris.nix { };
   networkScript = pkgs.callPackage ./scripts/network.nix { };
+  gettaskinScript = pkgs.callPackage ./scripts/taskwarrior.nix { };
 
   bctl = ''
     [module/bctl]
@@ -46,12 +47,12 @@ let
   '';
 
   taskwarrior = ''
-    [module/bctl]
+    [module/taskwarrior]
     type = custom/script
-    exec = ${pkgs.taskwarrior3}/bin/task +in +PENDING count
-    tail = false
-    interval = 600
-    format = " ": <label>
+    exec = ${gettaskinScript}/bin/gettaskin 
+    label = "%output%"
+    tail = true
+    format =  : <label>
   '';
 
   cal = ''
@@ -91,7 +92,7 @@ let
     format-padding = 2
   '';
 
-  customMods = mainBar + bctl + cal + mpris + github + keyboard + taskwarior;
+  customMods = mainBar + bctl + cal + mpris + github + keyboard + taskwarrior;
 
   cfg = config.home.services.polybar or { enable = false; };
 in
@@ -113,6 +114,7 @@ in
       xfce.orage # lightweight calendar
       nerd-fonts.iosevka
       icomoon-feather
+      getTaskwarriorsIN
     ];
 
     programs.spotify-player.enable = true;
