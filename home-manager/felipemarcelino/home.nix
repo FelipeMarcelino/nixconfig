@@ -77,6 +77,7 @@
       rofi.enable = true;
       feh.enable = true;
       zathura.enable = true;
+      zettelkasten.enable = true;
     };
 
     services = {
