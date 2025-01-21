@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./auto-save.nix
     ./auto-session.nix
@@ -60,5 +61,6 @@
     ./which-key.nix
     ./yazi.nix
     ./yanky.nix
+    ./zk.nix
   ];
 }
