@@ -67,7 +67,7 @@
   sops = {
     age.keyFile = "/home/${config.home.username}/.config/sops/age/keys.txt";
     defaultSecretsMountPoint = "${config.home.homeDirectory}/.local/share/secrets";
-    defaultSopsFile = ../../.sops.yaml;
+    defaultSopsFile = ../../sops.yaml;
     defaultSopsFormat = "yaml";
     secrets."github_token" = {
       sopsFile = ../../secrets/felipemarcelino.yaml;
