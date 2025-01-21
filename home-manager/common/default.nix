@@ -72,6 +72,8 @@
     enableZshIntegration = true;
   };
 
+  programs.neovim.defaultEditor = true;
+
   home.packages = with pkgs; [
     nerd-fonts.monaspace
     xclip
@@ -90,5 +92,22 @@
     unzip
   ];
 
-  home.programs.broot.enable = true;
+  home = {
+    cli = {
+      eza.enable = true;
+      zoxide.enable = true;
+      fzf.enable = true;
+      bat.enable = true;
+      starship.enable = true;
+      git.enable = true;
+    };
+
+    programs = {
+      feh.enable = true;
+      zathura.enable = true;
+      zettelkasten.enable = true;
+      taskwarrior.enable = true;
+      broot.enable = true;
+    };
+  };
 }

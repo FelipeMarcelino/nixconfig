@@ -45,14 +45,6 @@
 
   # My modules
   home = {
-    cli = {
-      eza.enable = true;
-      zoxide.enable = true;
-      fzf.enable = true;
-      bat.enable = true;
-      starship.enable = true;
-      git.enable = true;
-    };
 
     desktop = {
       swayi3.enable = false; # wayland is broken when using nvidia proprietary driver -- waiting for 555v
@@ -64,10 +56,6 @@
 
     programs = {
       rofi.enable = true;
-      feh.enable = true;
-      zathura.enable = true;
-      zettelkasten.enable = true;
-      taskwarrior.enable = true;
     };
 
     services = {
