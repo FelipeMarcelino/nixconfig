@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.opts = {
     autoread = true;
     hidden = true;
@@ -56,7 +57,7 @@
     foldlevel = 99;
     foldenable = true;
     list = true;
-    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,localoptions";
+    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
 
     fillchars = {
       horiz = "━";
