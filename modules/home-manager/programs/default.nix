@@ -4,5 +4,6 @@
     ./rofi
     ./feh.nix
     ./zathura.nix
+    ./zk.nix
   ];
 }
