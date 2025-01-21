@@ -59,6 +59,7 @@ in
           log = "zk list --quiet --format path --delimiter0 $@ | xargs -0 git log --patch --";
           save = "git add . && git commit -m \"$*\"";
           cp = ''mkdir -p "$1" && zk list --quiet --format path --delimiter0 \$\{@:2\} | xargs -t -0 -I % cp --parents "%" "$1"'';
+          daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/journal/daily"'';
         };
         lsp.diagnostics = {
           wiki-title = "hint";
@@ -76,13 +77,22 @@ in
           ];
         };
         group.journal.note = {
-          filename = "{{format-date now}}";
+          filename = "{{format-date now '%Y-%m-%d'}}";
+          template = "daily.md";
+          extension = "md";
         };
       };
     };
 
     systemd.user.tmpfiles.rules = [
       "d ${config.home.homeDirectory}/Zettelkasten/ 0755 felipemarcelino wheel - -"
+      "d ${config.home.homeDirectory}/Zettelkasten/journal/daily 0755 felipemarcelino wheel - -"
     ];
+
+    home.file."${config.home.homeDirectory}/.config/zk/templates/daily.md".text = ''
+      # {{format-date now "long"}}
+
+      What did I do today? Or anything else
+    '';
   };
 }
