@@ -92,7 +92,7 @@ let
     format-padding = 2
   '';
 
-  customMods = mainBar + bctl + cal + mpris + github + keyboard + taskwarrior;
+  customMods = mainBar + bctl + cal + mpris + github + keyboard;
 
   cfg = config.home.services.polybar or { enable = false; };
 in
@@ -114,7 +114,6 @@ in
       xfce.orage # lightweight calendar
       nerd-fonts.iosevka
       icomoon-feather
-      getTaskwarriorsIN
     ];
 
     programs.spotify-player.enable = true;
