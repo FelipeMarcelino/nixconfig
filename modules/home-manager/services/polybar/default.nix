@@ -45,6 +45,15 @@ let
     click-left = ${bluetoothScript}/bin/bluetooth-ctl --toggle &
   '';
 
+  taskwarrior = ''
+    [module/bctl]
+    type = custom/script
+    exec = ${pkgs.taskwarrior3}/bin/task +in +PENDING count
+    tail = false
+    interval = 600
+    format = " ": <label>
+  '';
+
   cal = ''
     [module/clickable-date]
     inherit = module/date
@@ -82,7 +91,7 @@ let
     format-padding = 2
   '';
 
-  customMods = mainBar + bctl + cal + mpris + github + keyboard;
+  customMods = mainBar + bctl + cal + mpris + github + keyboard + taskwarior;
 
   cfg = config.home.services.polybar or { enable = false; };
 in

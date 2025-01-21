@@ -18,14 +18,16 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.starship.enable = true;
-    settings = {
-      custom = {
-        taskin = {
-          command = "task +in +PENDING count";
-          symbol = " ";
-          when = true;
-          shell = "zsh";
+    programs.starship = {
+      enable = true;
+      settings = {
+        custom = {
+          taskin = {
+            command = "task +in +PENDING count";
+            symbol = " ";
+            when = true;
+            shell = "zsh";
+          };
         };
       };
     };
