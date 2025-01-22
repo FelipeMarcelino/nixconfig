@@ -85,8 +85,8 @@ in
     };
 
     systemd.user.tmpfiles.rules = [
-      "d ${config.home.homeDirectory}/Zettelkasten/ 0755 ${config.home.username} wheel - -"
-      "d ${config.home.homeDirectory}/Zettelkasten/journal/daily 0755 ${config.home.username} wheel - -"
+      "d ${config.home.homeDirectory}/Zettelkasten/ 0755 ${config.home.username} - -"
+      "d ${config.home.homeDirectory}/Zettelkasten/journal/daily 0755 ${config.home.username} - -"
     ];
 
     home.file."${config.home.homeDirectory}/.config/zk/templates/daily.md".text = ''

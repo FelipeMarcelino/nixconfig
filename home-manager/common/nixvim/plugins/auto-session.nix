@@ -36,6 +36,6 @@
   };
 
   systemd.user.tmpfiles.rules = [
-    "d ${config.home.homeDirectory}/Sessions/ 0755 ${config.home.username} wheel - -"
+    "d ${config.home.homeDirectory}/Sessions/ 0755 ${config.home.username} - -"
   ];
 }
