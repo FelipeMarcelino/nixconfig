@@ -120,4 +120,10 @@
   systemd.user.tmpfiles.rules = [
     "d ${config.home.homeDirectory}/.config/sops/age/ 0755 ${config.home.username} - -"
   ];
+
+  home.file.".XCompose".text = ''
+    include "%L"
+    <dead_acute> <C> : "Ç"
+    <dead_acute> <c> : "ç"
+  '';
 }
