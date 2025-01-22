@@ -28,7 +28,7 @@ in
         note = {
           language = "en";
           default-title = "untitled";
-          filename = "{{id}}-{{slug title}}";
+          filename = "{{title}}";
           extension = "md";
           template = "default.md";
           id-charset = "alphanum";
@@ -39,6 +39,7 @@ in
         format.markdown = {
           hashtags = true;
           colon-tags = true;
+          link-format = "[[{{filename}}]]";
         };
         tool = {
           editor = "nvim";
@@ -59,7 +60,7 @@ in
           log = "zk list --quiet --format path --delimiter0 $@ | xargs -0 git log --patch --";
           save = "git add . && git commit -m \"$*\"";
           cp = ''mkdir -p "$1" && zk list --quiet --format path --delimiter0 \$\{@:2\} | xargs -t -0 -I % cp --parents "%" "$1"'';
-          daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/journal/daily"'';
+          daily = ''zk new --no-input "$ZK_NOTEBOOK_DIR/content/blog"'';
         };
         lsp.diagnostics = {
           wiki-title = "hint";
@@ -72,8 +73,7 @@ in
         };
         group.journal = {
           paths = [
-            "journal/weekly"
-            "journal/daily"
+            "content/blog"
           ];
         };
         group.journal.note = {
@@ -86,7 +86,7 @@ in
 
     systemd.user.tmpfiles.rules = [
       "d ${config.home.homeDirectory}/Zettelkasten/ 0755 ${config.home.username} - -"
-      "d ${config.home.homeDirectory}/Zettelkasten/journal/daily 0755 ${config.home.username} - -"
+      "d ${config.home.homeDirectory}/Zettelkasten/content/blog 0755 ${config.home.username} - -"
     ];
 
     home.file."${config.home.homeDirectory}/.config/zk/templates/daily.md".text = ''
