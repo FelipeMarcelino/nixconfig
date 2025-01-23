@@ -21,6 +21,7 @@
     ./zsh.nix
     ./xdg.nix
     ./nixvim
+    ./syncthing.nix
     inputs.self.homeManagerModules.cli
     inputs.self.homeManagerModules.desktop
     inputs.self.homeManagerModules.terminal
