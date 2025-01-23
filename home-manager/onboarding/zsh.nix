@@ -2,12 +2,21 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.zsh.sessionVariables = {
-    ARTIFACTORY_USERNAME = "felipe.marcelino";
-    ARTIFACTORY_PASSWORD = "cmVmdGtuOjAxOjE3Njc4NzU0MjY6ZElxZkNvUzlmS1BTTVUzcVd0dHd2ZkhUMFBE";
-    ARTIFACTORY_CONTEXTURL = "https://creditas.jfrog.io/artifactory";
-    HOMEBREW_GITHUB_API_TOKEN = "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";
+    ARTIFACTORY_USERNAME = ''$(${pkgs.coreutils}/bin/cat ${
+      config.sops.secrets."artifactory/username".path
+    })'';
+    ARTIFACTORY_PASSWORD = ''$(${pkgs.coreutils}/bin/cat ${
+      config.sops.secrets."artifactory/password".path
+    })'';
+    ARTIFACTORY_CONTEXTURL = ''$(${pkgs.coreutils}/bin/cat ${
+      config.sops.secrets."artifactory/contexturl".path
+    })'';
+    HOMEBREW_GITHUB_API_TOKEN = ''$(${pkgs.coreutils}/bin/cat ${
+      config.sops.secrets."homebrew_github_api_token".path
+    })'';
   };
 
   programs.zsh.initExtra = ''

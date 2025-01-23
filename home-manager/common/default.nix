@@ -21,7 +21,7 @@
     ./zsh.nix
     ./xdg.nix
     ./nixvim
-    ./udiskie.nix
+    #./udiskie.nix
     inputs.self.homeManagerModules.cli
     inputs.self.homeManagerModules.desktop
     inputs.self.homeManagerModules.terminal
