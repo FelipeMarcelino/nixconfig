@@ -29,6 +29,7 @@
 
   home.packages = with pkgs; [
     pragmata-monolisa-fonts
+    dbeaver-bin
   ];
 
   # My modules
@@ -45,6 +46,32 @@
   programs.granted = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  sops = {
+    age.keyFile = "/home/${config.home.username}/.config/sops/age/keys.txt";
+    defaultSecretsMountPoint = "${config.home.homeDirectory}/.local/share/secrets";
+    defaultSopsFile = ../../sops.yaml;
+    defaultSopsFormat = "yaml";
+    secrets."artifactory/username" = {
+      sopsFile = ../../secrets/onboarding.yaml;
+      path = "${config.home.homeDirectory}/.local/share/secrets/artifactory/username";
+    };
+
+    secrets."artifactory/contexturl" = {
+      sopsFile = ../../secrets/onboarding.yaml;
+      path = "${config.home.homeDirectory}/.local/share/secrets/artifactory/contexturl";
+    };
+
+    secrets."artifactory/password" = {
+      sopsFile = ../../secrets/onboarding.yaml;
+      path = "${config.home.homeDirectory}/.local/share/secrets/artifactory/password";
+    };
+
+    secrets."homebrew_github_api_token" = {
+      sopsFile = ../../secrets/onboarding.yaml;
+      path = "${config.home.homeDirectory}/.local/share/secrets/homebrew_github_api_token";
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
