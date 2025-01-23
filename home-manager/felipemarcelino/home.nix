@@ -61,6 +61,7 @@
     services = {
       polybar.enable = true;
       dunst.enable = true;
+      udiskie.enable = true;
     };
   };
 
