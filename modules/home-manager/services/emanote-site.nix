@@ -10,8 +10,8 @@ let
 in
 {
   options.home.services.emanote-site = mkOption {
-    description = "Emanote website automatic service execution";
-    type = types.attrsOf types.str;
+    description = "Enable Emanote website automatic service execution. Available to localhost:8080";
+    type = types.attrs;
     default = {
       enable = false;
       path = "";
