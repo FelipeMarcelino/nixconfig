@@ -131,12 +131,6 @@
   services.syncthing = {
     enable = true;
   };
-  home.file."${config.home.homeDirectory}/.local/state/syncthing/cert.pem".source =
-    ./syncthing/cert.pem;
-  home.file."${config.home.homeDirectory}/.local/state/syncthing/key.pem".source =
-    ./syncthing/key.pem;
-  home.file."${config.home.homeDirectory}/.local/state/syncthing/config.xml".source =
-    ./syncthing/config.xml;
 
   # programs.nix-index = {
   #   enable = true;
