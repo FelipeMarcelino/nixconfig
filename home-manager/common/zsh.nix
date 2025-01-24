@@ -107,6 +107,7 @@
     tp = "trash-put";
     du = "dust";
     df = "duf";
+    "in" = "task add +in";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;
