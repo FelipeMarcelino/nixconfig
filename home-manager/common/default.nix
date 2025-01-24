@@ -132,6 +132,11 @@
     enable = true;
   };
 
+  home.services.emanote-site = {
+    enable = true;
+    path = "/home/felipemarcelino/Zettelkasten/content";
+  };
+
   # programs.nix-index = {
   #   enable = true;
   #   enableZshIntegration = true;
