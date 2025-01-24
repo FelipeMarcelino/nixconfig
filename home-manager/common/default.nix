@@ -21,7 +21,6 @@
     ./zsh.nix
     ./xdg.nix
     ./nixvim
-    ./syncthing.nix
     inputs.self.homeManagerModules.cli
     inputs.self.homeManagerModules.desktop
     inputs.self.homeManagerModules.terminal
@@ -126,6 +125,10 @@
     <dead_acute> <C> : "Ç"
     <dead_acute> <c> : "ç"
   '';
+
+  services.syncthing = {
+    enable = true;
+  };
 
   # programs.nix-index = {
   #   enable = true;
