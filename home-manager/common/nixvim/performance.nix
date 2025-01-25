@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.performance = {
     byteCompileLua = {
       enable = true;

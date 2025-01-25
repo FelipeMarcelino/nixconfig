@@ -26,13 +26,15 @@
         "dashboard"
         "markdown"
         ".md"
+        "neo-tree"
+        "neotree"
       ];
     };
     settings.session_lens.load_on_setup = true;
     settings.session_lens.previewer = true;
     settings.session_lens.session_control.controlDir = "$XDG_SESSIONS_DIR/";
     settings.session_lens.session_control.controlFilename = "$XDG_SESSIONS_DIR/session_control.json";
-    settings.cwd_change_handling = true;
+    settings.cwd_change_handling = false;
   };
 
   systemd.user.tmpfiles.rules = [

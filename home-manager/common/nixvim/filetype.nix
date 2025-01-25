@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.filetype = {
     extension = {
       "avsc" = "json";
