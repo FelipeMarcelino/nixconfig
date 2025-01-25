@@ -11,7 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common/default.nix
-    #./greetd.nix
+    ./picom.nix
   ];
 
   # Bootloader.
