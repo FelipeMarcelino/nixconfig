@@ -7,27 +7,40 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = [];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "thunderbolt"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/86b62c29-22bb-4450-940b-daa5eb7f294f";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-d6fbbfaa-2122-4b39-b2a2-6082664a2c20".device = "/dev/disk/by-uuid/d6fbbfaa-2122-4b39-b2a2-6082664a2c20";
+  boot.initrd.luks.devices."luks-d6fbbfaa-2122-4b39-b2a2-6082664a2c20".device =
+    "/dev/disk/by-uuid/d6fbbfaa-2122-4b39-b2a2-6082664a2c20";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/BD69-4243";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/home" = {
@@ -35,11 +48,23 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-e0dd1a53-5900-4382-a62e-519acbc6b9b0".device = "/dev/disk/by-uuid/e0dd1a53-5900-4382-a62e-519acbc6b9b0";
+  boot.initrd.luks.devices."luks-e0dd1a53-5900-4382-a62e-519acbc6b9b0".device =
+    "/dev/disk/by-uuid/e0dd1a53-5900-4382-a62e-519acbc6b9b0";
+
+  fileSystems."/home/felipemarcelino/Data" = {
+    device = "/dev/disk/by-uuid/88710f5c-2eb2-4625-a42c-0c181c9c712c";
+    fsType = "ext4";
+  };
+
+  fileSystems."/var/lib/private/ollama/models" = {
+    device = "/home/felipemarcelino/Data/ollama";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/a556a007-bb09-4c5d-ade4-42bb214faf1d";}
-    {device = "/dev/disk/by-uuid/accba802-6230-4f4b-babc-5007dc1e7eaf";}
+    { device = "/dev/disk/by-uuid/a556a007-bb09-4c5d-ade4-42bb214faf1d"; }
+    { device = "/dev/disk/by-uuid/accba802-6230-4f4b-babc-5007dc1e7eaf"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
