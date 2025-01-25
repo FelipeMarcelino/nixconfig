@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -110,6 +111,8 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    gparted
+    toybox
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -127,7 +130,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   xdg = {
     portal = {
@@ -182,6 +185,18 @@
   networking.firewall.enable = false;
 
   security.polkit.enable = true;
+
+  # Ollama ai
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
+
+  services.open-webui = {
+    enable = true;
+    port = 10000;
+    openFirewall = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
