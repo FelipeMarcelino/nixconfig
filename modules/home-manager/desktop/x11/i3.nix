@@ -39,6 +39,7 @@ in
     home.packages = with pkgs; [
       arandr
       flameshot
+      candy-icons
     ];
 
     home.file.".local/share/xsessions/i3.desktop".text = ''

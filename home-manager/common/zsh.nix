@@ -108,6 +108,7 @@
     du = "dust";
     df = "duf";
     "in" = "task add +in";
+    ttui = "taskwarrior-tui";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;

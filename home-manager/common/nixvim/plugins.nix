@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     auto-save.enable = true;
     auto-session.enable = true;
@@ -84,7 +85,7 @@
     helpview.enable = true;
     illuminate.enable = true;
     nvim-lightbulb.enable = true;
-    markview.enable = true;
+    markview.enable = false;
     yanky.enable = true;
     wakatime.enable = true;
     ts-comments.enable = true;
