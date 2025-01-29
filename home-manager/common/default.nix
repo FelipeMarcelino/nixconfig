@@ -138,11 +138,11 @@
     path = "/home/felipemarcelino/Zettelkasten/content";
   };
 
-  # programs.nix-index = {
-  #   enable = true;
-  #   enableZshIntegration = true;
-  # };
-  # programs.zsh.initExtra = ''
-  #   source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-  # '';
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  programs.zsh.initExtra = ''
+    source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+  '';
 }
