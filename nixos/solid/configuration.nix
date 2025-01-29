@@ -113,6 +113,8 @@
     git
     gparted
     toybox
+    beauty-line-icon-theme
+    dconf-editor
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -197,6 +199,13 @@
     port = 10000;
     openFirewall = true;
   };
+
+  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+  gtk.iconCache.enable = true;
+  qt.platformTheme.name = "gtk2";
+  qt.style.name = "gtk2";
+
+  programs.dconf.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

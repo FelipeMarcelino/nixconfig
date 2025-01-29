@@ -35,8 +35,7 @@ in
         idle_threshold = 120;
         markup = "full";
         alignment = "left";
-        format = "<b>%s</b>\n%b";
-        vertical-align = "center";
+        format = "<b>%s</b>\\n%b";
         icon_position = "left";
         word_wrap = "yes";
         ignore_newline = "no";

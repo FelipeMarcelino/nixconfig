@@ -24,7 +24,7 @@ in
 
     home.file.".config/ghostty/config".text = ''
       font-family = MonoLisa Nerd Font
-      font-size = 16
+      font-size = 20
       theme = catppuccin-macchiato 
       cursor-click-to-move = true
       mouse-shift-capture = true

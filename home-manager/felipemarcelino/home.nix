@@ -30,6 +30,7 @@
     pragmata-monolisa-fonts
     element-desktop
     discord
+    beauty-line-icon-theme
   ];
 
   imports = [ ./zsh.nix ];
@@ -83,6 +84,31 @@
     ./syncthing/key.pem;
   home.file."${config.home.homeDirectory}/.local/state/syncthing/config.xml".source =
     ./syncthing/config.xml;
+
+  # GTK
+  gtk = {
+    enable = true;
+    #theme.name = "mocha";
+    font.name = "PragmataProMono Nerd Font";
+    font.size = 12;
+    iconTheme.package = pkgs.beauty-line-icon-theme;
+    iconTheme.name = "BeautyLine";
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+  };
+  qt.platformTheme.name = "gtk2";
+  qt.style.name = "gtk2";
+  catppuccin = {
+    gtk = {
+      enable = true;
+      flavor = "machiato";
+      accent = "pink";
+      size = "standard";
+      tweaks = [ "normal" ];
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
