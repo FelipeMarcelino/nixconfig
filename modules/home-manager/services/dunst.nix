@@ -42,8 +42,11 @@ in
         show_indicators = "yes";
         sort = true;
         stack_duplicates = true;
-        startup_notification = false;
         hide_duplicate_count = true;
+        enable_recursive_icon_lookup = true;
+      };
+      experimental = {
+        enable_recursive_icon_lookup = true;
       };
       urgency_low = {
         background = "#24273a";
