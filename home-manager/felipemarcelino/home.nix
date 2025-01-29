@@ -88,7 +88,6 @@
   # GTK
   gtk = {
     enable = true;
-    #theme.name = "mocha";
     font.name = "PragmataProMono Nerd Font";
     font.size = 12;
     iconTheme.package = pkgs.beauty-line-icon-theme;
@@ -100,14 +99,26 @@
   };
   qt.platformTheme.name = "gtk2";
   qt.style.name = "gtk2";
+
   catppuccin = {
     gtk = {
       enable = true;
-      flavor = "machiato";
+      flavor = "macchiato";
       accent = "pink";
       size = "standard";
       tweaks = [ "normal" ];
     };
+    starship.enable = true;
+    spotify-player = {
+      enable = true;
+      flavor = "macchiato";
+    };
+  };
+
+  home.pointerCursor = {
+    name = "Numix-Cursor";
+    package = pkgs.numix-cursor-theme;
+    size = 24;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

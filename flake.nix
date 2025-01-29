@@ -35,7 +35,6 @@
       self,
       nixpkgs,
       home-manager,
-      catppuccin,
       ...
     }@inputs:
     let
@@ -85,7 +84,6 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/solid
-            catppuccin.nixosModules.catppuccin
 
             { home-manager.extraSpecialArgs = { inherit customLibs; }; }
           ];
@@ -106,7 +104,6 @@
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/felipemarcelino/solid.nix
-            catppuccin.homeManagerModules.catppuccin
 
           ];
         };
