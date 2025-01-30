@@ -176,7 +176,6 @@ in
       "ENTER" = "playlist-next";
       "<" = "playlist-prev";
       "O" = "no-osd cycle-values osd-level 3 1";
-      "o" = "show-progress";
       "P" = "show-progress";
       "i" = "script-binding stats/display-stats";
       "I" = "script-binding stats/display-stats-toggle";
@@ -205,7 +204,6 @@ in
       "Alt+2" = "set current-window-scale 2.0";
       "r" = "add sub-pos -1";
       "R" = "add sub-pos +1";
-      "t" = "add sub-pos +1";
       "v" = "cycle sub-visibility";
       "Alt+v" = "cycle secondary-sub-visibility";
       "V" = "cycle sub-ass-vsfilter-aspect-compat";
@@ -221,7 +219,6 @@ in
       "Alt+s" = "screenshot each-frame";
       "w" = "add panscan -0.1";
       "W" = "add panscan +0.1";
-      "e" = "add panscan +0.1";
       "ctrl+w" = "quit";
       "E" = "cycle edition";
       "l" = "ab-loop";
