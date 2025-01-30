@@ -31,6 +31,7 @@
     element-desktop
     discord
     beauty-line-icon-theme
+    mpv-custom-fonts
   ];
 
   imports = [ ./zsh.nix ];
@@ -120,6 +121,8 @@
     package = pkgs.numix-cursor-theme;
     size = 24;
   };
+
+  home.programs.mpv.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
