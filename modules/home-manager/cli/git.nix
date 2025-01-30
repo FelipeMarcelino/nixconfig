@@ -4,13 +4,17 @@
   pkgs,
   ...
 }:
-with lib; let
-  cfg = config.home.cli.git or {enable = false;};
-in {
+with lib;
+let
+  cfg = config.home.cli.git or { enable = false; };
+in
+{
   options.home.cli.git = mkOption {
     description = "Enable eza substitute of ls";
     type = types.attrs;
-    default = {enable = false;};
+    default = {
+      enable = false;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -20,7 +24,7 @@ in {
       delta = {
         enable = true;
         options = {
-          features = "side-by-side line-numbers decorations";
+          #features = "side-by-side line-numbers decorations";
           delta = {
             navigate = true;
           };
@@ -49,7 +53,7 @@ in {
         "Thumbs.db"
       ];
 
-      includes = [{path = "~/.config/git/local";}];
+      includes = [ { path = "~/.config/git/local"; } ];
 
       extraConfig = {
         init = {
