@@ -31,6 +31,7 @@
     element-desktop
     discord
     beauty-line-icon-theme
+    mpv-custom-fonts
   ];
 
   imports = [ ./zsh.nix ];

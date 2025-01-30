@@ -115,7 +115,12 @@
     toybox
     beauty-line-icon-theme
     dconf-editor
+    vulkan-tools
   ];
+  hardware.graphics.enable32Bit = true;
+  #hardware.graphics.extraPackages = with pkgs; [ vulkan-tools ];
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
