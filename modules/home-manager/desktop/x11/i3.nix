@@ -133,6 +133,8 @@ in
           "${mod}+Shift+h" = "move left";
           "${mod}+Shift+l" = "move right";
           "${mod}+f" = "fullscreen toggle";
+          "${mod}+y" = "exec --no-startup-id ghostty -e yazi";
+          "${mod}+t" = "exec --no-startup-id thunar";
           "${mod}+c" = "split h";
           "${mod}+v" = "split v";
           "${mod}+p" = "exec --no-startup-id \"flameshot screen\"";

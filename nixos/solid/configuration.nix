@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ../common/default.nix
     ./picom.nix
+    #./greetd.nix
   ];
 
   # Bootloader.
@@ -74,6 +75,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  #services.displayManager.sessionPackages = [ pkgs.i3. ];
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
@@ -108,6 +110,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    i3
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
@@ -220,6 +223,8 @@
     poppler_gi
     gnome-epub-thumbnailer
   ];
+
+  services.gvsfs.enable = true;
 
   programs.dconf.enable = true;
 
