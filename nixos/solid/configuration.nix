@@ -210,6 +210,17 @@
   qt.platformTheme.name = "gtk2";
   qt.style.name = "gtk2";
 
+  # Thunar
+  programs.thunar.enable = true;
+  programs.thunar.plugins = with pkgs; [
+    xfce.thunar-archive-plugin
+    xfce.thunar-volman
+    xfce.tumbler
+    ffmpegthumbnailer
+    poppler_gi
+    gnome-epub-thumbnailer
+  ];
+
   programs.dconf.enable = true;
 
   # This value determines the NixOS release from which the default

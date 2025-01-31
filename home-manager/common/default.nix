@@ -114,6 +114,7 @@
       zettelkasten.enable = true;
       taskwarrior.enable = true;
       broot.enable = true;
+      yazi.enable = true;
     };
   };
 

@@ -64,6 +64,12 @@ in
             always = true;
             notification = false;
           }
+
+          {
+            command = "systemctl --user restart polybar";
+            always = true;
+            notification = false;
+          }
         ];
         bars = [ ];
         modifier = mod;
@@ -212,6 +218,15 @@ in
           smartBorders = "off";
           inner = 4;
           outer = 4;
+        };
+        assigns = {
+          "1" = [ { class = "ghostty"; } ];
+          "2" = [
+            { class = "discord"; }
+            { class = "Element"; }
+          ];
+          "3" = [ { class = "firefox"; } ];
+          "4" = [ { class = "Spotify"; } ];
         };
       };
       extraConfig = " for_window [class=.*] border pixel 4";

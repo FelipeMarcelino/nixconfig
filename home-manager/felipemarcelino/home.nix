@@ -58,6 +58,7 @@
 
     programs = {
       rofi.enable = true;
+
     };
 
     services = {
@@ -98,8 +99,8 @@
       package = pkgs.numix-cursor-theme;
     };
   };
-  qt.platformTheme.name = "gtk2";
-  qt.style.name = "gtk2";
+  qt.platformTheme.name = "gtk3";
+  qt.style.name = "gtk3";
 
   catppuccin = {
     gtk = {
@@ -111,6 +112,26 @@
     };
     starship.enable = true;
     spotify-player = {
+      enable = true;
+      flavor = "macchiato";
+    };
+    bat = {
+      enable = true;
+      flavor = "macchiato";
+    };
+    delta = {
+      enable = true;
+      flavor = "macchiato";
+    };
+    fzf = {
+      enable = true;
+      flavor = "macchiato";
+    };
+    mpv = {
+      enable = true;
+      flavor = "macchiato";
+    };
+    yazi = {
       enable = true;
       flavor = "macchiato";
     };
