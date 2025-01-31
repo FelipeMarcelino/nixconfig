@@ -58,6 +58,7 @@
 
     programs = {
       rofi.enable = true;
+
     };
 
     services = {
@@ -127,6 +128,10 @@
       flavor = "macchiato";
     };
     mpv = {
+      enable = true;
+      flavor = "macchiato";
+    };
+    yazi = {
       enable = true;
       flavor = "macchiato";
     };
