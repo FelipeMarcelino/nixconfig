@@ -48,7 +48,7 @@ in
       python-pkgs.requests
     ];
   };
-  xdg.desktopEntries."nvim" = mkForce {
+  xdg.desktopEntries."nvim" = {
     name = "Neovim";
     type = "Application";
     mimeType = [ "text/plain" ];
@@ -60,18 +60,18 @@ in
 
     exec =
       let
-        wezterm = getExe config.programs.wezterm.package;
+        ghostty = getExe pkgs.ghostty;
         direnv = getExe pkgs.direnv;
       in
-      "${pkgs.writeShellScript "wezterm-neovim" ''
+      "${pkgs.writeShellScript "ghostty-neovim" ''
         # define target filename
         filename="$(readlink -f "$1")"
 
         # get the directory target file is in
         dirname="$(dirname "$filename")"
 
-        # launch a wezterm instance with direnv and nvim
-        ${wezterm} -e --cwd "$dirname" -- ${getExe pkgs.zsh} -c "${direnv} exec . nvim '$filename'"
+        # launch a ghostty instance with direnv and nvim
+        ${ghostty} --working-directory="$dirname" --command="${direnv} exec . nvim '$filename'"
       ''} %f";
   };
 

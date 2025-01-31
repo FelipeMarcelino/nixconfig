@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nixvim.extraPlugins = [
     pkgs.vimPlugins.blink-ripgrep-nvim
   ];
@@ -35,7 +36,7 @@
                     __unkeyed-2 = "kind";
                     gap = 1;
                   }
-                  {__unkeyed-1 = "source_name";}
+                  { __unkeyed-1 = "source_name"; }
                 ];
                 components = {
                   kind_icon = {
@@ -178,7 +179,7 @@
       cmp-spell.enable = true;
       # cmp-treesitter.enable = true;
       cmp-zsh.enable = true;
-      #cmp-vimwiki-tags.enable = true;
+      cmp-vimwiki-tags.enable = true;
 
       lsp.capabilities =
         # Lua

@@ -109,6 +109,7 @@
     df = "duf";
     "in" = "task add +in";
     ttui = "taskwarrior-tui";
+    o = "xdg-open";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;
