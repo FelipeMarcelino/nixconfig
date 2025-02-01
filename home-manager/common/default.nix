@@ -115,6 +115,7 @@
       taskwarrior.enable = true;
       broot.enable = true;
       yazi.enable = true;
+      firefox.enable = true;
     };
   };
 

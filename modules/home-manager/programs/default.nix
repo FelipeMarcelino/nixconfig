@@ -4,6 +4,7 @@
     ./broot.nix
     ./rofi
     ./feh.nix
+    ./firefox.nix
     ./mpv.nix
     ./taskwarrior
     ./yazi.nix
