@@ -224,7 +224,7 @@
     gnome-epub-thumbnailer
   ];
 
-  services.gvsfs.enable = true;
+  services.gvfs.enable = true;
 
   programs.dconf.enable = true;
 

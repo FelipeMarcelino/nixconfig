@@ -7,6 +7,7 @@
     ./mpv.nix
     ./taskwarrior
     ./yazi.nix
+    ./yt-dlp.nix
     ./zathura.nix
     ./zk.nix
   ];
