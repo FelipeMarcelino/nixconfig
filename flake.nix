@@ -27,7 +27,13 @@
       flake = false;
     };
     sops-nix.url = "github:Mic92/sops-nix";
+
     catppuccin.url = "github:catppuccin/nix";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -35,6 +41,7 @@
       self,
       nixpkgs,
       home-manager,
+      firefox-addons,
       ...
     }@inputs:
     let
@@ -79,13 +86,14 @@
             inherit
               inputs
               outputs
+              firefox-addons
               ;
           };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/solid
 
-            { home-manager.extraSpecialArgs = { inherit customLibs; }; }
+            { home-manager.extraSpecialArgs = { inherit customLibs firefox-addons; }; }
           ];
         };
       };
@@ -99,6 +107,7 @@
             inherit
               inputs
               outputs
+              firefox-addons
               ;
           };
           modules = [
@@ -113,6 +122,7 @@
             inherit
               inputs
               outputs
+              firefox-addons
               ;
           };
           modules = [
