@@ -82,6 +82,7 @@
     nerd-fonts.monaspace
     xclip
     trash-cli
+    pavucontrol
 
     coreutils
     htop-vim
@@ -115,6 +116,7 @@
       taskwarrior.enable = true;
       broot.enable = true;
       yazi.enable = true;
+      firefox.enable = true;
     };
   };
 
@@ -146,4 +148,6 @@
   programs.zsh.initExtra = ''
     source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
   '';
+
+  services.pasystray.enable = true;
 }

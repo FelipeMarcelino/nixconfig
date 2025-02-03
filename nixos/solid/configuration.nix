@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -49,29 +50,30 @@
 
   # Bluetooth
   services.blueman.enable = true;
-
-  #  Pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true; # if not already enabled
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    # powerOnBoot = true;
+    # settings = {
+    #   General = {
+    #     ControllerMode = "bredr";
+    #     FastConnectable = true; # increased power consumption
+    #     Experimental = true;
+    #     DiscoverableTimeout = "0";
+    #     KernelExperimental = true;
+    #   };
+    #   Policy = {
+    #     AutoEnable = "true";
+    #   };
+    # };
   };
 
-  services.pipewire.wireplumber.extraConfig."10-bluez" = {
-    "monitor.bluez.properties" = {
-      "bluez5.enable-sbc-xq" = true;
-      "bluez5.enable-msbc" = true;
-      "bluez5.enable-hw-volume" = true;
-      "bluez5.roles" = [
-        "hsp_hs"
-        "hsp_ag"
-        "hfp_hf"
-        "hfp_ag"
-      ];
-    };
-  };
+  # hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
+  #   load-module module-bluetooth-policy
+  #   load-module module-bluetooth-discover
+  #   ##   module.c: Failed to load module "module-bluez5-device" (argument: ""): initialization failed.
+  #   # load-module module-bluez5-device
+  #   # load-module module-bluez5-discover
+  # '';
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -210,8 +212,8 @@
 
   programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
   gtk.iconCache.enable = true;
-  qt.platformTheme.name = "gtk2";
-  qt.style.name = "gtk2";
+  qt.platformTheme.name = "gtk3";
+  qt.style.name = "gtk3";
 
   # Thunar
   programs.thunar.enable = true;
@@ -224,9 +226,13 @@
     gnome-epub-thumbnailer
   ];
 
-  services.gvfs.enable = true;
+  services.gvfs.enable = lib.mkForce false;
 
   programs.dconf.enable = true;
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0032", ATTR{authorized}="0"'
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

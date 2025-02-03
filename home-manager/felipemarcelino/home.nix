@@ -17,7 +17,6 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager
