@@ -2,25 +2,25 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
 let
   cfg = config.home.programs.firefox or { enable = false; };
-  extensions = [
+  extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
     bitwarden
     darkreader
     ff2mpv
     # auto-accepts cookies, use only with privacy-badger & ublock-origin
     istilldontcareaboutcookies
-    grammarly
     surfingkeys
     link-cleaner
     privacy-badger
     simple-tab-groups
     ublock-origin
     unpaywall
-    redit-enhancement-suite
+    reddit-enhancement-suite
   ];
 
   disableWebRtcIndicator = ''
@@ -96,7 +96,7 @@ let
     "privacy.donottrackheader.enabled" = true;
 
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-  } // dpiSettings;
+  };
 
   demoSettings = {
     "accessibility.force_disabled" = 1;
@@ -180,7 +180,7 @@ in
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-beta-bin;
-      profiles = {
+      profiles.default = {
         id = 0;
         inherit extensions settings userChrome;
       };
