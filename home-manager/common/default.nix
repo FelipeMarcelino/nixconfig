@@ -82,6 +82,7 @@
     nerd-fonts.monaspace
     xclip
     trash-cli
+    pavucontrol
 
     coreutils
     htop-vim
@@ -147,4 +148,6 @@
   programs.zsh.initExtra = ''
     source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
   '';
+
+  services.pasystray.enable = true;
 }
