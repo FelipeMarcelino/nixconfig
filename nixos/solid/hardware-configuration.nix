@@ -23,7 +23,17 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [
+    "bluetooth"
+    "btusb"
+    "btintel"
+    "btrtl"
+    "btbcm"
+    "btmtk"
+    # Required for BAP/ISO
+    "bluetooth_iso"
+    "bt_iso"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
