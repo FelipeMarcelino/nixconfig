@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     ../common/default.nix
     ./picom.nix
-    #./greetd.nix
+    ./greetd.nix
   ];
 
   # Bootloader.
@@ -75,7 +75,7 @@
   #   # load-module module-bluez5-discover
   # '';
 
-  # Enable the X11 windowing system.
+  # Enable the X11 wxSessio3nindowing system.
   services.xserver.enable = true;
   #services.displayManager.sessionPackages = [ pkgs.i3. ];
 
@@ -84,12 +84,13 @@
     enable = true;
     wayland = false;
   };
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = false;
   #services.greetd.enable = true;
   #programs.regreet.enable = true;
 
   # I3
   services.xserver.windowManager.i3.enable = true;
+  services.xserver.displayManager.startx.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
