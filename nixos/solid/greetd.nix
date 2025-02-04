@@ -6,7 +6,6 @@
 }:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  i3-session = "${config.users.users.felipemarcelino.home}/.local/share/xsessions";
 in
 {
   environment.etc."greetd/sessions/i3.desktop".text = ''i3'';
@@ -16,10 +15,16 @@ in
     restart = false;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd i3";
+        command = " ${tuigreet}";
         user = "felipemarcelino";
       };
     };
   };
+  environment.etc."greetd/environments".text = ''
+    i3
+  '';
 
+  systemd.tmpfiles.rules = [
+    "f /tmp/Xauth-1000 0644 felipemarcelino users -"
+  ];
 }
