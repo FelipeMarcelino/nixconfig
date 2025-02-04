@@ -60,7 +60,7 @@ in
         };
         startup = [
           {
-            command = "feh --bg-scale ${config.home.homeDirectory}/.wallpappers/horizontal.jpg ${config.home.homeDirectory}/.wallpappers/vertical.png";
+            command = "autorandr --load default; feh --bg-scale ${config.home.homeDirectory}/.wallpappers/horizontal.jpg ${config.home.homeDirectory}/.wallpappers/vertical.png";
             always = true;
             notification = false;
           }
@@ -70,6 +70,18 @@ in
             always = true;
             notification = false;
           }
+
+          {
+            command = "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false";
+            always = false;
+            notification = false;
+          }
+
+          # {
+          #   command = "autorandr --load default";
+          #   always = true;
+          #   notification = false;
+          # }
         ];
         bars = [ ];
         modifier = mod;
