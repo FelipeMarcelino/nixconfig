@@ -77,6 +77,10 @@
       sopsFile = ../../secrets/felipemarcelino.yaml;
       path = "${config.home.homeDirectory}/.local/share/secrets/github_token";
     };
+    secrets."openai_api_key" = {
+      sopsFile = ../../secrets/felipemarcelino.yaml;
+      path = "${config.home.homeDirectory}/.local/share/secrets/openai_api_key";
+    };
   };
 
   # syncthing

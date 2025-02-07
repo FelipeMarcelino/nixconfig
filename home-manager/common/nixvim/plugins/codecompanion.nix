@@ -1,4 +1,8 @@
 { config, pkgs, ... }:
+let
+  api_key = ''${builtins.readFile config.sops.secrets."openai_api_key".path}'';
+
+in
 {
   programs.nixvim.plugins.codecompanion.settings = {
     adapters = {
@@ -7,8 +11,7 @@
           function()
             return require('codecompanion.adapters').extend('openai', {
                 env = {
-                  api_key =
-                  "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";
+                  api_key = "${api_key}"
                 },
                 schema = {
                 model = {
@@ -62,4 +65,3 @@
     }
   ];
 }
-
