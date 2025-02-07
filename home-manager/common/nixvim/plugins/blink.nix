@@ -98,6 +98,7 @@
               "lsp"
               "path"
               "snippets"
+              "codecompanion"
               # Community
               "copilot"
               "ripgrep"
@@ -118,6 +119,10 @@
                 module = "blink-cmp-copilot";
                 async = true;
                 score_offset = 100;
+              };
+              codecompanion = {
+                name = "CodeCompanion";
+                module = "codecompanion.providers.completion.blink";
               };
               ripgrep = {
                 name = "Ripgrep";

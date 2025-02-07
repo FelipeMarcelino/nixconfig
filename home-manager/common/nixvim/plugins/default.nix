@@ -16,6 +16,7 @@
     ./codesnap.nix
     ./colorizer.nix
     ./copilot.nix
+    ./codecompanion.nix
     ./diffview.nix
     ./flash.nix
     ./git-conflict.nix

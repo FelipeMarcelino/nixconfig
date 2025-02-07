@@ -19,6 +19,7 @@
     ## cmp-nvim-lsp-signature-help.enable = true;
     ## copilot-cmp.enable = true;
     #cmp.enable = true;
+    codecompanion.enable = true;
     commentary.enable = true;
     copilot-lua.enable = true;
     copilot-chat.enable = true;
