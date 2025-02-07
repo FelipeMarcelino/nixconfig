@@ -33,7 +33,10 @@
     mpv-custom-fonts
   ];
 
-  imports = [ ./zsh.nix ];
+  imports = [
+    ./zsh.nix
+    ./xdg.nix
+  ];
 
   # Walppapers
   systemd.user.tmpfiles.rules = [

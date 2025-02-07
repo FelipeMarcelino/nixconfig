@@ -30,6 +30,8 @@
   home.packages = with pkgs; [
     pragmata-monolisa-fonts
     dbeaver-bin
+
+    jetbrains.idea-ultimate
   ];
 
   # My modules
