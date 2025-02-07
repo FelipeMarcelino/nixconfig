@@ -123,6 +123,8 @@
               codecompanion = {
                 name = "CodeCompanion";
                 module = "codecompanion.providers.completion.blink";
+                score_offset = 110;
+                enabled = true;
               };
               ripgrep = {
                 name = "Ripgrep";

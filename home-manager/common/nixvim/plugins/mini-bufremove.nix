@@ -2,11 +2,12 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     mini = {
       modules = {
-        bufremove = {};
+        bufremove = { };
       };
     };
   };
@@ -14,7 +15,7 @@
   programs.nixvim.keymaps = [
     {
       mode = "n";
-      key = "<leader>c";
+      key = "<leader>cc";
       action.__raw = ''require("mini.bufremove").delete'';
       options = {
         desc = "Close buffer";
