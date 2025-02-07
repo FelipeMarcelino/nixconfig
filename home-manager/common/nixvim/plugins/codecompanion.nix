@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
-
-  progrmas.nixvim.plugins.codecompanion.setttings = {
+  programs.nixvim.plugins.codecompanion.settings = {
     strategies = {
       chat = {
         adapter = "deepseek";
