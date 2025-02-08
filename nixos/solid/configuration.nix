@@ -14,6 +14,7 @@
     ../common/default.nix
     ./picom.nix
     ./greetd.nix
+    ./security.nix
   ];
 
   # Bootloader.
