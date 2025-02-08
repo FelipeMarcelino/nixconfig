@@ -101,4 +101,8 @@
     mini.enable = true;
     comment-box.enable = true;
   };
+
+  programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
+    nvzone-typr
+  ];
 }

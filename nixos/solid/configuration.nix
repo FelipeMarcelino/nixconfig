@@ -235,6 +235,12 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0032", ATTR{authorized}="0"'
   '';
 
+  services.dbus = {
+    enable = true;
+    # Expose system-wide services (e.g., NetworkManager, UPower)
+    packages = [ pkgs.dconf ];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

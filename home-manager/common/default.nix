@@ -82,8 +82,8 @@
     nerd-fonts.monaspace
     xclip
     trash-cli
+    pwvucontrol
     pavucontrol
-
     coreutils
     htop-vim
     httpie
