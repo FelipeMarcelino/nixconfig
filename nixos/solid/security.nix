@@ -5,7 +5,7 @@
       users = [ "felipemarcelino" ];
       commands = [
         {
-          commands = "/usr/bin/systemctl reboot";
+          command = "/run/current-system/sw/bin/systemctl reboot";
           options = [ "NOPASSWD" ];
         }
       ];
