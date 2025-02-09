@@ -97,6 +97,7 @@
     unzip
     age
     sops
+    fdupes
   ];
 
   home = {
