@@ -41,12 +41,13 @@ in
     };
 
     extraPython3Packages = python-pkgs: [
-      python-pkgs.numpy
-      python-pkgs.pandas
-      python-pkgs.scipy
-      python-pkgs.matplotlib
-      python-pkgs.requests
+      python-pkgs.tasklib
+      python-pkgs.packaging
     ];
+
+    globals = {
+      "taskwiki_data_location" = "$XDG_TASKWARRIOR_DIR/";
+    };
   };
   xdg.desktopEntries."nvim" = {
     name = "Neovim";

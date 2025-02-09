@@ -98,6 +98,7 @@
     age
     sops
     fdupes
+    aider-chat
   ];
 
   home = {

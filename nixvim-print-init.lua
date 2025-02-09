@@ -11,6 +11,7 @@ do
         matchup_transmute_enabled = 1,
         mkdp_auto_close = 0,
         mkdp_theme = "dark",
+        taskwiki_data_location = "$XDG_TASKWARRIOR_DIR/",
         undotree_CursorLine = true,
         undotree_DiffAutoOpen = true,
         undotree_DiffCommand = "diff",

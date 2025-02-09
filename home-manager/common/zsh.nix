@@ -110,8 +110,15 @@
     "in" = "task add +in";
     ttui = "taskwarrior-tui";
     o = "xdg-open";
+    aidero3 = "aider --architect --model o1-mini --editor-model 4o --cache-prompts --no-stream --dark-mode ";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;
+  };
+
+  programs.zsh.sessionVariables = {
+    OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.sops.secrets."openai_api_key".path})'';
+    EDITOR_MODEL = "4o";
+    MODEL = "o1-mini";
   };
 }

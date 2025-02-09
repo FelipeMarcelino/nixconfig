@@ -104,5 +104,7 @@
 
   programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
     nvzone-typr
+    taskwiki
+    vimwiki
   ];
 }
