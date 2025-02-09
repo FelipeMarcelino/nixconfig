@@ -64,13 +64,16 @@ in
             always = true;
             notification = false;
           }
-
           {
             command = "systemctl --user restart polybar";
             always = true;
             notification = false;
           }
-
+          {
+            command = "systemctl --machine=felipemarcelino@.host --user start picom.service";
+            always = true;
+            notification = false;
+          }
           {
             command = "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false";
             always = false;
