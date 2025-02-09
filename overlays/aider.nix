@@ -1,6 +1,6 @@
 (final: prev: {
-  # Override the aider-chat package
-  aider-chat = prev.aider-chat.overrideAttrs (oldAttrs: rec {
+  # Override the aider package
+  aider = prev.aider.overrideAttrs (oldAttrs: rec {
     version = "0.72.3";
     # Override the src using the new hash from the PR.
     src = prev.fetchFromGitHub {
