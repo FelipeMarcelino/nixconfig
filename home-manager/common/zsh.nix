@@ -110,7 +110,7 @@
     "in" = "task add +in";
     ttui = "taskwarrior-tui";
     o = "xdg-open";
-    aidero3 = "aider --architect --model o1-mini --editor-model 4o --cache-prompts --no-stream --dark-mode ";
+    aidero1 = "aider --architect --model o1-mini --editor-model 4o --cache-prompts --no-stream --dark-mode ";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;
