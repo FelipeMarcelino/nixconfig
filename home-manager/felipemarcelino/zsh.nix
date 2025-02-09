@@ -10,4 +10,8 @@
     QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
+  programs.zsh.shellAliases = {
+    reboot = "sudo /run/current-system/sw/bin/systemctl reboot";
+  };
+
 }
