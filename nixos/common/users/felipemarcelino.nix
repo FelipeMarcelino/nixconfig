@@ -32,6 +32,7 @@
   };
 
   programs.git.enable = true;
+  programs.gaming.enable = true;
 
   home-manager.users.felipemarcelino = import ../../../home-manager/felipemarcelino/${config.networking.hostName}.nix;
 }
