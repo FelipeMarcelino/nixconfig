@@ -2,6 +2,6 @@
 {
 
   imports = [
-    ./gamemode.nix
+    ./gaming.nix
   ];
 }

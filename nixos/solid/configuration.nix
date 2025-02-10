@@ -236,6 +236,8 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0032", ATTR{authorized}="0"'
   '';
 
+  programs.gaming.enable = true;
+
   services.dbus = {
     enable = true;
     # Expose system-wide services (e.g., NetworkManager, UPower)
