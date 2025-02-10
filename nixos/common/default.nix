@@ -5,15 +5,17 @@
   inputs,
   outputs,
   ...
-}: {
+}:
+{
   imports = [
     ./users
     inputs.home-manager.nixosModules.home-manager
+    inputs.self.nixosModules.programs
   ];
 
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = { inherit inputs outputs; };
   };
 
   nixpkgs = {
@@ -54,10 +56,10 @@
       options = "--delete-older-than 7d";
     };
     optimise.automatic = true;
-    registry = (lib.mapAttrs (_: flake: {inherit flake;})) (
+    registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
       (lib.filterAttrs (_: lib.isType "flake")) inputs
     );
-    nixPath = ["/etc/nix/path"];
+    nixPath = [ "/etc/nix/path" ];
   };
 
   users.defaultUserShell = pkgs.zsh;

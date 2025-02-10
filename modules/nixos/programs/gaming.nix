@@ -14,6 +14,14 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.gamemode.enable = true;
+    programs.steam.enable = true;
+    programs.steam.extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    programs.steam.extraPackages = with pkgs; [
+      gamescope
+    ];
+
   };
 
 }
