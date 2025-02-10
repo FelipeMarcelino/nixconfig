@@ -8,6 +8,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -70,6 +71,11 @@
     device = "/home/felipemarcelino/Data/ollama";
     fsType = "none";
     options = [ "bind" ];
+  };
+
+  fileSystems."/home/felipemarcelino/Games" = {
+    device = "/dev/disk/by-uuid/a21c80b8-6d9f-4b17-aaa1-b6044a2c6d3e";
+    fsType = "ext4";
   };
 
   swapDevices = [

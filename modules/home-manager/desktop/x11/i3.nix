@@ -132,7 +132,7 @@ in
           }
         ];
 
-        workspaceAutoBackAndForth = true;
+        workspaceAutoBackAndForth = false;
         keybindings = {
           "${mod}+h" = "focus left";
           "${mod}+l" = "focus right";
