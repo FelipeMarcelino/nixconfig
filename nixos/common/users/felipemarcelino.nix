@@ -17,7 +17,7 @@
       "audio"
       "video"
       "bluetooth"
-    ];
+    ] ++ lib.optionals config.programs.gaming.enable [ "gamemode" ];
 
     packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
   };
