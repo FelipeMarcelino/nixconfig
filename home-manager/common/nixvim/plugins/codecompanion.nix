@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   api_key = ''${builtins.readFile config.sops.secrets."openai_api_key".path}'';
-
 in
 {
   programs.nixvim.plugins.codecompanion.settings = {
@@ -18,22 +17,22 @@ in
                   default = "o1-mini-2024-09-12"
                 }
               }
-            })
-          end
-        '';
-      };
+            }
+          })
+        end
+      '';
     };
-    strategies = {
-      chat = {
-        adapter = "openai";
-      };
-      inline = {
-        adapter = "openai";
-      };
+  };
+  strategies = {
+    chat = {
+      adapter = "openai";
     };
-    opts = {
-      log_level = "DEBUG";
+    inline = {
+      adapter = "openai";
     };
+  };
+  opts = {
+    log_level = "DEBUG";
   };
 
   programs.nixvim.keymaps = [
