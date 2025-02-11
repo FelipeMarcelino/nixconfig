@@ -73,6 +73,11 @@
       sopsFile = ../../secrets/onboarding.yaml;
       path = "${config.home.homeDirectory}/.local/share/secrets/homebrew_github_api_token";
     };
+
+    secrets."openai_api_key" = {
+      sopsFile = ../../secrets/onboarding.yaml;
+      path = "${config.home.homeDirectory}/.local/share/secrets/openai_api_key";
+    };
   };
 
   home.file."${config.home.homeDirectory}/.local/state/syncthing/cert.pem".source =

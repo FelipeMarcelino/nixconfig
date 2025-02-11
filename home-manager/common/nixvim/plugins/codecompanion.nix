@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  api_key = ''${builtins.readFile config.sops.secrets."openai_api_key".path}'';
+  api_key_path = ''${config.sops.secrets."openai_api_key".path}'';
 in
 {
   programs.nixvim.plugins.codecompanion.settings = {
@@ -8,31 +8,45 @@ in
       openai = {
         __raw = ''
           function()
+            local function read_api_key(file_path)
+              local file = io.open(file_path, "r")
+              if file then
+                local api_key = file:read("*all")
+                file:close()
+                return api_key:gsub("%s+", "")  -- trim whitespace/newlines
+              else
+                error("Failed to open file: " .. file_path)
+              end
+            end
+
+            local api_key = read_api_key("${api_key_path}")
             return require('codecompanion.adapters').extend('openai', {
-                env = {
-                    api_key = "${api_key}",
-                 },
-                schema = {
+              env = {
+                api_key = api_key
+              },
+              schema = {
                 model = {
                   default = "o1-mini-2024-09-12"
                 }
               }
-            }
-          })
-        end
-      '';
+            })
+          end
+        '';
+      };
     };
-  };
-  strategies = {
-    chat = {
-      adapter = "openai";
+
+    strategies = {
+      chat = {
+        adapter = "openai";
+      };
+      inline = {
+        adapter = "openai";
+      };
     };
-    inline = {
-      adapter = "openai";
+
+    opts = {
+      log_level = "DEBUG";
     };
-  };
-  opts = {
-    log_level = "DEBUG";
   };
 
   programs.nixvim.keymaps = [
@@ -44,7 +58,6 @@ in
         desc = "CodeCompanionChat";
       };
     }
-
     {
       mode = "n";
       key = "<leader>ca";
@@ -53,7 +66,6 @@ in
         desc = "CodeCompanionActions";
       };
     }
-
     {
       mode = "n";
       key = "<leader>cm";
