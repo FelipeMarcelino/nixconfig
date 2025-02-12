@@ -15,6 +15,7 @@
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
       XDG_TASKWARRIOR_DIR = "${config.home.homeDirectory}/Taskwarrior";
       XDG_YT_DLP_DIR = "${config.home.homeDirectory}/YT_DLP";
+      XDG_BUKU_DIR = "${config.home.homeDirectory}/Buku";
     };
   };
 

@@ -80,6 +80,7 @@
 
   home.packages = with pkgs; [
     nerd-fonts.monaspace
+    buku
     xclip
     trash-cli
     pwvucontrol

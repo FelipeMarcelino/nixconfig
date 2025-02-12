@@ -111,6 +111,7 @@
     ttui = "taskwarrior-tui";
     o = "xdg-open";
     aidero1 = "aider --architect --model o1-mini --editor-model 4o --cache-prompts --no-stream --dark-mode ";
+    b = "buku --suggest --db $XDG_BUKU_DIR/bookmarks.db";
   };
   programs.zsh.localVariables = {
     KEYTIMEOUT = 15;
