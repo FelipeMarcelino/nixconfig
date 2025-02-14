@@ -110,6 +110,11 @@
           "/nix/.ro-store"
         ];
       };
+      "/var/lib/private/ollama/models" = {
+        fsType = "none";
+        mountOptions = [ "bind" ];
+        device = "/home/felipemarcelino/Data/ollama";
+      };
     };
   };
 }

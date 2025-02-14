@@ -37,6 +37,10 @@
     pulse.enable = true;
   };
 
+  systemd.tmpfiles.rules = [
+    "d /home/felipemarcelino/Data/ollama 0755 felipemarcelino users -"
+  ];
+
   programs.git.enable = true;
   programs.gaming.enable = true;
   services.virtualisation.enable = true;
