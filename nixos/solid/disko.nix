@@ -56,12 +56,19 @@
       };
 
       # Games NVME
-      nvme0 = {
+      disk.nvme0 = {
         type = "disk";
         device = builtins.elemAt disks 1;
         content = {
           type = "gpt";
           partitions = {
+            swap = {
+              size = "64G";
+              content = {
+                type = "swap";
+                resumeDevice = true;
+              };
+            };
             games = {
               size = "100%";
               content = {
