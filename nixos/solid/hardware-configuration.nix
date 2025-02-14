@@ -37,52 +37,6 @@
   ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/86b62c29-22bb-4450-940b-daa5eb7f294f";
-    fsType = "ext4";
-  };
-
-  boot.initrd.luks.devices."luks-d6fbbfaa-2122-4b39-b2a2-6082664a2c20".device =
-    "/dev/disk/by-uuid/d6fbbfaa-2122-4b39-b2a2-6082664a2c20";
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/BD69-4243";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/4138adf2-ffc5-4782-9654-0253630f9791";
-    fsType = "ext4";
-  };
-
-  boot.initrd.luks.devices."luks-e0dd1a53-5900-4382-a62e-519acbc6b9b0".device =
-    "/dev/disk/by-uuid/e0dd1a53-5900-4382-a62e-519acbc6b9b0";
-
-  fileSystems."/home/felipemarcelino/Data" = {
-    device = "/dev/disk/by-uuid/88710f5c-2eb2-4625-a42c-0c181c9c712c";
-    fsType = "ext4";
-  };
-
-  fileSystems."/var/lib/private/ollama/models" = {
-    device = "/home/felipemarcelino/Data/ollama";
-    fsType = "none";
-    options = [ "bind" ];
-  };
-
-  fileSystems."/home/felipemarcelino/Games" = {
-    device = "/dev/disk/by-uuid/a21c80b8-6d9f-4b17-aaa1-b6044a2c6d3e";
-    fsType = "ext4";
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/a556a007-bb09-4c5d-ade4-42bb214faf1d"; }
-    { device = "/dev/disk/by-uuid/accba802-6230-4f4b-babc-5007dc1e7eaf"; }
-  ];
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
