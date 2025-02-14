@@ -10,6 +10,7 @@
   imports = [
     ./users
     inputs.home-manager.nixosModules.home-manager
+    inputs.disko.nixosModules.disko
     inputs.self.nixosModules.programs
     inputs.self.nixosModules.services
   ];

@@ -15,6 +15,7 @@
     ./picom.nix
     ./greetd.nix
     ./security.nix
+    ./disko.nix
   ];
 
   # Bootloader.
@@ -241,6 +242,14 @@
     # Expose system-wide services (e.g., NetworkManager, UPower)
     packages = [ pkgs.dconf ];
   };
+
+  swapDevices = [
+    { device = "/dev/disk/by-partlabel/swap"; } # Match partition label in Disko
+  ];
+
+  # For hibernation (optional)
+  boot.resumeDevice = "/dev/disk/by-partlabel/swap";
+  boot.kernelParams = [ "resume_offset=0" ]; # Adjust if using swapfile
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
