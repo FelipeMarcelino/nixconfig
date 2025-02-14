@@ -39,6 +39,7 @@
 
   programs.git.enable = true;
   programs.gaming.enable = true;
+  services.virtualisation.enable = true;
 
   home-manager.users.felipemarcelino = import ../../../home-manager/felipemarcelino/${config.networking.hostName}.nix;
 }

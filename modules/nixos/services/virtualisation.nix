@@ -23,7 +23,6 @@ in
       spice-protocol
       win-virtio
       win-spice
-      gnome.adwaita-icon-theme
     ];
 
     virtualisation = {
@@ -33,10 +32,12 @@ in
           swtpm.enable = true;
           ovmf.enable = true;
           ovmf.packages = [ pkgs.OVMFFull.fd ];
+          package = pkgs.qemu_kvm;
         };
       };
       spiceUSBRedirection.enable = true;
     };
+    virtualisation.virtualbox.host.enableKvm = true;
     services.spice-vdagentd.enable = true;
   };
 }

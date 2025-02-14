@@ -5,5 +5,5 @@
   # my-module = import ./my-module.nix;
   #fonts = import ./fonts.nix;
   programs = import ./programs/default.nix;
-  services = import ./services/default.nix
+  services = import ./services/default.nix;
 }
