@@ -11,13 +11,19 @@
   users.users.felipemarcelino = {
     isNormalUser = true;
     description = "Felipe Glicério Gomes Marcelino";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "audio"
-      "video"
-      "bluetooth"
-    ] ++ lib.optionals config.programs.gaming.enable [ "gamemode" ];
+    extraGroups =
+      [
+        "networkmanager"
+        "wheel"
+        "audio"
+        "video"
+        "bluetooth"
+      ]
+      ++ lib.optionals config.programs.gaming.enable [ "gamemode" ]
+      ++ lib.optionals config.services.virtualisation.enable [
+        "libvirte"
+        "kvm"
+      ];
 
     packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
   };
@@ -33,6 +39,7 @@
 
   programs.git.enable = true;
   programs.gaming.enable = true;
+  services.virtualisation.enable = true;
 
   home-manager.users.felipemarcelino = import ../../../home-manager/felipemarcelino/${config.networking.hostName}.nix;
 }
