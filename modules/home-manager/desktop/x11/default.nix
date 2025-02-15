@@ -1,3 +1,8 @@
-{pkgs, ...}: {
-  imports = [./i3.nix ./autorandr.nix];
+{ pkgs, ... }:
+{
+  imports = [
+    ./i3.nix
+    ./autorandr.nix
+    ./awesome
+  ];
 }
