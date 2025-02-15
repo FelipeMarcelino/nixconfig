@@ -83,15 +83,18 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
     enable = true;
-    wayland = false;
+    wayland = true;
   };
-  services.xserver.desktopManager.gnome.enable = false;
+  services.xserver.desktopManager.gnome.enable = true;
   #services.greetd.enable = true;
   #programs.regreet.enable = true;
 
   # I3
   services.xserver.windowManager.i3.enable = true;
   services.xserver.displayManager.startx.enable = true;
+
+  # Awesome
+  services.xserver.windowManager.awesome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -184,7 +187,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   programs.zsh.enable = true;
