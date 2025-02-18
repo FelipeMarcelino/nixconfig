@@ -5,7 +5,7 @@
     ./rofi
     ./feh.nix
     ./firefox.nix
-    ./mpv.nix
+    ./mpv
     ./taskwarrior
     ./yazi.nix
     ./yt-dlp.nix

@@ -23,5 +23,4 @@
     };
   };
 
-  aider = import ./aider.nix;
 }
