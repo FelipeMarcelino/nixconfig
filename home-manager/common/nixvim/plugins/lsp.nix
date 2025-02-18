@@ -2,13 +2,15 @@
   config,
   pkgs,
   ...
-}: {
-  imports = [./lsp];
+}:
+{
+  imports = [ ./lsp ];
 
   programs.nixvim.plugins.lsp.servers = {
     bashls.enable = true;
     pylyzer.enable = false;
-    pylsp.enable = true;
+    #FIXME
+    pylsp.enable = false;
     zk.enable = true;
     dockerls.enable = true;
     jsonls.enable = true;
