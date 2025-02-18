@@ -27,6 +27,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [ ffmpeg ];
     programs.mpv.enable = true;
     programs.mpv.config = {
       profile = "high-quality";
