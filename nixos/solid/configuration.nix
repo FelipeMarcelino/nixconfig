@@ -82,7 +82,7 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
-    enable = true;
+    enable = false;
     wayland = true;
   };
   services.xserver.desktopManager.gnome.enable = true;
@@ -92,6 +92,9 @@
   # I3
   services.xserver.windowManager.i3.enable = true;
   services.xserver.displayManager.startx.enable = true;
+
+  # Ly
+  #services.displayManager.ly.enable = true;
 
   # Awesome
   services.xserver.windowManager.awesome.enable = true;
