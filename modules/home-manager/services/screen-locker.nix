@@ -17,11 +17,12 @@ in
     };
   };
 
-  confg = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     services.screen-locker = {
       enable = true;
       inactiveInterval = 10;
-      xautolock.enable = false;
+      xautolock.enable = true;
+      lockCmd = ''betterlockscreen -l dimblur'';
       xss-lock = {
         extraOptions =
           let
@@ -40,6 +41,8 @@ in
 
     home.packages = with pkgs; [
       betterlockscreen
+      xss-lock
+      xsecurelock
     ];
   };
 
