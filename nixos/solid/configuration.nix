@@ -12,7 +12,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common/default.nix
-    ./picom.nix
     ./greetd.nix
     ./security.nix
   ];
