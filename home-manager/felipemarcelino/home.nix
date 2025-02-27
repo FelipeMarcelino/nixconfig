@@ -69,6 +69,8 @@
       polybar.enable = true;
       dunst.enable = true;
       udiskie.enable = true;
+      screen-locker-x.enable = true;
+      picom.enable = true;
     };
   };
 

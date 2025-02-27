@@ -8,6 +8,13 @@
 with lib;
 let
   cfg = config.home.programs.mpv or { enable = false; };
+
+  mpvGalleryViewPlaylist = lib.recurseIntoAttrs (
+    pkgs.callPackage ./mpv_plugins/mpv_gallery_view_playlist.nix { }
+  );
+  mpvGalleryViewSheet = lib.recurseIntoAttrs (
+    pkgs.callPackage ./mpv_plugins/mpv_gallery_view_sheet.nix { }
+  );
 in
 {
 
@@ -20,12 +27,15 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [ ffmpeg ];
     programs.mpv.enable = true;
     programs.mpv.config = {
       profile = "high-quality";
       vo = "gpu";
       gpu-api = "vulkan";
       fullscreen = "yes";
+
+      loop-file = "inf";
       force-seekable = "yes";
       keep-open = "always";
       reset-on-next-file = "pause";
@@ -115,6 +125,8 @@ in
       };
     };
     programs.mpv.scripts = with pkgs.mpvScripts; [
+      mpvGalleryViewPlaylist
+      mpvGalleryViewSheet
       autoload
       modernx-zydezu
       mpris
@@ -240,8 +252,21 @@ in
         ''script-message cycle-commands "apply-profile HDR ; show-text 'HDR profile applied'" "apply-profile HDR restore ; show-text 'HDR profile restored'"'';
       "ctrl+S" = "script-binding toggle-seeker";
       "alt+b" = "script-binding sponsorblock";
+      "g" = "script-message contact-sheet-close; script-message playlist-view-toggle";
+      "c" = "script-message playlist-view-close; script-message contact-sheet-toggle";
 
     };
+
+    home.file."${config.home.homeDirectory}/.config/mpv/script-opts/contact_sheet.conf".source =
+      ./mpv_plugins/contact_sheet.conf;
+    home.file."${config.home.homeDirectory}/.config/mpv/script-opts/gallery_worker.conf".source =
+      ./mpv_plugins/gallery_worker.conf;
+    home.file."${config.home.homeDirectory}/.config/mpv/script-opts/playlist_view.conf".source =
+      ./mpv_plugins/playlist_view.conf;
+    home.file."${config.home.homeDirectory}/.config/mpv/script-modules/gallery.lua".source =
+      "${mpvGalleryViewSheet}/share/mpv/script-modules/gallery.lua";
+    home.file."${config.home.homeDirectory}/.config/mpv/scripts/gallery-thumbgen.lua".source =
+      ./mpv_plugins/gallery-thumbgen.lua;
 
   };
 

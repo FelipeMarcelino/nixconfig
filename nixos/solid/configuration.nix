@@ -12,7 +12,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common/default.nix
-    ./picom.nix
     ./greetd.nix
     ./security.nix
   ];
@@ -82,7 +81,7 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
-    enable = true;
+    enable = false;
     wayland = true;
   };
   services.xserver.desktopManager.gnome.enable = true;
@@ -92,6 +91,9 @@
   # I3
   services.xserver.windowManager.i3.enable = true;
   services.xserver.displayManager.startx.enable = true;
+
+  # Ly
+  #services.displayManager.ly.enable = true;
 
   # Awesome
   services.xserver.windowManager.awesome.enable = true;
@@ -245,6 +247,16 @@
     packages = [ pkgs.dconf ];
   };
 
+  services.acpid = {
+    enable = true;
+    handlers = {
+      # Block Fn+Esc (power button) from triggering shutdown
+      ignore-power = {
+        event = "button/power.*"; # Matches the event from acpi_listen
+        action = ""; # Empty action to ignore the event
+      };
+    };
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
