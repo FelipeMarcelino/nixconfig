@@ -247,6 +247,16 @@
     packages = [ pkgs.dconf ];
   };
 
+  services.acpid = {
+    enable = true;
+    handlers = {
+      # Block Fn+Esc (power button) from triggering shutdown
+      ignore-power = {
+        event = "button/power.*"; # Matches the event from acpi_listen
+        action = ""; # Empty action to ignore the event
+      };
+    };
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
