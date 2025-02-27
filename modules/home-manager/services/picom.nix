@@ -10,7 +10,7 @@ let
 in
 {
 
-  options.home.service.picom = mkOption {
+  options.home.services.picom = mkOption {
     description = "Enable picom compositor";
     type = types.attrs;
     default = {
@@ -52,7 +52,7 @@ in
         inactive-opacity-override = false;
         active-opacity = 1.0;
         focus-exclude = [
-          "class_g = 'firefox' "
+          "class_g = 'firefox-beta' "
           "class_g = 'mpv' "
         ];
 
