@@ -1,3 +1,8 @@
+-- Standard awesome library
+local awful = require("awful")
+-- Theme handling library
+local beautiful = require("beautiful")
+
 local _M = {}
 
 -- reading

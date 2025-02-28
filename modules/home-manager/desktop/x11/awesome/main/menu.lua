@@ -1,3 +1,9 @@
+-- Standard awesome library
+local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- Theme handling library
+local beautiful = require("beautiful") -- for awesome.icon
+
 local M = {} -- menu
 local _M = {} -- module
 

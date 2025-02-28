@@ -31,4 +31,5 @@ RC.tags = main.tags()
 RC.mainmenu = awful.menu({ items = main.menu() })
 RC.launcher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = RC.mainmenu })
 menubar.utils.terminal = RC.vars.terminal
+
 awful.rules.rules = main.rules(clientkeys, clientbuttons)

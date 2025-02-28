@@ -27,7 +27,7 @@ in
     xsession.windowManager.awesome.enable = true;
     home.file.".config/awesome/rc.lua".source = ./rc.lua;
     home.file.".config/awesome/main/error-handling.lua".source = ./main/error-handling.lua;
-    home.file.".config/awesome/main/user-varables.lua".source = ./main/user-varables.lua;
+    home.file.".config/awesome/main/user-variables.lua".source = ./main/user-variables.lua;
     home.file.".config/awesome/main/layouts.lua".source = ./main/layouts.lua;
     home.file.".config/awesome/main/tags.lua".source = ./main/tags.lua;
     home.file.".config/awesome/main/menu.lua".source = ./main/menu.lua;
