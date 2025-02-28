@@ -33,5 +33,10 @@ in
     home.file.".config/awesome/main/menu.lua".source = ./main/menu.lua;
     home.file.".config/awesome/main/rules.lua".source = ./main/rules.lua;
     home.file.".config/awesome/main/signals.lua".source = ./main/signals.lua;
+    home.file.".config/awesome/binding/bindtotags.lua".source = ./binding/bindtotags.lua;
+    home.file.".config/awesome/binding/clientbuttons.lua".source = ./binding/clientbuttons.lua;
+    home.file.".config/awesome/binding/globalkeys.lua".source = ./binding/globalkeys.lua;
+    home.file.".config/awesome/binding/globalbuttons.lua".source = ./binding/globalbuttons.lua;
+    home.file.".config/awesome/binding/clientkeys.lua".source = ./binding/clientkeys.lua;
   };
 }

@@ -32,4 +32,18 @@ RC.mainmenu = awful.menu({ items = main.menu() })
 RC.launcher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = RC.mainmenu })
 menubar.utils.terminal = RC.vars.terminal
 
-awful.rules.rules = main.rules(clientkeys, clientbuttons)
+local binding = {
+	globalbuttons = require("binding.globalbuttons"),
+	clientbuttons = require("binding.clientbuttons"),
+	globalkeys = require("binding.globalkeys"),
+	bindtotags = require("binding.bindtotags"),
+	clientkeys = require("binding.clientkeys"),
+}
+
+-- Mouse and Key bindings
+RC.globalkeys = binding.globalkeys()
+RC.globalkeys = binding.bindtotags(RC.globalkeys)
+root.buttons(binding.globalbuttons())
+root.keys(RC.globalkeys)
+
+awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
