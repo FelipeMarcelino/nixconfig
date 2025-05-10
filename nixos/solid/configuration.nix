@@ -14,6 +14,7 @@
     ../common/default.nix
     ./greetd.nix
     ./security.nix
+    ./disko.nix
   ];
 
   # Bootloader.

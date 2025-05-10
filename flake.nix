@@ -19,6 +19,12 @@
       url = "github:saghen/blink.compat";
       flake = false;
     };
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     blink-emoji = {
       url = "github:moyiz/blink-emoji.nvim";
       flake = false;
