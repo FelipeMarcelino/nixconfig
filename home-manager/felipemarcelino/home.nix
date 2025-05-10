@@ -31,6 +31,10 @@
     discord
     beauty-line-icon-theme
     mpv-custom-fonts
+    telegram-desktop
+    teams-for-linux
+    chromium
+    zoom-us
   ];
 
   imports = [
