@@ -2,29 +2,23 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     harpoon = {
       enableTelescope = true;
-      keymapsSilent = true;
-      markBranch = true;
-      excludedFiletypes = [
-        "harpoon"
-        "alpha"
-        "NvimTree"
-      ];
-      saveOnChange = true;
-      enterOnSendcmd = true;
 
-      keymaps = {
-        addFile = "<leader>ha";
-        toggleQuickMenu = "<leader>he";
-        navFile = {
-          "1" = "<leader>hj";
-          "2" = "<leader>hk";
-          "3" = "<leader>hl";
-          "4" = "<leader>hm";
-        };
+      settings = {
+        keymapsSilent = true;
+        markBranch = true;
+        saveOnToggle = false;
+        excludedFiletypes = [
+          "harpoon"
+          "alpha"
+          "NvimTree"
+        ];
+        saveOnChange = true;
+        enterOnSendcmd = true;
       };
     };
 
@@ -60,4 +54,37 @@
       }
     ];
   };
+
+  programs.nixvim.keymaps = [
+    {
+      mode = "n";
+      key = "<leader>ha";
+      action.__raw = "function() require'harpoon':list():add() end";
+    }
+    {
+      mode = "n";
+      key = "<leader>hq";
+      action.__raw = "function() require'harpoon'.ui:toggle_quick_menu(require'harpoon':list()) end";
+    }
+    {
+      mode = "n";
+      key = "<h-j>";
+      action.__raw = "function() require'harpoon':list():select(1) end";
+    }
+    {
+      mode = "n";
+      key = "<h-k>";
+      action.__raw = "function() require'harpoon':list():select(2) end";
+    }
+    {
+      mode = "n";
+      key = "<h-l>";
+      action.__raw = "function() require'harpoon':list():select(3) end";
+    }
+    {
+      mode = "n";
+      key = "<h-m>";
+      action.__raw = "function() require'harpoon':list():select(4) end";
+    }
+  ];
 }
