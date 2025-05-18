@@ -59,7 +59,7 @@
     diffview.enable = true;
     notify.enable = true;
     cursorline.enable = true;
-    harpoon.enable = true;
+    harpoon.enable = false;
     vim-matchup.enable = true;
     #sniprun.enable = true;
     nvim-bqf.enable = true;

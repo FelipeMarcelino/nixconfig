@@ -160,6 +160,10 @@
 
   services.pasystray.enable = true;
 
+  # Git
+  programs.git.userEmail = "felipe.marcelino1991@gmail.com";
+  programs.git.userName = "Felipe Marcelino";
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
 }
