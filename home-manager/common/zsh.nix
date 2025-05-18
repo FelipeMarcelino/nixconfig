@@ -118,7 +118,7 @@
   };
 
   programs.zsh.sessionVariables = {
-    OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.sops.secrets."openai_api_key".path})'';
+    #OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.sops.secrets."openai_api_key".path})'';
     EDITOR_MODEL = "4o";
     MODEL = "o1-mini";
   };

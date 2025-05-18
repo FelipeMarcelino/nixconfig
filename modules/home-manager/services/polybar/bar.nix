@@ -70,6 +70,7 @@ let
     type = internal/tray
     tray-position = center
     tray-padding = 3
+
     background = ''${color.bg}
     override-redirect = true
   '';

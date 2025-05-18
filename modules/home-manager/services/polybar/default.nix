@@ -117,6 +117,13 @@ in
       icomoon-feather
     ];
 
+    systemd.user.tmpfiles.rules = [
+      "d ${config.home.homeDirectory}/.config/polybar/logs 0755 ${config.home.username} wheel - -"
+    ];
+
+    home.file."~/.config/polybar/logs/bottom.log".text = "";
+    home.file."~/.config/polybar/logs/top.log".text = "";
+
     programs.spotify-player.enable = true;
     services.mpd.enable = true;
     services.mpd-mpris.enable = true;
