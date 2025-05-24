@@ -8,5 +8,6 @@
     ./starship.nix
     ./git.nix
     ./aws.nix
+    ./azure.nix
   ];
 }

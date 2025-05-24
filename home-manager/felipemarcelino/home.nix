@@ -78,6 +78,7 @@
 
     cli = {
       aws.enable = true;
+      azure.enable = true;
     };
   };
 

@@ -18,7 +18,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.aws = {
+    programs.awscli = {
       enable = true;
     };
   };
