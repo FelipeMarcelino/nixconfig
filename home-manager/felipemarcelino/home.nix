@@ -75,6 +75,11 @@
       screen-locker-x.enable = true;
       picom.enable = true;
     };
+
+    cli = {
+      aws.enable = true;
+      azure.enable = true;
+    };
   };
 
   sops = {
