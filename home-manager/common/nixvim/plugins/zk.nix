@@ -7,6 +7,8 @@
           enabled = true;
           filetypes = [
             "markdown"
+            "vimwiki"
+            "wiki"
           ];
         };
         config = {
@@ -15,6 +17,11 @@
             "lsp"
           ];
           name = "zk";
+          filetypes = [
+            "markdown"
+            "vimwiki"
+            "wiki"
+          ];
         };
       };
       picker = "telescope";

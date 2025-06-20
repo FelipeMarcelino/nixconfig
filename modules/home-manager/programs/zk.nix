@@ -66,11 +66,11 @@ in
           wiki-title = "hint";
           dead-link = "error";
         };
-        lsp.completion = {
-          note-label = "{{title-or-path}}";
-          note-filter-text = "{{title}} {{path}}";
-          note-detail = "{{filename-stem}}";
-        };
+        # lsp.completion = {
+        #   note-label = "{{title-or-path}}";
+        #   note-filter-text = "{{title}} {{path}}";
+        #   note-detail = "{{filename-stem}}";
+        # };
         group.journal = {
           paths = [
             "content/blog"
