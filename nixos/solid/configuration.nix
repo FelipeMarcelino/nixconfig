@@ -238,7 +238,7 @@
   programs.dconf.enable = true;
 
   services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0032", ATTR{authorized}="0"'
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0032", ATTR{authorized}="0"
   '';
 
   virtualisation.docker.enable = true;
