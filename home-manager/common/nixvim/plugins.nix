@@ -100,11 +100,11 @@
     navic.enable = true;
     mini.enable = true;
     comment-box.enable = true;
+    vimwiki.enable = true;
   };
 
   programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
     nvzone-typr
     taskwiki
-    vimwiki
   ];
 }
