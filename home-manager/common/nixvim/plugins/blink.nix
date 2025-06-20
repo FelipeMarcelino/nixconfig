@@ -100,7 +100,6 @@
               "snippets"
               "codecompanion"
               # Community
-              "copilot"
               "ripgrep"
               # Cmp sources
               # TODO: migrate when available
@@ -114,12 +113,6 @@
               # BUILT-IN SOURCES
               lsp.score_offset = 4;
               # Community sources
-              copilot = {
-                name = "copilot";
-                module = "blink-cmp-copilot";
-                async = true;
-                score_offset = 100;
-              };
               codecompanion = {
                 name = "CodeCompanion";
                 module = "codecompanion.providers.completion.blink";

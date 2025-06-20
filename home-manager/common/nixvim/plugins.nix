@@ -21,8 +21,8 @@
     #cmp.enable = true;
     codecompanion.enable = true;
     commentary.enable = true;
-    copilot-lua.enable = true;
-    copilot-chat.enable = true;
+    copilot-lua.enable = false;
+    copilot-chat.enable = false;
     conform-nvim.enable = true;
     csvview.enable = true;
     direnv.enable = true;
