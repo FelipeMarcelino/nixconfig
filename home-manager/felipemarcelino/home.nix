@@ -83,9 +83,18 @@
   };
 
   sops = {
-    age.keyFile = "/var/lib/sops/age.key";
+    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
     defaultSopsFile = ../../felipemarcelino.yaml;
     defaultSopsFormat = "yaml";
+
+    secrets = {
+      "password_hash" = {
+        #owner = "root";
+        #group = "root";
+        mode = "0400";
+        #neededForUsers = true;
+      };
+    };
   };
 
   # syncthing
