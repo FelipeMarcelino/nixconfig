@@ -5,6 +5,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -14,6 +15,7 @@
     ../common/default.nix
     ./greetd.nix
     ./security.nix
+    inputs.sops-nix.nixosModules.sops
   ];
 
   # Bootloader.

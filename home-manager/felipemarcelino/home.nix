@@ -84,13 +84,12 @@
 
   sops = {
     age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
-    defaultSopsFile = ../../felipemarcelino.yaml;
+    defaultSopsFile = ../../secrets/felipemarcelino.yaml;
     defaultSopsFormat = "yaml";
 
     secrets = {
-      "password_hash" = {
+      password_hash = {
         #owner = "root";
-        #group = "root";
         mode = "0400";
         #neededForUsers = true;
       };
