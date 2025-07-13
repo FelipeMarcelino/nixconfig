@@ -83,18 +83,9 @@
   };
 
   sops = {
-    age.keyFile = "/home/${config.home.username}/.config/sops/age/keys.txt";
-    defaultSecretsMountPoint = "${config.home.homeDirectory}/.local/share/secrets";
-    defaultSopsFile = ../../sops.yaml;
+    age.keyFile = "/var/lib/sops/age.key";
+    defaultSopsFile = ../../felipemarcelino.yaml;
     defaultSopsFormat = "yaml";
-    secrets."github_token" = {
-      sopsFile = ../../secrets/felipemarcelino.yaml;
-      path = "${config.home.homeDirectory}/.local/share/secrets/github_token";
-    };
-    secrets."openai_api_key" = {
-      sopsFile = ../../secrets/felipemarcelino.yaml;
-      path = "${config.home.homeDirectory}/.local/share/secrets/openai_api_key";
-    };
   };
 
   # syncthing
