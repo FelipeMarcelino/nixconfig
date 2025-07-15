@@ -89,7 +89,6 @@
 
     secrets = {
       password_hash = {
-        #owner = "root";
         mode = "0400";
         #neededForUsers = true;
       };
