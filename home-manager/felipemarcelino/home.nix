@@ -82,19 +82,6 @@
     };
   };
 
-  sops = {
-    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
-    defaultSopsFile = ../../secrets/felipemarcelino.yaml;
-    defaultSopsFormat = "yaml";
-
-    secrets = {
-      password_hash = {
-        mode = "0400";
-        #neededForUsers = true;
-      };
-    };
-  };
-
   # syncthing
   home.file."${config.home.homeDirectory}/.local/state/syncthing/cert.pem".source =
     ./syncthing/cert.pem;
