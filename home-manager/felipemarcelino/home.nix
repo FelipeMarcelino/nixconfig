@@ -35,6 +35,7 @@
     teams-for-linux
     chromium
     zoom-us
+    anki-bin
   ];
 
   imports = [
