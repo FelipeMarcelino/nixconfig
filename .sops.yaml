@@ -1,0 +1,7 @@
+keys:
+  - &felipemarcelino age1ctny2n7a80jg6xa0jrhgcl9x3axfmffmuqhhgsg22mftf2tcd48q79pcp9
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *felipemarcelino 

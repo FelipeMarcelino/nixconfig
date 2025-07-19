@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  openai_api_key_secret_path = ''${config.sops.secrets."openai_api_key".path}'';
   OPENAI_REFACTOR = ''
     [[Your task is to refactor the provided code snippet, focusing specifically on its readability and maintainability.
     Identify any issues related to:
@@ -83,7 +82,6 @@ in
               end
             end
 
-            local api_key = read_api_key("${openai_api_key_secret_path}")
             return require('codecompanion.adapters').extend('openai', {
               env = {
                 api_key = api_key

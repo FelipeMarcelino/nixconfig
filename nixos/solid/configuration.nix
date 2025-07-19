@@ -5,6 +5,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -14,6 +15,7 @@
     ../common/default.nix
     ./greetd.nix
     ./security.nix
+    inputs.sops-nix.nixosModules.sops
   ];
 
   # Bootloader.
@@ -158,6 +160,19 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
+    };
+  };
+
+  sops = {
+    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
+    defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
+    defaultSopsFormat = "yaml";
+
+    secrets = {
+      password_hash = {
+        mode = "0400";
+        #neededForUsers = true;
+      };
     };
   };
 
