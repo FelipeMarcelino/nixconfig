@@ -39,6 +39,7 @@
       nixpkgs,
       home-manager,
       firefox-addons,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -89,6 +90,7 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/solid
+            sops-nix.nixosModules.sops
 
             { home-manager.extraSpecialArgs = { inherit customLibs firefox-addons; }; }
           ];

@@ -11,6 +11,7 @@
   users.users.felipemarcelino = {
     isNormalUser = true;
     description = "Felipe Glicério Gomes Marcelino";
+    hashedPasswordFile = config.sops.secrets.password_hash.path;
     extraGroups =
       [
         "networkmanager"
