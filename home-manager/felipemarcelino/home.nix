@@ -36,6 +36,7 @@
     chromium
     zoom-us
     anki-bin
+    gemini-cli
   ];
 
   imports = [
@@ -43,7 +44,7 @@
     ./xdg.nix
   ];
 
-  # Walppapers
+  # walppapers
   systemd.user.tmpfiles.rules = [
     "d ${config.home.homeDirectory}/.wallpappers/ 0755 felipemarcelino wheel - -"
   ];
