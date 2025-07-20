@@ -81,7 +81,7 @@
     git-worktree.enable = true;
     gitignore.enable = true;
     glance.enable = true;
-    grug-far.enable = true;
+    grug-far.enable = false;
     hardtime.enable = true;
     helpview.enable = true;
     illuminate.enable = true;
