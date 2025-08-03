@@ -91,6 +91,7 @@
             # > Our main nixos configuration file <
             ./nixos/solid
             sops-nix.nixosModules.sops
+            ./nixos/common
 
             { home-manager.extraSpecialArgs = { inherit customLibs firefox-addons; }; }
           ];

@@ -37,6 +37,8 @@
     zoom-us
     anki-bin
     gemini-cli
+    claude-code
+    cookiecutter
   ];
 
   imports = [

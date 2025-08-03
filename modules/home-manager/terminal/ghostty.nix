@@ -62,6 +62,8 @@ in
       keybind = ctrl+w>7=goto_tab:7
       keybind = ctrl+w>8=goto_tab:8
       keybind = ctrl+w>9=goto_tab:9
+      keybind = shift+enter=write_text:\\u000A
+
 
     '';
   };
