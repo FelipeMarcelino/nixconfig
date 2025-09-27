@@ -40,6 +40,7 @@
     claude-code
     cookiecutter
     insync
+    foliate
   ];
 
   imports = [
