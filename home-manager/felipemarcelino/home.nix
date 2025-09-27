@@ -39,6 +39,7 @@
     gemini-cli
     claude-code
     cookiecutter
+    insync
     foliate
   ];
 
