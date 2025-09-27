@@ -10,7 +10,7 @@
     bashls.enable = true;
     pylyzer.enable = false;
     #FIXME
-    pylsp.enable = false;
+    pylsp.enable = true;
     zk.enable = true;
     dockerls.enable = true;
     jsonls.enable = true;
