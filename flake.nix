@@ -27,6 +27,10 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    ocr-zettel-source = {
+      url = "github:FelipeMarcelino/ocr-zettel";
+      flake = false;
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +44,7 @@
       home-manager,
       firefox-addons,
       sops-nix,
+      ocr-zettel-source,
       ...
     }@inputs:
     let
@@ -108,6 +113,7 @@
               inputs
               outputs
               firefox-addons
+              ocr-zettel-source
               ;
           };
           modules = [

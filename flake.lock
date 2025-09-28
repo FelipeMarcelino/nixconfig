@@ -357,6 +357,22 @@
         "type": "github"
       }
     },
+    "ocr-zettel-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759020158,
+        "narHash": "sha256-9sajaDEjD03KizUHpZsMds2Mh8AT+Tw/msdMMbSQIjk=",
+        "owner": "FelipeMarcelino",
+        "repo": "ocr-zettel",
+        "rev": "4ed347e90fcc19906d9138ced4e41ca98b0c25bf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FelipeMarcelino",
+        "repo": "ocr-zettel",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "blink-cmp": "blink-cmp",
@@ -368,6 +384,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
+        "ocr-zettel-source": "ocr-zettel-source",
         "sops-nix": "sops-nix"
       }
     },

@@ -46,6 +46,7 @@
   imports = [
     ./zsh.nix
     ./xdg.nix
+    ./ocr-zettel.nix
   ];
 
   # walppapers
@@ -143,6 +144,18 @@
     yazi = {
       enable = true;
       flavor = "macchiato";
+    };
+  };
+
+  sops = {
+    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
+    defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
+    defaultSopsFormat = "yaml";
+
+    secrets = {
+      OPENAI_API_KEY = {
+        mode = "0400";
+      };
     };
   };
 
