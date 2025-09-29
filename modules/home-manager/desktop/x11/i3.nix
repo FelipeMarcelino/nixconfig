@@ -79,6 +79,11 @@ in
             always = false;
             notification = false;
           }
+          {
+            command = "insync start";
+            always = true;
+            notification = false;
+          }
 
           # {
           #   command = "autorandr --load default";
