@@ -357,6 +357,22 @@
         "type": "github"
       }
     },
+    "ocr-zettel-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759107577,
+        "narHash": "sha256-tuRkXgBbETUK2Myb4+ug0BC6BaodqrYuSmvpWZJ2T3g=",
+        "owner": "FelipeMarcelino",
+        "repo": "ocr-zettel",
+        "rev": "fd8c41599f2bfb4bc44e60f6f75397b1fa75ad64",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FelipeMarcelino",
+        "repo": "ocr-zettel",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "blink-cmp": "blink-cmp",
@@ -368,7 +384,9 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
-        "sops-nix": "sops-nix"
+        "ocr-zettel-source": "ocr-zettel-source",
+        "sops-nix": "sops-nix",
+        "zettel-update-source": "zettel-update-source"
       }
     },
     "rust-analyzer-src": {
@@ -433,6 +451,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zettel-update-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759114052,
+        "narHash": "sha256-LuVyT1Y0c5OS2wXcCi3Aq2eI0oIh3mls2CsNEscMV8M=",
+        "owner": "FelipeMarcelino",
+        "repo": "zettel-update",
+        "rev": "10922714cd244d6b5fcbc0587f8ff706db906b45",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FelipeMarcelino",
+        "repo": "zettel-update",
         "type": "github"
       }
     }
