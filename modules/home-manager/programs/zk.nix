@@ -92,7 +92,6 @@ in
     home.file."${config.home.homeDirectory}/.config/zk/templates/daily.md".text = ''
       # {{format-date now "long"}}
 
-      What did I do today? Or anything else
     '';
   };
 }

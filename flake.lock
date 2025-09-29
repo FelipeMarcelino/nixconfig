@@ -360,11 +360,11 @@
     "ocr-zettel-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1759020158,
-        "narHash": "sha256-9sajaDEjD03KizUHpZsMds2Mh8AT+Tw/msdMMbSQIjk=",
+        "lastModified": 1759107577,
+        "narHash": "sha256-tuRkXgBbETUK2Myb4+ug0BC6BaodqrYuSmvpWZJ2T3g=",
         "owner": "FelipeMarcelino",
         "repo": "ocr-zettel",
-        "rev": "4ed347e90fcc19906d9138ced4e41ca98b0c25bf",
+        "rev": "fd8c41599f2bfb4bc44e60f6f75397b1fa75ad64",
         "type": "github"
       },
       "original": {

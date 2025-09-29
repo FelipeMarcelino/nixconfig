@@ -31,6 +31,10 @@
       url = "github:FelipeMarcelino/ocr-zettel";
       flake = false;
     };
+    zettel-update-source = {
+      url = "github:FelipeMarcelino/zettel-update";
+      flake = false;
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +49,7 @@
       firefox-addons,
       sops-nix,
       ocr-zettel-source,
+      zettel-update-source
       ...
     }@inputs:
     let
@@ -98,7 +103,7 @@
             sops-nix.nixosModules.sops
             ./nixos/common
 
-            { home-manager.extraSpecialArgs = { inherit customLibs firefox-addons; }; }
+            { home-manager.extraSpecialArgs = { inherit customLibs firefox-addons ocr-zettel-source zettel-update-source; }; }
           ];
         };
       };

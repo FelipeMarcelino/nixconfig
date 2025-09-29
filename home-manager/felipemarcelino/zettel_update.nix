@@ -1,12 +1,12 @@
 {
   config,
   pkgs,
-  ocr-zettel-source,
+  zettel-update-source,
   ...
 }:
 
 let
-  projectPath = ocr-zettel-source;
+  projectPath = zettel-update-source;
 
   # O ambiente Python continua o mesmo.
   pythonEnv = pkgs.python313.withPackages (
@@ -14,17 +14,11 @@ let
       watchdog
       python-dotenv
       openai
-      pymupdf
-      pillow
-      torch
-      torchvision
-      transformers
-      sentencepiece
-      onnxruntime
+      gitpython
     ]
   );
 
-  startScript = pkgs.writeShellScriptBin "start-ocr-zettel" ''
+  startScript = pkgs.writeShellScriptBin "start-zettel-update" ''
     #!${pkgs.bash}/bin/bash
     # 'set -x' imprime cada comando no log antes de executá-lo. Excelente para depuração!
     set -x 
@@ -32,14 +26,14 @@ let
 
     # Executa o seu script Python.
     # OBS: Verifique se este caminho está correto dentro do seu repositório Git.
-    ${pythonEnv}/bin/python ${projectPath}/src/ocr-zettel/main.py
+    ${pythonEnv}/bin/python ${projectPath}/src/zettel-update/main.py
   '';
 in
 {
 
-  systemd.user.services.ocr-zettel-monitor = {
+  systemd.user.services.zettel-update-monitor = {
     Unit = {
-      Description = "Monitor de OCR para notas Zettelkasten";
+      Description = "Monitor for markdown files ";
       After = [
         "sops-nix.service"
         "network-online.target"
@@ -48,7 +42,7 @@ in
     };
     Service = {
       # O ExecStart agora usa o "projectPath" que vem do flake
-      ExecStart = "${startScript}/bin/start-ocr-zettel";
+      ExecStart = "${startScript}/bin/start-zettel-update";
       WorkingDirectory = projectPath;
 
       # A localização do .env continua a mesma, e isso é crucial,

@@ -47,6 +47,7 @@
     ./zsh.nix
     ./xdg.nix
     ./ocr-zettel.nix
+    ./zettel_update.nix
   ];
 
   # walppapers
