@@ -49,7 +49,7 @@
       firefox-addons,
       sops-nix,
       ocr-zettel-source,
-      zettel-update-source
+      zettel-update-source,
       ...
     }@inputs:
     let
@@ -103,7 +103,16 @@
             sops-nix.nixosModules.sops
             ./nixos/common
 
-            { home-manager.extraSpecialArgs = { inherit customLibs firefox-addons ocr-zettel-source zettel-update-source; }; }
+            {
+              home-manager.extraSpecialArgs = {
+                inherit
+                  customLibs
+                  firefox-addons
+                  ocr-zettel-source
+                  zettel-update-source
+                  ;
+              };
+            }
           ];
         };
       };
