@@ -457,11 +457,11 @@
     "zettel-update-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1759114052,
-        "narHash": "sha256-LuVyT1Y0c5OS2wXcCi3Aq2eI0oIh3mls2CsNEscMV8M=",
+        "lastModified": 1759115430,
+        "narHash": "sha256-0akUC+AM8smxVvJehUVz+n1iPhVSlVA+wpgImeVBLnM=",
         "owner": "FelipeMarcelino",
         "repo": "zettel-update",
-        "rev": "10922714cd244d6b5fcbc0587f8ff706db906b45",
+        "rev": "3337af650e731fa882635e06b9f36e60dbaada0a",
         "type": "github"
       },
       "original": {
