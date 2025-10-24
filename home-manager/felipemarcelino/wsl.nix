@@ -11,7 +11,6 @@
   imports = [
     ../common
     ./zsh.nix
-    ./xdg.nix
   ];
 
   home = {
@@ -45,7 +44,10 @@
 
     programs = {
       rofi.enable = false;
-      yt-dlp.enable = lib.mkDefault false;
+      yt-dlp.enable = false;
+      firefox.enable = false;
+      feh.enable = false;
+      zathura.enable = false;
     };
 
     services = {
@@ -54,6 +56,7 @@
       udiskie.enable = false;
       screen-locker-x.enable = false;
       picom.enable = false;
+      emanote-site.enable = false;
     };
 
     # Enable CLI tools for WSL
