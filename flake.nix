@@ -136,7 +136,7 @@
 
           ];
         };
-        "felipemarcelino@wsl" = home-manager.lib.homeManagerConfiguration {
+        "felipemarcelino@Isabel" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit

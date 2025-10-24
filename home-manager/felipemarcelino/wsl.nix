@@ -11,6 +11,7 @@
   imports = [
     ../common
     ./zsh.nix
+    ./xdg.nix
   ];
 
   home = {
