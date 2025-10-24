@@ -136,6 +136,23 @@
 
           ];
         };
+        "felipemarcelino@wsl" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit
+              inputs
+              outputs
+              firefox-addons
+              ocr-zettel-source
+              zettel-update-source
+              ;
+          };
+          modules = [
+            # Configuration for WSL2 Ubuntu
+            ./home-manager/felipemarcelino/wsl.nix
+
+          ];
+        };
         "onboarding@ubuntu" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
