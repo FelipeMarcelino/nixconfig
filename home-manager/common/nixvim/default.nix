@@ -46,7 +46,7 @@ in
     ];
 
     globals = {
-      "taskwiki_data_location" = "$XDG_TASKWARRIOR_DIR/";
+      "taskwiki_data_location" = "${config.home.homeDirectory}/Taskwarrior/";
     };
   };
   xdg.desktopEntries."nvim" = {
