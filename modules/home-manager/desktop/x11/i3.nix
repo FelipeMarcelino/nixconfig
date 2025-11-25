@@ -46,13 +46,13 @@ in
       [Desktop Entry]
       Name=i3
       Comment=Dynamic window manager
-      Exec=${pkgs.i3-gaps}/bin/i3
+      Exec=${pkgs.i3}/bin/i3
       Type=XSession
     '';
 
     xsession.windowManager.i3 = {
       enable = true;
-      package = pkgs.i3-gaps;
+      package = pkgs.i3;
       config = {
         fonts = {
           size = 18.0;

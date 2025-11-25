@@ -98,6 +98,7 @@
               ;
           };
           modules = [
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             # > Our main nixos configuration file <
             ./nixos/solid
             sops-nix.nixosModules.sops

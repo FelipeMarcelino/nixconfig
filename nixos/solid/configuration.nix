@@ -30,7 +30,66 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    # Automatically prefer ethernet over wifi when both are connected
+    insertNameservers = [
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
+    dns = "systemd-resolved";
+    # Enable connectivity checking
+    settings = {
+      connectivity = {
+        uri = "http://connectivitycheck.gstatic.com/generate_204";
+        interval = 30;
+        response = "";
+      };
+    };
+  };
+
+  # Configure interface priorities and connectivity management
+  networking.networkmanager.dispatcherScripts = [
+    {
+      source = pkgs.writeScript "10-manage-connectivity" ''
+        #!/bin/sh
+        # Auto-disable ethernet when it has no internet connectivity
+
+        # Set PATH to ensure commands are available
+        PATH=/run/current-system/sw/bin:/run/wrappers/bin:$PATH
+
+        check_connectivity() {
+          # Test connectivity using ping only (more reliable in dispatcher context)
+          ping -c 1 -W 3 8.8.8.8 > /dev/null 2>&1
+        }
+
+        # Log all dispatcher events for debugging
+        logger "NetworkManager dispatcher: interface=$1 action=$2 connection_id=$CONNECTION_ID"
+
+        if [ "$2" = "up" ] && [ -n "$CONNECTION_ID" ]; then
+          # When interface comes up and CONNECTION_ID is available
+          if echo "$1" | grep -E '^(enp|eth)' > /dev/null; then
+            # Ethernet interface
+            sleep 5  # Wait for connection to stabilize
+            if ! check_connectivity; then
+              # No internet via ethernet, disable it
+              nmcli connection down "$CONNECTION_ID"
+              logger "NetworkManager: Disabled ethernet $1 ($CONNECTION_ID) due to no internet connectivity"
+            else
+              # Set low metric for ethernet (high priority)
+              nmcli connection modify "$CONNECTION_ID" ipv4.route-metric 100
+              logger "NetworkManager: Ethernet $1 ($CONNECTION_ID) has connectivity, setting high priority"
+            fi
+          elif echo "$1" | grep -E '^(wl|wifi)' > /dev/null; then
+            # WiFi interface - set high metric (low priority)
+            nmcli connection modify "$CONNECTION_ID" ipv4.route-metric 200
+            logger "NetworkManager: WiFi $1 ($CONNECTION_ID) set to low priority"
+          fi
+        fi
+      '';
+      type = "basic";
+    }
+  ];
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -114,9 +173,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -219,18 +275,6 @@
   networking.firewall.enable = false;
 
   security.polkit.enable = true;
-
-  # Ollama ai
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-  };
-
-  services.open-webui = {
-    enable = true;
-    port = 10000;
-    openFirewall = true;
-  };
 
   programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
   gtk.iconCache.enable = true;

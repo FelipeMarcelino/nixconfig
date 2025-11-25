@@ -26,6 +26,10 @@ in
     vimAlias = true;
     withPython3 = true;
 
+    extraConfigLuaPre = ''
+      -- Allow unfree packages for nixvim
+    '';
+
     clipboard = {
       register = "unnamedplus";
       providers.xclip.enable = true;
@@ -46,7 +50,7 @@ in
     ];
 
     globals = {
-      "taskwiki_data_location" = "${config.home.homeDirectory}/Taskwarrior/";
+      "taskwiki_data_location" = "/home/felipemarcelino/Taskwarrior/";
     };
   };
   xdg.desktopEntries."nvim" = {

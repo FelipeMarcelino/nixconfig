@@ -21,7 +21,7 @@ in
       spice
       spice-gtk
       spice-protocol
-      win-virtio
+      virtio-win
       win-spice
     ];
 
@@ -30,8 +30,6 @@ in
         enable = true;
         qemu = {
           swtpm.enable = true;
-          ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
           package = pkgs.qemu_kvm;
         };
       };

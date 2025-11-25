@@ -25,6 +25,7 @@
     copilot-chat.enable = false;
     conform-nvim.enable = true;
     csvview.enable = true;
+    #claude-code.enable = true;
     direnv.enable = true;
     friendly-snippets.enable = true;
     git-conflict.enable = true;
@@ -34,7 +35,7 @@
     lastplace.enable = true;
     lsp.enable = true;
     #lsp-signature.enable = true;
-    lspkind.enable = true;
+    #lspkind.enable = true;
     ##lspsaga.enable = true;
     lz-n.enable = true;
     lualine.enable = true;

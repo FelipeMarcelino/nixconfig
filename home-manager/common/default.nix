@@ -30,31 +30,7 @@
 
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.stable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
+  # nixpkgs config is inherited from the system-level pkgs instance (useGlobalPkgs = true)
 
   nix = {
     package = lib.mkDefault pkgs.nix;
@@ -127,6 +103,18 @@
     "d ${config.home.homeDirectory}/.config/sops/age/ 0755 ${config.home.username} - -"
   ];
 
+  sops = {
+    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
+    defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
+    defaultSopsFormat = "yaml";
+
+    secrets = {
+      OPENAI_API_KEY = {
+        mode = "0400";
+      };
+    };
+  };
+
   home.file.".XCompose".text = ''
     include "%L"
     <dead_acute> <C> : "Ç"
@@ -137,11 +125,6 @@
 
   services.syncthing = {
     enable = true;
-  };
-
-  home.services.emanote-site = {
-    enable = true;
-    path = "/home/felipemarcelino/Zettelkasten/content";
   };
 
   programs.nix-index = {

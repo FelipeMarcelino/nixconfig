@@ -18,8 +18,11 @@
   ];
 
   home-manager = {
+    useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
   };
 
   nixpkgs = {
@@ -30,11 +33,15 @@
     ];
     config = {
       allowUnfree = true;
+      allowUnfreePredicate = _: true;
     };
   };
 
   # Replace your entire 'nix' block with this one
   nix = {
+    extraOptions = ''
+      extra-sandbox-paths = /bin/sh=${pkgs.bash}/bin/sh
+    '';
     settings = {
       experimental-features = [
         "nix-command"
@@ -44,6 +51,10 @@
         "root"
         "felipemarcelino"
       ];
+    };
+    # Set environment variable to allow unfree packages
+    envVars = {
+      NIXPKGS_ALLOW_UNFREE = "1";
     };
     gc = {
       automatic = true;

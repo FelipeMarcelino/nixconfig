@@ -38,6 +38,8 @@
     anki-bin
     gemini-cli
     claude-code
+    codex
+    gh
     cookiecutter
     insync
     foliate
@@ -103,8 +105,8 @@
     enable = true;
     font.name = "PragmataProMono Nerd Font";
     font.size = 12;
-    iconTheme.package = pkgs.beauty-line-icon-theme;
-    iconTheme.name = "BeautyLine";
+    iconTheme.package = lib.mkForce pkgs.beauty-line-icon-theme;
+    iconTheme.name = lib.mkForce "BeautyLine";
     cursorTheme = {
       name = "Numix-Cursor";
       package = pkgs.numix-cursor-theme;
@@ -114,12 +116,10 @@
   qt.style.name = "gtk3";
 
   catppuccin = {
-    gtk = {
+    gtk.icon = {
       enable = true;
       flavor = "macchiato";
       accent = "pink";
-      size = "standard";
-      tweaks = [ "normal" ];
     };
     starship.enable = true;
     spotify-player = {
