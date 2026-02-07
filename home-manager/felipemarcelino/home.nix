@@ -43,6 +43,9 @@
     cookiecutter
     insync
     foliate
+    spotdl
+    android-tools
+    opencode
   ];
 
   imports = [
@@ -169,6 +172,12 @@
   home.programs.mpv.enable = true;
 
   services.pasystray.enable = true;
+
+  programs.yt-dlp.enable = true;
+
+  programs.spotify-player.enable = true;
+  services.spotifyd.enable = true;
+  services.librespot.enable = true;
 
   # Git
   programs.git.userEmail = "felipe.marcelino1991@gmail.com";
