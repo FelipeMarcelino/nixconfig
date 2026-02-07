@@ -106,9 +106,6 @@
             "shfmt"
           ];
           sql = [ "sqlfluff" ];
-          sql = [ "sqlfluff" ];
-          terraform = [ "terraform_fmt" ];
-          toml = [ "taplo" ];
           terraform = [ "terraform_fmt" ];
           toml = [ "taplo" ];
           typescript = {
