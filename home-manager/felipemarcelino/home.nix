@@ -37,7 +37,6 @@
     zoom-us
     anki-bin
     gemini-cli
-    claude-code
     codex
     gh
     cookiecutter
@@ -78,6 +77,7 @@
     programs = {
       rofi.enable = true;
       yt-dlp.enable = true;
+      claude.enable = true;
 
     };
 
@@ -158,6 +158,9 @@
 
     secrets = {
       OPENAI_API_KEY = {
+        mode = "0400";
+      };
+      GITHUB_PERSONAL_ACCESS_TOKEN = {
         mode = "0400";
       };
     };
