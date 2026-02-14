@@ -2,6 +2,7 @@
 {
   imports = [
     ./broot.nix
+    ./claude_code.nix
     ./rofi
     ./feh.nix
     ./firefox.nix
