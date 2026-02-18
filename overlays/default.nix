@@ -8,10 +8,13 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    # example = prev.example.overrideAttrs (oldAttrs: rec {
-    # ...
-    # });
+    pragmata-pro = prev.pragmata-pro.overrideAttrs (oldAttrs: rec {
+      src = final.pragmata-monolisa-fonts;
+    });
 
+    pragmata-pro-nerd = final.patch-nerd-font {
+      fontPackage = final.pragmata-pro;
+    };
   };
 
   # When applied, the stable nixpkgs set (declared in the flake inputs) will
