@@ -121,12 +121,6 @@
     <dead_acute> <c> : "ç"
   '';
 
-  # syncthing
-
-  services.syncthing = {
-    enable = true;
-  };
-
   programs.nix-index = {
     enable = true;
     enableZshIntegration = true;
