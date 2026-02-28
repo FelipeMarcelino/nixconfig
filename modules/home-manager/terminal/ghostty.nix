@@ -31,6 +31,7 @@ in
       unfocused-split-opacity = 0.7
       fullscreen = true
       link-url = true
+      link-url-launch-program = firefox
       window-inherit-working-directory = true
       window-inherit-font-size = true
       window-decoration = false

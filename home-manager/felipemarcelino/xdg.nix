@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  # Browser padrão para terminal
+  home.sessionVariables = {
+    BROWSER = "firefox-beta";
+  };
 
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
@@ -8,6 +12,18 @@
     "image/jpeg" = [ "mpv.desktop" ];
     "image/jpg" = [ "mpv.desktop" ];
     "image/png" = [ "mpv.desktop" ];
+    # Browser
+    "text/html" = [ "firefox-beta.desktop" ];
+    "x-scheme-handler/http" = [ "firefox-beta.desktop" ];
+    "x-scheme-handler/https" = [ "firefox-beta.desktop" ];
+    "x-scheme-handler/about" = [ "firefox-beta.desktop" ];
+    "x-scheme-handler/unknown" = [ "firefox-beta.desktop" ];
+    "application/xhtml+xml" = [ "firefox-beta.desktop" ];
+    "application/x-extension-htm" = [ "firefox-beta.desktop" ];
+    "application/x-extension-html" = [ "firefox-beta.desktop" ];
+    "application/x-extension-shtml" = [ "firefox-beta.desktop" ];
+    "application/x-extension-xhtml" = [ "firefox-beta.desktop" ];
+    "application/x-extension-xht" = [ "firefox-beta.desktop" ];
   };
 
   xdg.mimeApps.associations.added = {
@@ -15,6 +31,10 @@
     "image/jpeg" = [ "mpv.desktop" ];
     "image/jpg" = [ "mpv.desktop" ];
     "image/png" = [ "mpv.desktop" ];
+    # Browser
+    "text/html" = [ "firefox-beta.desktop" ];
+    "x-scheme-handler/http" = [ "firefox-beta.desktop" ];
+    "x-scheme-handler/https" = [ "firefox-beta.desktop" ];
   };
 
   xdg = {
