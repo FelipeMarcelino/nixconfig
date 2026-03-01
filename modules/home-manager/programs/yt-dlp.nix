@@ -7,6 +7,8 @@
 with lib;
 let
   cfg = config.home.programs.yt-dlp or { enable = false; };
+  defaultDownloadDir = "${config.home.homeDirectory}/YT_DLP";
+  ytDlpDir = attrByPath [ "xdg" "userDirs" "extraConfig" "XDG_YT_DLP_DIR" ] defaultDownloadDir config;
 in
 {
   options.home.programs.yt-dlp = mkOption {
@@ -18,6 +20,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    xdg.userDirs.extraConfig.XDG_YT_DLP_DIR = mkDefault defaultDownloadDir;
+
     programs.yt-dlp = {
       enable = true;
       settings = {
@@ -29,7 +33,7 @@ in
         format-sort = "ext";
         yes-playlist = true;
         playlist-reverse = true;
-        paths = "${config.xdg.userDirs.extraConfig.XDG_YT_DLP_DIR}";
+        paths = ytDlpDir;
         download-archive = "";
         output = "%(id)s_views_%(view_count)d_likes_%(like_count)d_rating_%(average_rating)d_[%(fulltitle)s_%(*USERNAME*)s_%(webpage_url_domain)s].%(ext)s";
         restrict-filenames = true;
