@@ -59,7 +59,7 @@ in
 
     home.packages = with pkgs; [
       taskwarrior-tui
-      html-xml-utils
+      pup
       (writeShellScriptBin "remove-in" ''
         ${pkgs.taskwarrior3}/bin/task "$@"  modify -in
       '')
@@ -86,7 +86,7 @@ in
 
       webpage_title (){
         echo "Fetching URL: $1" >&2  # Print the URL being fetched
-        wget -qO- "$1" | hxselect -s '\n' -c 'title' 2>/dev/null
+        wget -qO- "$1" | pup 'title text{}' 2>/dev/null
       }
 
       read_and_review (){

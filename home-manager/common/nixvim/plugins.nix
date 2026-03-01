@@ -48,8 +48,8 @@
     colorizer.enable = true;
     telescope.enable = true;
     treesitter.enable = true;
-    treesitter-context.enable = true;
-    treesitter-refactor.enable = true;
+    #treesitter-context.enable = true;
+    #treesitter-refactor.enable = true;
     treesitter-textobjects.enable = true;
     spectre.enable = true;
     project-nvim.enable = true;
@@ -85,7 +85,7 @@
     grug-far.enable = false;
     hardtime.enable = true;
     helpview.enable = true;
-    illuminate.enable = true;
+    #illuminate.enable = true;
     nvim-lightbulb.enable = true;
     markview.enable = false;
     yanky.enable = true;

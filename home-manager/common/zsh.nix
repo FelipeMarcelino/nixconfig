@@ -80,7 +80,7 @@
     alias think='tickle +1d'
 
     webpage_title (){
-      wget -qO- "$\*" | hxselect -s '\n' -c 'title' 2>/dev/null
+      wget -qO- "$\*" | pup 'title text{}' 2>/dev/null
     }
 
     read_and_review (){
