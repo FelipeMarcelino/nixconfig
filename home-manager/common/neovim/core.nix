@@ -4,6 +4,6 @@
   ...
 }: {
   programs.neovim.extraConfig = ''
-    set
+    set guifont=PragmataPro_Nerd_Font_Mono:h10
   '';
 }
