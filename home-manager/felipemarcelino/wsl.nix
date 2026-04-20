@@ -29,10 +29,16 @@
   home.packages = with pkgs; [
     # Development tools
     cookiecutter
-    claude-code
+    #claude-code
+
+    # AI tools
+    rtk
+
+    codex
+    opencode
 
     # Fonts (for terminal)
-    pragmata-monolisa-fonts
+    #pragmata-monolisa-fonts
   ];
 
   # Disable all desktop/GUI modules for WSL
@@ -49,6 +55,7 @@
       firefox.enable = false;
       feh.enable = false;
       zathura.enable = false;
+      claude.enable = true;
     };
 
     services = {
@@ -57,7 +64,6 @@
       udiskie.enable = false;
       screen-locker-x.enable = false;
       picom.enable = false;
-      emanote-site.enable = false;
     };
 
     # Enable CLI tools for WSL
@@ -92,13 +98,17 @@
     };
   };
 
-  # SOPS secrets management (if needed on WSL)
-  # Uncomment and configure if you need secrets on WSL
-  # sops = {
-  #   age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
-  #   defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
-  #   defaultSopsFormat = "yaml";
-  # };
+  sops = {
+    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
+    defaultSopsFile = ./../../secrets/wsl.yaml;
+    defaultSopsFormat = "yaml";
+
+    secrets = {
+      GITHUB_PERSONAL_ACCESS_TOKEN = {
+        mode = "0400";
+      };
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";

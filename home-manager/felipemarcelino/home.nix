@@ -143,23 +143,23 @@
     };
   };
 
-  sops = {
-    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
-    defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
-    defaultSopsFormat = "yaml";
+  # sops = {
+  #   age.keyfile = "/home/felipemarcelino/.config/sops/age/keys.txt";
+  #   defaultsopsfile = ./../../secrets/felipemarcelino.yaml;
+  #   defaultsopsformat = "yaml";
 
-    secrets = {
-      OPENAI_API_KEY = {
-        mode = "0400";
-      };
-      GITHUB_PERSONAL_ACCESS_TOKEN = {
-        mode = "0400";
-      };
-    };
-  };
+  #   secrets = {
+  #     openai_api_key = {
+  #       mode = "0400";
+  #     };
+  #     github_personal_access_token = {
+  #       mode = "0400";
+  #     };
+  #   };
+  # };
 
-  home.pointerCursor = {
-    name = "Numix-Cursor";
+  home.pointercursor = {
+    name = "numix-cursor";
     package = pkgs.numix-cursor-theme;
     size = 24;
   };
@@ -174,10 +174,10 @@
   services.spotifyd.enable = true;
   services.librespot.enable = true;
 
-  # Git
-  programs.git.userEmail = "felipe.marcelino1991@gmail.com";
-  programs.git.userName = "Felipe Marcelino";
+  # git
+  programs.git.useremail = "felipe.marcelino1991@gmail.com";
+  programs.git.username = "felipe marcelino";
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.11";
+  # https://nixos.wiki/wiki/faq/when_do_i_update_stateversion
+  home.stateversion = "24.11";
 }

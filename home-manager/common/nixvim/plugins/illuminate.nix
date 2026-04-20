@@ -14,7 +14,7 @@
         "neo-tree"
         "TelescopePrompt"
       ];
-      largeFileCutoff = 3000;
+      settings.large_file_cutoff = 3000;
     };
   };
 }
