@@ -31,6 +31,13 @@
   ];
 
   # nixpkgs config is inherited from the system-level pkgs instance (useGlobalPkgs = true)
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
 
   nix = {
     package = lib.mkDefault pkgs.nix;
@@ -73,7 +80,7 @@
     dust
     unzip
     age
-    sops
+    #sops
     fdupes
     aider-chat
   ];
@@ -103,17 +110,17 @@
     "d ${config.home.homeDirectory}/.config/sops/age/ 0755 ${config.home.username} - -"
   ];
 
-  sops = {
-    age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
-    defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
-    defaultSopsFormat = "yaml";
+  # sops = {
+  #   age.keyFile = "/home/felipemarcelino/.config/sops/age/keys.txt";
+  #   defaultSopsFile = ./../../secrets/felipemarcelino.yaml;
+  #   defaultSopsFormat = "yaml";
 
-    secrets = {
-      OPENAI_API_KEY = {
-        mode = "0400";
-      };
-    };
-  };
+  #   secrets = {
+  #     OPENAI_API_KEY = {
+  #       mode = "0400";
+  #     };
+  #   };
+  # };
 
   home.file.".XCompose".text = ''
     include "%L"

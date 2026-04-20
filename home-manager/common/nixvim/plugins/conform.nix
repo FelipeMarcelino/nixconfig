@@ -106,7 +106,7 @@
             "shfmt"
           ];
           sql = [ "sqlfluff" ];
-          terraform = [ "terraform_fmt" ];
+          #terraform = [ "terraform_fmt" ];
           toml = [ "taplo" ];
           typescript = {
             __unkeyed-1 = "biome";
@@ -162,7 +162,7 @@
             command = lib.getExe pkgs.jq;
           };
           nixfmt = {
-            command = lib.getExe pkgs.nixfmt-rfc-style;
+            command = lib.getExe pkgs.nixfmt;
           };
           prettierd = {
             command = lib.getExe pkgs.prettierd;
@@ -197,9 +197,9 @@
           taplo = {
             command = lib.getExe pkgs.taplo;
           };
-          terraform_fmt = {
-            command = lib.getExe pkgs.terraform;
-          };
+          #terraform_fmt = {
+          #command = lib.getExe pkgs.terraform;
+          #};
           xmlformat = {
             command = lib.getExe pkgs.xmlformat;
           };
