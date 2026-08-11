@@ -30,9 +30,7 @@
     # Development tools
     cookiecutter
     claude-code
-
-    # Fonts (for terminal)
-    pragmata-monolisa-fonts
+    opencode
   ];
 
   # Disable all desktop/GUI modules for WSL
@@ -57,7 +55,6 @@
       udiskie.enable = false;
       screen-locker-x.enable = false;
       picom.enable = false;
-      emanote-site.enable = false;
     };
 
     # Enable CLI tools for WSL
