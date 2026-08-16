@@ -34,6 +34,7 @@
   ];
 
   # Disable all desktop/GUI modules for WSL
+
   home = {
     desktop = {
       swayi3.enable = false;

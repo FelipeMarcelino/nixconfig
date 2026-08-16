@@ -1,6 +1,13 @@
 {
   description = "Your new nix config";
 
+  nixConfig = {
+    extra-substituters = [ "https://cache.garnix.io" ];
+    extra-trusted-public-keys = [
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+    ];
+  };
+
   inputs = {
     # Nixpkgs
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
@@ -24,6 +31,8 @@
       flake = false;
     };
     sops-nix.url = "github:Mic92/sops-nix";
+
+    nix-openclaw.url = "github:openclaw/nix-openclaw/4a27671497057be5bf91cc38cdaebb3280b77220";
 
     catppuccin.url = "github:catppuccin/nix";
 
@@ -122,14 +131,23 @@
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "felipemarcelino@solid" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+            overlays = [
+              outputs.overlays.additions
+              outputs.overlays.modifications
+              outputs.overlays.stable-packages
+            ];
+          };
           extraSpecialArgs = {
             inherit
               inputs
               outputs
-              firefox-addons
-              ocr-zettel-source
-              ;
+               firefox-addons
+               ocr-zettel-source
+               zettel-update-source
+               ;
           };
           modules = [
             # > Our main home-manager configuration file <
@@ -138,7 +156,16 @@
           ];
         };
         "felipemarcelino@Isabel" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+            overlays = [
+              outputs.overlays.additions
+              outputs.overlays.modifications
+              outputs.overlays.stable-packages
+              inputs.nix-openclaw.overlays.default
+            ];
+          };
           extraSpecialArgs = {
             inherit
               inputs
@@ -151,6 +178,8 @@
           modules = [
             # Configuration for WSL2 Ubuntu
             ./home-manager/felipemarcelino/wsl.nix
+            inputs.nix-openclaw.homeManagerModules.openclaw
+            ./home-manager/felipemarcelino/openclaw.nix
 
           ];
         };
