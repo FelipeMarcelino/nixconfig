@@ -3,4 +3,5 @@
 pkgs: {
   pragmata-monolisa-fonts = pkgs.callPackage ./pragmata-monolisa-fonts { };
   mpv-custom-fonts = pkgs.callPackage ./mpv-custom-fonts { };
+  oh-my-opencode = pkgs.callPackage ./oh-my-opencode { };
 }
