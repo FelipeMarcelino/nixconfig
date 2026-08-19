@@ -55,4 +55,10 @@
       };
     };
   };
+
+  # nix-openclaw's systemd unit ships without an [Install] section (only the
+  # macOS launchd agent gets RunAtLoad), so the gateway stays "linked" rather
+  # than "enabled" and never comes back after a reboot. Wire it to
+  # default.target ourselves; linger is already enabled for this user.
+  systemd.user.services.openclaw-gateway.Install.WantedBy = [ "default.target" ];
 }
