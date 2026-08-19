@@ -26,6 +26,8 @@ in
     vimAlias = true;
     withPython3 = true;
 
+    nixpkgs.config.allowUnfree = true;
+
     extraConfigLuaPre = ''
       -- Allow unfree packages for nixvim
     '';
@@ -35,7 +37,7 @@ in
       providers.xclip.enable = true;
     };
 
-    diagnostics = {
+    diagnostic.settings = {
       virtual_text = false;
     };
 
