@@ -6,11 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.home.services.picom or { enable = false; };
+  cfg = config.home.customServices.picom or { enable = false; };
 in
 {
 
-  options.home.services.picom = mkOption {
+  options.home.customServices.picom = mkOption {
     description = "Enable picom compositor";
     type = types.attrs;
     default = {

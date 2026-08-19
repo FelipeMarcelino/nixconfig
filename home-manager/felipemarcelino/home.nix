@@ -44,7 +44,7 @@
     foliate
     spotdl
     android-tools
-    opencode
+    bun
   ];
 
   imports = [
@@ -81,7 +81,7 @@
 
     };
 
-    services = {
+    customServices = {
       polybar.enable = true;
       dunst.enable = true;
       udiskie.enable = true;
