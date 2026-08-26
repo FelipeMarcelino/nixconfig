@@ -37,7 +37,21 @@
         };
       };
 
-      agents.defaults.model.primary = "opencode-go/deepseek-v4-pro";
+      agents.defaults.model.primary = "opencode-go/glm-5.3";
+
+      # openclaw 2026.7.1-2 ships a frozen opencode-go catalog (newest entry is
+      # glm-5.2) and its "live discovery" only *prunes* that list against
+      # /zen/go/v1/models -- it never adds models. So newer ids like glm-5.3 are
+      # rejected with "The configured model is unavailable from the provider".
+      # Declaring the provider here replaces the plugin catalog wholesale, hence
+      # the full model list. Regenerate from models.dev + the live /models
+      # endpoint when opencode ships new models.
+      models.providers."opencode-go" = {
+        api = "openai-completions";
+        baseUrl = "https://opencode.ai/zen/go/v1";
+        apiKey = "OPENCODE_API_KEY";
+        models = builtins.fromJSON (builtins.readFile ./opencode-go-models.json);
+      };
       memory.backend = "qmd";
 
       plugins.entries = {
