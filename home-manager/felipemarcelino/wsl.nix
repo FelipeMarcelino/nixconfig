@@ -30,8 +30,15 @@
     # Development tools
     cookiecutter
     claude-code
-    opencode
+    codex
+    bun
+    gh
   ];
+
+  programs.opencode = {
+    enable = true;
+    extraPackages = [ pkgs.oh-my-opencode ];
+  };
 
   # Disable all desktop/GUI modules for WSL
 
@@ -50,7 +57,7 @@
       zathura.enable = false;
     };
 
-    services = {
+    customServices = {
       polybar.enable = false;
       dunst.enable = false;
       udiskie.enable = false;

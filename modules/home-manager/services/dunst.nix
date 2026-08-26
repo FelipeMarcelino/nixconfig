@@ -6,10 +6,10 @@
 }:
 with lib;
 let
-  cfg = config.home.services.dunst or { enable = false; };
+  cfg = config.home.customServices.dunst or { enable = false; };
 in
 {
-  options.home.services.dunst = mkOption {
+  options.home.customServices.dunst = mkOption {
     description = "Enable notifier dusnt with catppuccin theme";
     type = types.attrs;
     default = {
