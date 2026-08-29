@@ -26,8 +26,9 @@ in
     vimAlias = true;
     withPython3 = true;
 
+    nixpkgs.useGlobalPackages = true;
+
     extraConfigLuaPre = ''
-      -- Allow unfree packages for nixvim
     '';
 
     clipboard = {
@@ -35,7 +36,7 @@ in
       providers.xclip.enable = true;
     };
 
-    diagnostics = {
+    diagnostic.settings = {
       virtual_text = false;
     };
 

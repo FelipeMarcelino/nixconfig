@@ -34,6 +34,23 @@
 
     nix-openclaw.url = "github:openclaw/nix-openclaw/4a27671497057be5bf91cc38cdaebb3280b77220";
 
+    # Toolchain para empacotar apps Python a partir de um uv.lock (usado por pkgs/omnigent)
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin.url = "github:catppuccin/nix";
 
     ocr-zettel-source = {
@@ -79,7 +96,7 @@
     {
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      packages = forAllSystems (system: import ./pkgs inputs nixpkgs.legacyPackages.${system});
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);

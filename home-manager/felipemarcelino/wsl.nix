@@ -30,6 +30,7 @@
     # Development tools
     cookiecutter
     claude-code
+    omnigent
     opencode
   ];
 
