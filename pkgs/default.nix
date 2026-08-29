@@ -1,7 +1,8 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # You can build them using 'nix build .#example'
-pkgs: {
+inputs: pkgs: {
   pragmata-monolisa-fonts = pkgs.callPackage ./pragmata-monolisa-fonts { };
   mpv-custom-fonts = pkgs.callPackage ./mpv-custom-fonts { };
+  omnigent = pkgs.callPackage ./omnigent { inherit inputs; };
   oh-my-opencode = pkgs.callPackage ./oh-my-opencode { };
 }

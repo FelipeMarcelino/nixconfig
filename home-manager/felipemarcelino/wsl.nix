@@ -30,6 +30,8 @@
     # Development tools
     cookiecutter
     claude-code
+    omnigent
+    opencode
     codex
     bun
     gh
