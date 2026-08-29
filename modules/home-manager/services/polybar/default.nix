@@ -95,11 +95,11 @@ let
 
   customMods = mainBar + bctl + cal + mpris + github + keyboard;
 
-  cfg = config.home.services.polybar or { enable = false; };
+  cfg = config.home.customServices.polybar or { enable = false; };
 in
 {
 
-  options.home.services.polybar = lib.mkOption {
+  options.home.customServices.polybar = lib.mkOption {
     description = "Activating polybar service";
     type = lib.types.attrs;
     default = {

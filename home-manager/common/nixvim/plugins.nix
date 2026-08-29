@@ -47,10 +47,10 @@
     nvim-autopairs.enable = true;
     colorizer.enable = true;
     telescope.enable = true;
-    treesitter.enable = true;
+    #treesitter.enable = true;
     #treesitter-context.enable = true;
     #treesitter-refactor.enable = true;
-    treesitter-textobjects.enable = true;
+    #treesitter-textobjects.enable = true;
     spectre.enable = true;
     project-nvim.enable = true;
     markdown-preview.enable = true;

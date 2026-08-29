@@ -7,11 +7,11 @@
 with lib;
 
 let
-  cfg = config.home.services.udiskie or { enable = false; };
+  cfg = config.home.customServices.udiskie or { enable = false; };
 in
 {
 
-  options.home.services.udiskie = mkOption {
+  options.home.customServices.udiskie = mkOption {
     description = "Enable service udiskie automount disk";
     type = types.attrs;
     default = {

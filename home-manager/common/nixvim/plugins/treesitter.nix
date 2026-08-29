@@ -4,10 +4,11 @@
   self,
   system,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     treesitter = {
-      enable = true;
+      enable = false;
 
       folding = true;
       nixvimInjections = true;

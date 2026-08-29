@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.home.services.screen-locker-x or { enable = false; };
+  cfg = config.home.customServices.screen-locker-x or { enable = false; };
 in
 {
 
-  options.home.services.screen-locker-x = lib.mkOption {
+  options.home.customServices.screen-locker-x = lib.mkOption {
     description = "Enable screen locker for X";
     type = lib.types.attrs;
     default = {
