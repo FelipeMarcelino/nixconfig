@@ -10,6 +10,16 @@
     instances.default.package =
       inputs.nix-openclaw.packages.${pkgs.stdenv.hostPlatform.system}.openclaw;
 
+    # systemd's `append:` creates the log file but not its parent directory,
+    # and the home-manager module only mkdir -p's that directory during
+    # activation (the NixOS module uses systemd.tmpfiles, which re-runs at
+    # boot). /tmp is tmpfs under WSL, so the upstream default /tmp/openclaw
+    # disappeared on every restart and the gateway died with 209/STDOUT,
+    # exhausting Restart= before anything could recreate it. Keep the log
+    # alongside the rest of the state, which persists across boots.
+    instances.default.logPath =
+      "/home/felipemarcelino/.openclaw/logs/openclaw-gateway.log";
+
     # Secret files materialized outside the Nix store; read at service start.
     environment = {
       OPENCLAW_GATEWAY_TOKEN = "/home/felipemarcelino/.secrets/openclaw-gateway-token";
@@ -50,6 +60,15 @@
         api = "openai-completions";
         baseUrl = "https://opencode.ai/zen/go/v1";
         apiKey = "OPENCODE_API_KEY";
+        # Go requires a stable session id in x-opencode-session since
+        # 2026-09-08; without it the endpoint 400s with "Request is missing
+        # x-opencode-session and cannot be routed efficiently". OpenClaw's
+        # generic openai-completions transport never sends it, so inject a
+        # constant session id here. See https://opencode.ai/docs/go/
+        #
+        # Confirmed 2026-09-13: dropping this header took the bot down for
+        # ~3 days -- every completion 400s. Do not remove it again.
+        headers."x-opencode-session" = "openclaw-gateway";
         models = builtins.fromJSON (builtins.readFile ./opencode-go-models.json);
       };
       memory.backend = "qmd";

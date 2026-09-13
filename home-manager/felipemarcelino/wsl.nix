@@ -31,7 +31,8 @@
     cookiecutter
     claude-code
     omnigent
-    opencode
+    # opencode comes from programs.opencode.enable below; the duplicate
+    # package entry now collides (wrapped vs unwrapped) in home-manager-path
     codex
     bun
     gh
